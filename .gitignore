@@ -1,2 +1,4 @@
 .env
 db.sqlite3
+/twilio
+send_sms.py
