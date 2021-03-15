@@ -18,6 +18,14 @@ class Job(models.Model):
         (I_dont_know, 'I don\'t know'),
 
     ]
+    IOP = 'IOP'
+    Remote = 'Remote'
+    LOCATION = [
+        (PC, 'PC'),
+        (IOP, 'IOP'),
+        (Remote, 'Remote'),
+
+    ]
     # text = models.CharField(max_length=255)
     client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     computer_issue =  models.CharField(
@@ -29,6 +37,11 @@ class Job(models.Model):
         max_length=50,
         choices=OS,
         default= I_dont_know,
+    )
+    client_location =  models.CharField(
+        max_length=50,
+        choices=OS,
+        default= LOCATION,
     )
 
     def __str__(self):
