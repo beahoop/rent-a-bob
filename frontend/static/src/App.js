@@ -1,8 +1,10 @@
 import {Component} from 'react';
 import Cookies from 'js-cookie';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Joblist from './components/Joblist';
 import Header from "./components/Header";
 import Register from './components/Register';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/Login';
 import './App.css';
 
@@ -130,6 +132,11 @@ async handleRegistration(e, obj) {
                     handleLogin={this.handleLogin}
                   />
                 }></Route>
+              <Route path="/jobs" children={
+                    <Joblist
+                      jobs ={this.state.jobs}
+                    />
+                  }></Route>
                 <Route path="/register" children={
                   <Register
                     isLoggedIn={this.state.isLoggedIn}

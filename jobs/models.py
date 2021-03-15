@@ -62,7 +62,7 @@ class Job(models.Model):
         choices=LOCATION,
         default= Remote,
     )
-    # notes =
+
 
     def __str__(self):
         return self.issue[:50]
@@ -71,6 +71,6 @@ class Note(models.Model):
     text = models.CharField(max_length=255)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     created_date = models.DateField(auto_now=False, auto_now_add=True)
-    job =  models.ForeignKey(Job, on_delete=models.CASCADE)
+    job =  models.ForeignKey(Job, related_name="notes", on_delete=models.CASCADE)
     def __str__(self):
         return self.text[:50]
