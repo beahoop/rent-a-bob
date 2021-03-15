@@ -6,7 +6,7 @@ function Header(props) {
 
   return (
     <>
-    <div className="navbar sticky-top main-nav">
+    <div className="navbar main-nav">
       {!isAuth
       ?
       <span>
