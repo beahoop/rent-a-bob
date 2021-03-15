@@ -51,12 +51,14 @@ INSTALLED_APPS = [
     'rest_auth',
     'rest_auth.registration',
     'rest_framework.authtoken',
+    'phone_field',
 
     # local
     'accounts.apps.AccountsConfig',
     'jobs.apps.JobsConfig',
     'frontend.apps.FrontendConfig',
     'api.apps.ApiConfig',
+    'clients.apps.ClientsConfig',
 ]
 
 MIDDLEWARE = [

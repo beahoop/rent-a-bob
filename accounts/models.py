@@ -6,6 +6,10 @@ from django.contrib.auth.models import AbstractUser
 class CustomUser(AbstractUser):
     pass
 
+class Employee(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
                     #if you delete the user the profile will delete
