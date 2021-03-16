@@ -2,6 +2,9 @@ import {Component} from 'react';
 import Cookies from 'js-cookie';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Joblist from './components/Joblist';
+// import JobItem from './components/JobItem';
+import Home from './components/clientside/Home';
+import Dashboard from './components/Dashboard';
 import Header from "./components/Header";
 import Register from './components/Register';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -138,12 +141,30 @@ async handleRegistration(e, obj) {
                       jobs ={this.state.jobs}
                     />
                   }></Route>
+                <Route path="/dashboard" children={
+                        <Dashboard
+                          jobs ={this.state.jobs}
+                        />
+                      }></Route>
                 <Route path="/register" children={
                   <Register
                     isLoggedIn={this.state.isLoggedIn}
                     handleRegistration ={this.handleRegistration}
                   />
                 }></Route>
+                <Route exact path="/job/:id" children={
+                      <Joblist
+                        jobs ={this.state.jobs}
+                      />
+                      }></Route>
+
+
+
+
+                    <Route exact path="/home/" children={
+                    <Home
+                    />
+                    }></Route>
 
             </div>
 

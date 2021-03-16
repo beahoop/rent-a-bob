@@ -5,9 +5,11 @@ function Header(props) {
   return (
     <>
     <div className="navbar sticky-top navbar-light bg-light">
+    <span className="navbar-1 navbar-brand">< NavLink to="/home/">Home</NavLink></span>
       {!isAuth
       ?
       <span>
+
       <span className="navbar-1 navbar-brand">< NavLink to="/login/">Login</NavLink></span>
       <span className="navbar-1 navbar-brand"><NavLink to="/register/">Register</NavLink> </span>
       </span>
@@ -18,6 +20,7 @@ function Header(props) {
       {isAuth
       ?
       <span className="navbar-brand">
+        <span className="navbar-1 navbar-brand">< NavLink to="/dashboard/">Dashboard</NavLink></span>
         <span className="navbar-1 navbar-brand">< NavLink to="/jobs/">Jobs</NavLink></span>
         <span  className="navbar-1 navbar-brand" onClick={(e) => props.handleLogOut(e)} type="submit">LogOut</span>
           </span>

@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Cookies from 'js-cookie';
 import NoteItem from './NoteItem';
+import { withRouter } from "react-router-dom";
 
 class JobItem extends Component{
   constructor(props) {
@@ -10,6 +11,7 @@ class JobItem extends Component{
       notes: this.props.job.notes,
       text: '',
       image: null,
+      job: this.props.job,
       preview: "",
       showNotes: false,
     }
@@ -19,7 +21,25 @@ class JobItem extends Component{
     this.handleCreatingNote = this.handleCreatingNote.bind(this);
     this.addNote = this.addNote.bind(this);
   }
-
+componentDidMount() {
+  fetch(`/api/v1/edit/${this.props.match.params.id}`)
+    .then(res => res.json())
+    .then(
+      (result) => {
+        console.log('response', result)
+        this.setState({
+          job: result,
+          notes: result.notes,
+          image: result.image,
+        });
+      },
+      (error) => {
+        this.setState({
+          error
+        });
+      }
+    )
+}
 
 handleImage(event) {
   let file = event.target.files[0];
@@ -99,7 +119,7 @@ handleCreatingNote(event){
 
   render(){
 
-    const job = this.props.job;
+    const job = this.state.job
     const notes = this.state.notes.map((note, index) => (
       <div>
         <NoteItem key={note.id} notes={note} image={note.image} />
@@ -107,6 +127,8 @@ handleCreatingNote(event){
         </div>
  ));
   return(
+
+
       <li key={job.id} className="job-item" >
           <div className="job-container">
           <p className="jobs-client">Client: {job.client}</p>
@@ -155,9 +177,12 @@ handleCreatingNote(event){
 
           </div>
           </li>
+
+
+
       )
     }
 
   }
 
-  export default JobItem;
+  export default withRouter(JobItem);

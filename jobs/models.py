@@ -6,6 +6,15 @@ from clients.models import Client
 
 class Job(models.Model):
     client =  models.ForeignKey(Client, on_delete=models.CASCADE)
+    #job_status
+    New = 'New'
+    Open = 'Open'
+    Closed = 'Closed'
+    STATUS = [
+        (New, 'New'),
+        (Open, 'Open'),
+        (Closed, 'Closed'),
+    ]
     #hardware
     Computer = 'Computer'
     Printer = 'Printer'
@@ -41,6 +50,11 @@ class Job(models.Model):
 
     ]
     # text = models.CharField(max_length=255)
+    job_status =  models.CharField(
+        max_length=50,
+        choices=STATUS,
+        default= New,
+    )
 
     hardware =  models.CharField(
         max_length=50,
@@ -66,7 +80,7 @@ class Job(models.Model):
 
     def __str__(self):
         return self.issue[:50]
-
+        
 class Note(models.Model):
     text = models.CharField(max_length=255)
     image = models.ImageField(upload_to='notes/', null=True)
