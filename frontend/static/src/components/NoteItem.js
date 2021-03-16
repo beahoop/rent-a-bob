@@ -12,7 +12,6 @@ class NoteItem extends Component{
     this.handleInputEdit = this.handleInputEdit.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.removeNote = this.removeNote.bind(this);
   }
   handleSubmit(event){
     const id = this.state.note.id
@@ -57,7 +56,7 @@ class NoteItem extends Component{
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  
+
 
   render(){
     const note = this.state.note;
@@ -75,7 +74,7 @@ class NoteItem extends Component{
         Edit</button>
         </div>
       }
-        <button type="btn btn-danger" onClick={()=> this.removeNote(note)}>Remove</button>
+      
       <span className="jobs-createdDate"> {note.created_date}</span>
       <span className="jobs-owner">by: {note.owner}</span>
 

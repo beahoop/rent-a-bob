@@ -7,10 +7,11 @@ class JobItem extends Component{
     super(props);
     this.state = {
       isEditing: false,
-      note: this.props.job.notes
+      notes: this.props.job.notes
     }
     this.handleInputEdit = this.handleInputEdit.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+    this.removeNote = this.removeNote.bind(this);
   }
 
 
@@ -27,6 +28,9 @@ class JobItem extends Component{
 
   removeNote(note){
   const id = note.id
+  const notes = [...this.state.notes];
+  const index = notes.indexOf(note);
+  notes.splice(index, 1);
   fetch(`/api/v1/note/edit/${id}`, {//type these out line by line some need more than others
         method: 'DELETE',
         headers: {
@@ -41,17 +45,18 @@ class JobItem extends Component{
         })
       .catch(error => console.log('Error:', error))
       .finally('I am always going to fire!');
-      this.setState({
-        note: "",
-        text: ""})
+      this.setState({ notes });
   };
 
 
   render(){
 
     const job = this.props.job;
-    const notes = job.notes.map((note, index) => (
+    const notes = this.state.notes.map((note, index) => (
+      <div>
         <NoteItem notes={note}/>
+        <button className="btn btn-danger" type="btn" onClick={()=> this.removeNote(note)}>Remove</button>
+        </div>
  ));
   return(
       <li key={job.id} className="job-item" >
