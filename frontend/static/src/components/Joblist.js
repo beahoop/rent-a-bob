@@ -10,8 +10,6 @@ function JobsList(props) {
 
   return(
     <>
-
-
     <ul className="JobList"> { job }
     </ul>
 

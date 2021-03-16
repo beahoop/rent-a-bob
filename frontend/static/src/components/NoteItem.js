@@ -7,11 +7,12 @@ class NoteItem extends Component{
     this.state = {
       isEditing: false,
       note: this.props.notes,
-      text: '',
+      text: this.props.notes.text,
     }
     this.handleInputEdit = this.handleInputEdit.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.removeNote = this.removeNote.bind(this);
   }
   handleSubmit(event){
     const id = this.state.note.id
@@ -41,19 +42,22 @@ class NoteItem extends Component{
         .catch(error => console.log('Error:', error))
         .finally('I am always going to fire!');
         this.setState({
-          text: "",})
+          text: note.text})
     };
 
     handleEdit(event){
       if(event.keyCode === 13) {
         this.handleSubmit(event);
-        this.setState({ isEditing: false });
+        this.setState({ isEditing: false,
+                        text: this.state.text});
       }
     }
 
     handleInputEdit(event) {
     this.setState({ [event.target.name]: event.target.value })
   }
+
+  
 
   render(){
     const note = this.state.note;
@@ -66,11 +70,12 @@ class NoteItem extends Component{
         onKeyUp={(event) => this.handleEdit(event)}/>
         :
         <div>
-        <p className="jobs-note" name="text" value={this.state.text}>Note: {note.text}</p>
-        <button class="btn" type="button" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>
+        <p className="jobs-note" name="text" value={this.state.text}>Note: {this.state.text}</p>
+        <button class="btn btn-info" type="button" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>
         Edit</button>
         </div>
       }
+        <button type="btn btn-danger" onClick={()=> this.removeNote(note)}>Remove</button>
       <span className="jobs-createdDate"> {note.created_date}</span>
       <span className="jobs-owner">by: {note.owner}</span>
 
