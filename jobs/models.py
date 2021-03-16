@@ -41,14 +41,7 @@ class Job(models.Model):
         (Mac, 'Mac'),
         (I_dont_know, 'I don\'t know'),
     ]
-    #locations
-    IOP = 'IOP'
-    Remote = 'Remote'
-    LOCATION = [
-        (IOP, 'IOP'),
-        (Remote, 'Remote'),
 
-    ]
     # text = models.CharField(max_length=255)
     job_status =  models.CharField(
         max_length=50,
@@ -71,16 +64,12 @@ class Job(models.Model):
         choices=OS,
         default= I_dont_know,
     )
-    client_location =  models.CharField(
-        max_length=50,
-        choices=LOCATION,
-        default= Remote,
-    )
+
 
 
     def __str__(self):
         return self.issue[:50]
-        
+
 class Note(models.Model):
     text = models.CharField(max_length=255)
     image = models.ImageField(upload_to='notes/', null=True)
