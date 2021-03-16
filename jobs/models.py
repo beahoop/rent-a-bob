@@ -69,6 +69,7 @@ class Job(models.Model):
 
 class Note(models.Model):
     text = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='notes/', null=True)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     created_date = models.DateField(auto_now=False, auto_now_add=True)
     job =  models.ForeignKey(Job, related_name="notes", on_delete=models.CASCADE)

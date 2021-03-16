@@ -17,11 +17,11 @@ class NotesListView(generics.ListCreateAPIView):
     serializer_class = NoteSerializer
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(owner=self.request.user)
 
 class NotesDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Note.objects.all()
     serializer_class = NoteSerializer
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(owner=self.request.user)
