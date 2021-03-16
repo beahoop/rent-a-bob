@@ -46,7 +46,9 @@ const openjobs = this.state.jobs.filter(job => {
   return console.log('nope');
 }).map((job) => (
   <div key={job.id} className="listImg">
-  <p>{job.client}{job.hardware}{job.issue}</p>
+    <a href={`/job/${job.id}`}>
+    <p>{job.client}{job.hardware}{job.issue}</p>
+    </a>
   </div>
 ));
   return(

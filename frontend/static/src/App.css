@@ -28,10 +28,8 @@ input[type="file"] {
 }
 
 
-
-
 /* ////////////////////////MEDIA// */
-@media (max-width: 2000px) {
+@media (max-width: 1000px) {
   .container{
     max-width:2000px;
     padding: 0px

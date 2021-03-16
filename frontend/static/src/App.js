@@ -1,8 +1,10 @@
 import {Component} from 'react';
 import Cookies from 'js-cookie';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Joblist from './components/Joblist';
-// import JobItem from './components/JobItem';
+// import Joblist from './components/Joblist';
+import JobItem from './components/JobItem';
+import Clients from './components/Clients';
+
 import Home from './components/clientside/Home';
 import Dashboard from './components/Dashboard';
 import Header from "./components/Header";
@@ -136,11 +138,7 @@ async handleRegistration(e, obj) {
                     handleLogin={this.handleLogin}
                   />
                 }></Route>
-              <Route path="/jobs" children={
-                    <Joblist
-                      jobs ={this.state.jobs}
-                    />
-                  }></Route>
+
                 <Route path="/dashboard" children={
                         <Dashboard
                           jobs ={this.state.jobs}
@@ -153,10 +151,15 @@ async handleRegistration(e, obj) {
                   />
                 }></Route>
                 <Route exact path="/job/:id" children={
-                      <Joblist
-                        jobs ={this.state.jobs}
-                      />
-                      }></Route>
+                  <JobItem
+                    jobs ={this.state.jobs}
+                  />
+                }></Route>
+              <Route exact path="/clients" children={
+                  <Clients
+
+                  />
+                }></Route>
 
 
 

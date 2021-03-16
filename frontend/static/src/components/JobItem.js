@@ -8,10 +8,10 @@ class JobItem extends Component{
     super(props);
     this.state = {
       isAdding: false,
-      notes: this.props.job.notes,
+      notes: [],
       text: '',
       image: null,
-      job: this.props.job,
+      job: [],
       preview: "",
       showNotes: false,
     }
@@ -88,18 +88,24 @@ handleImage(event) {
 
 handleCreatingNote(event){
     event.preventDefault();
-    const note = {
-      text: this.state.text,
-      job: this.props.job.id,
-      image: this.state.image,
-       }
+    // const note = {
+    //   text: this.state.text,
+    //   job: this.state.job.id,
+    //   image: this.state.image,
+    //    }
+      let formData = new FormData();//this is an objects
+      // https://developer.mozilla.org/en-US/docs/Web/API/FormData
+      formData.append('text', this.state.text);
+      formData.append('job', this.state.job.id);
+      formData.append('image', this.state.image);
+
+
       fetch('/api/v1/note/', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
               'X-CSRFToken' : Cookies.get('csrftoken'),
             },
-            body: JSON.stringify(note),
+            body: formData,
           })
             .then(response => {
             if(!response.ok){
@@ -172,14 +178,8 @@ handleCreatingNote(event){
             <ul>{ notes }</ul>
             </div>
         }
-
-
-
           </div>
           </li>
-
-
-
       )
     }
 
