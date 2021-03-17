@@ -181,11 +181,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-AWS_QUERYSTRING_AUTH = False
-
+AWS_S3_FILE_OVERWRITE = False  # Otherwise, any file with the same name as an existing file will override that file.
+AWS_QUERYSTRING_AUTH = True  # You may want this true in some cases, where you want the files to be secure
+AWS_DEFAULT_ACL = None  # None defaults to 'private'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'bucket-two-beahoop'

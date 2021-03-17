@@ -5,7 +5,7 @@ from clients.models import Client
 
 
 class Job(models.Model):
-    client =  models.ForeignKey(Client, on_delete=models.CASCADE)
+    client =  models.ForeignKey(Client, related_name="jobs", on_delete=models.CASCADE)
     #job_status
     New = 'New'
     Open = 'Open'
@@ -65,10 +65,8 @@ class Job(models.Model):
         default= I_dont_know,
     )
 
-
-
     def __str__(self):
-        return self.issue[:50]
+        return f"{self.client}, {self.hardware}: {self.issue[:50]}"
 
 class Note(models.Model):
     text = models.CharField(max_length=255)
