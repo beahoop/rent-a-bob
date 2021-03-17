@@ -122,16 +122,13 @@ async handleRegistration(e, obj) {
   render(){
     return (
       <div className="container">
-        <div className="row flex-nowrap">
-          <div className="nav-bar">
+          
         <BrowserRouter>
           <Header   handleLogOut={this.handleLogOut}
             isLoggedIn={this.state.isLoggedIn}/>
         <Switch>
 
-          <div className="row flex-nowrap">
 
-            <div className="col-6 col-md">
               <Route path="/login" children={
                   <Login
                     isLoggedIn={this.state.isLoggedIn}
@@ -161,29 +158,17 @@ async handleRegistration(e, obj) {
                   />
                 }></Route>
 
-
-
-
                     <Route exact path="/home/" children={
                     <Home
                     />
                     }></Route>
 
-            </div>
-
-          </div>
-
 
       </Switch>
       </BrowserRouter>
 
-
-      </div>
-
-
-
        </div>
-      </div>
+
     );
   }
 

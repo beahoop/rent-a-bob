@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Form from "./Form";
 
 
 
@@ -6,10 +7,6 @@ class Home extends Component{
   // constructor(props){
   //   super(props);
   //   this.state = {
-  //     username: '',
-      // email: '',
-  //     password: '',
-  //
   //   }
   //
   // }
@@ -18,9 +15,27 @@ class Home extends Component{
 render(){
   return(
     <>
-I'm the dang home page.
-
-
+    <div className="navbar navbar-dark bg-dark">
+    <span className="navbar-1 navbar-brand" >Home</span>
+      <a href="#form">
+    <span className="navbar-1 navbar-brand">Help!</span>
+    </a>
+    </div>
+    <div className="row">
+    <div className="divider-container col-12">
+              <div className="divider-top">
+                <div className="divider-words">Rent-A-Bob
+                </div>
+                <div className="divider-button">
+                        <a href="#form">
+                  <button className="btn btn-danger">Get Help!</button>
+                      </a>
+                </div>
+              </div>
+            </div>
+    </div>
+    <div id="top"></div>
+    <div id="form"><Form/></div>
     </>
   )
 }

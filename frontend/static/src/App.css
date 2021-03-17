@@ -1,4 +1,44 @@
 
+/* ////////////////////href links */
+
+#top{
+  background-color: blue;
+  height: 100vh;
+}
+
+#middle{
+  background-color: red;
+  margin-top: 500px;
+  color: black;
+}
+
+/* //////////////////////HOME divider */
+
+.divider-container {
+  height: 400px
+}
+
+.divider-top {
+  height: 100%;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-image: url('https://images.unsplash.com/photo-1604754742629-3e5728249d73?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80');
+}
+
+.divider-button{
+  margin-top: 275px;
+  margin-left: 80%;
+}
+.divider-button button{
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 2rem;
+}
+
+
 /* ////////////////////FILE UPLOADS */
 input[type="file"] {
     display: none;
@@ -25,6 +65,27 @@ input[type="file"] {
 
 .pre-img{
   height: 100px;
+}
+/* ////////////////////CLIENT FORM */
+
+.clientForm{
+  margin: 50px 0px;
+  border-radius: 30px;
+  background-color: #E6E6E6;
+}
+.form-title{
+  text-align: center;
+  font-size: 2rem;
+  padding: 10px;
+}
+
+.form{
+  /* background-color: #E06235; */
+}
+
+.hardware-btn{
+  font-size: 2rem;
+  font-weight: bolder;
 }
 
 
