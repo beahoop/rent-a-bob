@@ -2,32 +2,32 @@ import React, { Component } from 'react';
 import Form from "./Form";
 import Reviews from "./Reviews";
 import Products from "./Products";
+import About from "./About";
 
 
 
 
 class Home extends Component{
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //   }
-  //
-  // }
 
 
 render(){
   return(
     <>
-    <div className="navbar navbar-dark homepage-nav">
-    <span className="navbar-1 navbar-brand" >Home</span>
+    <div className="navbar sticky-top navbar-dark homepage-nav">
+      <a href="#top">
+        <span className="navbar-1 navbar-brand" >Home</span>
+      </a>
+      <a href="#reviews">
+        <span className="navbar-1 navbar-brand">Reviews</span>
+      </a>
       <a href="#form">
-    <span className="navbar-1 navbar-brand">Help!</span>
-    </a>
+        <span className="navbar-1 navbar-brand">Help!</span>
+      </a>
     </div>
 
 
     <div className="row">
-      <div className="divider-container col-12">
+      <div id="top" className="divider-container col-12">
         <div className="divider-top">
           <div className="divider-words">Rent-A-Bob
           </div>
@@ -43,9 +43,10 @@ render(){
     <div id="products"><Products/></div>
     <div className="blue-divider"></div>
     <div id="reviews"><Reviews/></div>
+      <div className="blue-divider"></div>
+      <div id="products"><About/></div>
     <div className="blue-divider"></div>
     <div id="form"><Form/></div>
-
     </>
   )
 }

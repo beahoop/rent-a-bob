@@ -41,7 +41,7 @@ render(){
     <div className="card"  key={product.id}>
     <img className="card-img-top mx-auto" src={Download} alt="Card  cap"/>
       <div className="card-body">
-        <h5 className="card-title">{product.title}</h5>
+        <h5 className="card-title ">{product.title}</h5>
         <p className="card-text">{product.body}</p>
         <a href="#form" class="btn product-btn">$95</a>
       </div>
@@ -50,7 +50,7 @@ render(){
 ));
   return(
     <>
-    <div className="row mx-auto flex-nowrap">
+    <div className="row mx-auto card-container">
 
         { products }
 

@@ -1,3 +1,8 @@
+.flex{
+  display: flex;
+}
+
+
 .homepage-nav{
   background-color: #5694FF;
 }
@@ -22,12 +27,14 @@
 /* //////////////////////HOME divider */
 
 .divider-container {
-  height: 400px
+  height: 500px;
+  margin-top: -75px;
 }
 
 .divider-top {
   height: 100%;
   width: 100%;
+  padding-top: -50px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -40,15 +47,19 @@
   margin-left: 80%;
 }
 
-/* //////////PRODUCTS */
+/* /////////////////////PRODUCTS */
 #products{
   background-color: #DFEBFF;
+  /* display: flex;
+  flex-direction: column; */
 }
-
+.card-container{
+  flex-wrap: nowrap;
+}
 .card{
   width: 30%;
   display: flex;
-  margin: 10px;
+  margin: 40px 10px;
   background-color: #FFF;
   color: #ED6242;
   border: 3px solid #ED6242;
@@ -78,8 +89,36 @@
   width: 100%;
 }
 
+/* ////////////////////// REVIEWS */
+#reviews{
+  margin: 50px 0px;
+}
 
+.review-item{
+  padding: 30px 70px;
+}
 
+.review-title{
+  color: #ED6242;
+  font-size: 3em;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.review-text{
+  font-size: 2rem;
+}
+
+.review-author{
+  font-size: 2em;
+}
+
+.review-stars{
+  font-size: 2em;
+  color: #ED6242;
+  margin-left: auto;
+}
 /* ////////////////////CLIENT FORM */
 
 .clientForm{
@@ -97,10 +136,6 @@
   margin: 100px 0px;
 }
 
-#reviews{
-  margin: 100px 0px;
-
-}
 
 .hardware-btn{
   font-size: 2rem;

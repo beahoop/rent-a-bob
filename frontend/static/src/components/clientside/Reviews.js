@@ -38,13 +38,15 @@ render(){
     }
     return console.log('nope');
   }).map((review, index) => (
-    <div key={review.id}>
-      <h2>{review.title}</h2>
-      <p>{review.body}</p>
-      <span>{review.author }</span>
-      <span>{fillStar.repeat(review.starRating)}{emptyStar.repeat(5-review.starRating)}</span>
-      <div onClick={()=> this.setState({id: (this.state.id-1)})}>back</div>
-      <div onClick={()=> this.setState({id: (this.state.id+1)})}>forward</div>
+    <div className="review-item" key={review.id}>
+      <div className="review-title">{review.title}</div>
+      <p className="review-text">{review.body}</p>
+      <div className="flex">
+      <span className="review-author">{review.author}</span>
+      <span className="review-stars">{fillStar.repeat(review.starRating)}{emptyStar.repeat(5-review.starRating)}</span>
+      </div>
+      <span onClick={()=> this.setState({id: 1})}>back</span>
+      <span onClick={()=> this.setState({id: 2})}>forward</span>
       </div>
 ));
   return(
