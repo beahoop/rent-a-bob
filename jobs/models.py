@@ -25,21 +25,21 @@ class Job(models.Model):
         (Other, 'Other'),
     ]
     #issues
-    Not_turning_on = 'Not Turning on'
-    I_dont_know = 'I don\'t know'
+    Not = 'Not Turning on'
+    Unknown = "Unknown"
     ISSUE = [
-        (Not_turning_on, 'Not Turning on'),
-        (I_dont_know, 'I don\'t know'),
+        (Not, 'Not Turning on'),
+        (Unknown, "Unknown"),
     ]
 
     #os
     Mac = 'Mac'
     PC = 'PC'
-    I_dont_know = 'I don\'t know'
+    Unknown = 'Unknown'
     OS = [
         (PC, 'PC'),
         (Mac, 'Mac'),
-        (I_dont_know, 'I don\'t know'),
+        (Unknown, 'Unknown'),
     ]
 
     # text = models.CharField(max_length=255)
@@ -52,19 +52,19 @@ class Job(models.Model):
     hardware =  models.CharField(
         max_length=50,
         choices=HARDWARE,
-        default= I_dont_know,
+        default= Other,
     )
     issue =  models.CharField(
         max_length=50,
         choices= ISSUE,
-        default= I_dont_know,
+        default= Unknown,
     )
     os =  models.CharField(
         max_length=50,
         choices=OS,
-        default= I_dont_know,
+        default= Unknown
     )
-
+    model_number = models.CharField(max_length=255, null=True)
     def __str__(self):
         return f"{self.client}, {self.hardware}: {self.issue[:50]}"
 

@@ -22,7 +22,7 @@ class ListClients(APIView):
             serializer.is_valid()
             # import pdb; pdb.set_trace()
             #if the client exist then return that client back
-            return Response(client.id)
+            return Response(client)
         else:
             print("Creating new client", phone)
             serializer.is_valid()

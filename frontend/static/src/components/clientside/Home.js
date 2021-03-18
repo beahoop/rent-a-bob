@@ -28,7 +28,7 @@ render(){
                 </div>
                 <div className="divider-button">
                         <a href="#form">
-                  <button className="btn btn-danger">Get Help!</button>
+                  <button className="btn  flex-nowrap btn-danger">Get Help!</button>
                       </a>
                 </div>
               </div>
