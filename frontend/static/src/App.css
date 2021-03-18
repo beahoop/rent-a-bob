@@ -1,15 +1,22 @@
-
-/* ////////////////////href links */
-
-#top{
-  background-color: blue;
-  height: 100vh;
+.homepage-nav{
+  background-color: #5694FF;
 }
 
-#middle{
-  background-color: red;
-  margin-top: 500px;
-  color: black;
+.help-btn{
+  background-color: #ED6242;
+  color: #FFF;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 1.5em;
+  /* padding: 10px 20px; */
+  border-radius: 10px;
+}
+
+.blue-divider{
+  height: 10px;
+  width: 100%;
+  background-color: #5694FF;
+
 }
 
 /* //////////////////////HOME divider */
@@ -32,13 +39,73 @@
   margin-top: 275px;
   margin-left: 80%;
 }
-.divider-button button{
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-size: 1.5em;
+
+/* //////////PRODUCTS */
+#products{
+  background-color: #DFEBFF;
+}
+
+.card{
+  width: 30%;
+  display: flex;
+  margin: 10px;
+  background-color: #FFF;
+  color: #ED6242;
+  border: 3px solid #ED6242;
+  font-weight: bolder;
+  border-radius: 20px;
+}
+.card-img-top{
+  width: 50%;
+  text-align: center;
+  padding-top: 10px;
+  border-radius: 30px;
+}
+.card-title{
+  font-weight: bolder;
+  text-align: center;
+  text-transform: uppercase;
+}
+.card-text{
+  text-align: center;
+  font-weight: lighter;
+}
+.product-btn{
+  background-color: #5694FF;
+  font-weight: bolder;
+  color: #FFF;
+  text-align: center;
+  width: 100%;
 }
 
 
+
+/* ////////////////////CLIENT FORM */
+
+.clientForm{
+  margin: 50px 0px;
+  border-radius: 30px;
+  background-color: #E6E6E6;
+}
+.form-title{
+  text-align: center;
+  font-size: 2rem;
+  padding: 10px;
+}
+
+.form{
+  margin: 100px 0px;
+}
+
+#reviews{
+  margin: 100px 0px;
+
+}
+
+.hardware-btn{
+  font-size: 2rem;
+  font-weight: bolder;
+}
 /* ////////////////////FILE UPLOADS */
 input[type="file"] {
     display: none;
@@ -66,27 +133,7 @@ input[type="file"] {
 .pre-img{
   height: 100px;
 }
-/* ////////////////////CLIENT FORM */
 
-.clientForm{
-  margin: 50px 0px;
-  border-radius: 30px;
-  background-color: #E6E6E6;
-}
-.form-title{
-  text-align: center;
-  font-size: 2rem;
-  padding: 10px;
-}
-
-.form{
-  /* background-color: #E06235; */
-}
-
-.hardware-btn{
-  font-size: 2rem;
-  font-weight: bolder;
-}
 
 
 /* ////////////////////////MEDIA// */

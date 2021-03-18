@@ -7,6 +7,7 @@ class Reviews extends Component{
     super(props);
     this.state = {
       reviews: [],
+      id: 1,
     }
 
   }
@@ -31,12 +32,19 @@ class Reviews extends Component{
 render(){
   const fillStar = "★"
   const emptyStar = "☆"
-  const reviews = this.state.reviews.map((review, index) => (
+  const reviews = this.state.reviews.filter(review => {
+    if(this.state.id === review.id){
+      return review
+    }
+    return console.log('nope');
+  }).map((review, index) => (
     <div key={review.id}>
       <h2>{review.title}</h2>
       <p>{review.body}</p>
       <span>{review.author }</span>
       <span>{fillStar.repeat(review.starRating)}{emptyStar.repeat(5-review.starRating)}</span>
+      <div onClick={()=> this.setState({id: (this.state.id-1)})}>back</div>
+      <div onClick={()=> this.setState({id: (this.state.id+1)})}>forward</div>
       </div>
 ));
   return(

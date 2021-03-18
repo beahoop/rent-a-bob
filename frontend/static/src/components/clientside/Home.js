@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from "./Form";
 import Reviews from "./Reviews";
+import Products from "./Products";
 
 
 
@@ -17,7 +18,7 @@ class Home extends Component{
 render(){
   return(
     <>
-    <div className="navbar navbar-dark bg-dark">
+    <div className="navbar navbar-dark homepage-nav">
     <span className="navbar-1 navbar-brand" >Home</span>
       <a href="#form">
     <span className="navbar-1 navbar-brand">Help!</span>
@@ -32,14 +33,19 @@ render(){
           </div>
           <div className="divider-button">
             <a href="#form">
-              <button className="btn  flex-nowrap btn-danger">Get Help!</button>
+              <button className="btn  flex-nowrap help-btn">Get Help!</button>
             </a>
           </div>
         </div>
       </div>
     </div>
-    <div id="top"><Reviews/></div>
+    <div className="blue-divider"></div>
+    <div id="products"><Products/></div>
+    <div className="blue-divider"></div>
+    <div id="reviews"><Reviews/></div>
+    <div className="blue-divider"></div>
     <div id="form"><Form/></div>
+
     </>
   )
 }

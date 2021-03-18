@@ -138,36 +138,36 @@ render(){
             issues. Please, fill out the form below and
             we will be in contact with you shortly. </p>
           <div className="row">
-                <div class="col-5 input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
+                <div className="col-5 input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="inputGroup-sizing-default">First Name</span>
                   </div>
                   <input type="text" className="form-control" id="recipe-title" name="first_name" value={this.state.first_name} onChange={this.handleInput} required/><br/>
                 </div>
-                <div class="col-5 input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Last Name</span>
+                <div className="col-5 input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="inputGroup-sizing-default">Last Name</span>
                   </div>
                   <input type="text" className="form-control" id="recipe-title" name="last_name" value={this.state.last_name} onChange={this.handleInput} required/><br/>
                 </div>
-                <div class="col-10 input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                <div className="col-10 input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="inputGroup-sizing-default">Email</span>
                   </div>
                   <input type="email" className="form-control" id="recipe-title" name="email" value={this.state.email} onChange={this.handleInput} required/><br/>
                 </div>
-                <div class="col-10 input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
+                <div className="col-10 input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="inputGroup-sizing-default">Phone</span>
                   </div>
                   <input type="tel"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" className="form-control" id="phone" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} required/><br/>
                 </div>
             </div>
             <div className="row sp mx-auto">
-              <div class="form-floating">
+              <div className="form-floating">
 
-                <div class="col-3">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
+                <div className="col-3">
+                  <span className="input-group-text" id="inputGroup-sizing-default">Phone</span>
                 </div>
              <select className=" col-3 custom-select custom-select-sm"  id="location" name="location" value={this.state.location} onChange={this.handleInput} required>
                 <option value="IOP">IOP</option>
@@ -198,8 +198,8 @@ render(){
                 </select>
               </div>
               <div className="row sp mx-auto">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">OS</span>
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-default">OS</span>
                 </div>
                <select className=" col-3 custom-select custom-select-sm"  id="os" name="os" value={this.state.os} onChange={this.handleInput} required>
                   <option value="Mac">Mac</option>
@@ -207,9 +207,9 @@ render(){
                   <option value="Unknown">I don't know</option>
                 </select>
               </div>
-              <div class="col-5 input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Model Number</span>
+              <div className="col-5 input-group mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-default">Model Number</span>
                 </div>
                 <input type="text" className="form-control" id="model_number" name="model_number" value={this.state.model_number} onChange={this.handleInput} required/><br/>
               </div>
