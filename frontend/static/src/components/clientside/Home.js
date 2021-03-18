@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Form from "./Form";
+import Reviews from "./Reviews";
+
 
 
 
@@ -21,20 +23,22 @@ render(){
     <span className="navbar-1 navbar-brand">Help!</span>
     </a>
     </div>
+
+
     <div className="row">
-    <div className="divider-container col-12">
-              <div className="divider-top">
-                <div className="divider-words">Rent-A-Bob
-                </div>
-                <div className="divider-button">
-                        <a href="#form">
-                  <button className="btn  flex-nowrap btn-danger">Get Help!</button>
-                      </a>
-                </div>
-              </div>
-            </div>
+      <div className="divider-container col-12">
+        <div className="divider-top">
+          <div className="divider-words">Rent-A-Bob
+          </div>
+          <div className="divider-button">
+            <a href="#form">
+              <button className="btn  flex-nowrap btn-danger">Get Help!</button>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="top"></div>
+    <div id="top"><Reviews/></div>
     <div id="form"><Form/></div>
     </>
   )
