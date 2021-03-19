@@ -47,17 +47,20 @@ const openjobs = this.state.jobs.filter(job => {
 }).map((job) => (
   <div key={job.id} className="listImg">
     <a href={`/job/${job.id}`}>
-    <p>{job.client}{job.hardware}{job.issue}</p>
+    <p>{job.clientname}{job.hardware}{job.issue}</p>
     </a>
   </div>
 ));
   return(
     <>
-    <h2> New Jobs</h2>
-    <div>{ newjobs }</div>
-    <h2> Open Jobs</h2>
-    <div>{ openjobs }</div>
-
+    <div class="row">
+      <p className="client-name"> New Jobs</p>
+      <div>{ newjobs }</div>
+    </div>
+    <div class="row">
+      <p className="client-name"> Open Jobs</p>
+      <div>{ openjobs }</div>
+    </div>
 
     </>
   )

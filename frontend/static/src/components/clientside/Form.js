@@ -40,9 +40,11 @@ handleInput(event){
 handleClientSubmit(event){
   event.preventDefault();
   this.setState({clientAdded: true})
+  const last_name = this.state.last_name[0].uppercase
+  const first_name = this.state.first_name[0].uppercase
   const client = {
-    first_name: this.state.first_name,
-    last_name: this.state.last_name,
+    first_name: first_name,
+    last_name: last_name,
     email: this.state.email,
     phone_number: this.state.phone_number,
     location: this.state.location,
