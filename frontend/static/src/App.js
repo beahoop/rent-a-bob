@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 // import Joblist from './components/Joblist';
 import JobItem from './components/JobItem';
 import Clients from './components/Clients';
+import ClientDetail from './components/ClientDetail';
 import Home from './components/clientside/Home';
 import Dashboard from './components/Dashboard';
 import Header from "./components/Header";
@@ -120,7 +121,7 @@ async handleRegistration(e, obj) {
 
   render(){
     return (
-      <div className="container"> 
+      <div className="container">
 
         <BrowserRouter>
           <Header   handleLogOut={this.handleLogOut}
@@ -153,6 +154,10 @@ async handleRegistration(e, obj) {
                 }></Route>
               <Route exact path="/clients" children={
                   <Clients
+                  />
+                }></Route>
+              <Route exact path="/client/:id" children={
+                  <ClientDetail
 
                   />
                 }></Route>

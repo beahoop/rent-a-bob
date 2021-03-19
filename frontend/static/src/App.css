@@ -246,3 +246,9 @@ input[type="file"] {
     padding: 10px
   }
 }
+/* //hide the other products when on moblie */
+@media (max-width: 800px) {
+  .pricing:not(:first-child){
+    display: hidden;
+  }
+}

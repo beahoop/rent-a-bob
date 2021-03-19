@@ -50,7 +50,7 @@ render(){
 ));
   return(
     <>
-    <div className="row mx-auto card-container">
+    <div className="row mx-auto card-container pricing">
 
         { products }
 
