@@ -34,8 +34,23 @@ render(){
   const clientJobs = this.state.client.jobs?.map((job) => (
     <div key={job.id} className="client-job-listImg">
       <div className="client-job-container">
-      <p className="client-jobs-hardware">Hardware: {job.hardware} </p>
-      <p className="client-jobs-issue"> Issue: {job.issue}</p>
+      <span className="client-jobs-status">
+        <span className="bold"> Status: </span>{job.job_status}
+        </span>
+      <span className="client-jobs-hardware">
+        <span className="bold"> Hardware: </span>
+          {job.hardware} </span>
+      <span className="client-jobs-os">
+        <span className="bold">  Operating System: </span>
+         {job.os} </span>
+      <p className="client-jobs-issue">
+        <span className="bold">   Issue: </span>
+        {job.issue}</p>
+        <div className="client-job-link">
+          <a href={`/job/${job.id}`}>
+          <p className="btn btn-info">See Details</p>
+          </a>
+        </div>
       </div>
     </div>
 ));

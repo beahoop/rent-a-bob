@@ -137,7 +137,11 @@ handleCreatingNote(event){
 
       <li key={job.id} className="job-item" >
           <div className="job-container">
-          <p className="jobs-client">Client: {job.client}</p>
+          <p className="jobs-client">Client:
+            <a href={`/client/${job.client}`}>
+              {job.clientname}
+            </a>
+          </p>
           <p className="jobs-hardware">Hardware: {job.hardware} </p>
           <p className="jobs-issue"> Issue: {job.issue}</p>
 

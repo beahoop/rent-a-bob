@@ -3,11 +3,12 @@
 }
 
 body { padding-top: 50px; }
+.bold{
+  font-weight: bolder;
+}
 /* //////////// */
 .homepage-nav{
   background-color: #5694FF;
-
-
 }
 
 .header-nav{
