@@ -213,7 +213,16 @@ input[type="file"] {
 .pre-img{
   height: 100px;
 }
-
+/* ////////////////////////CLIENT LIST */
+.letter{
+  background-color: #DFEBFF;
+}
+.header{
+  top: 50px;
+  height: 50px;
+  background-color: #ED6242;
+  color: white;
+}
 
 
 /* ////////////////////////MEDIA// */
