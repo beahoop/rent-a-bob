@@ -26,7 +26,7 @@ render(){
 
     <p>Bob Hooper is the owner and with part-time help he keeps the islands humming on the internet, solving hardware and software problems, network demons and keeping crazy printers online and working.</p>
 
-    <p>With more than 30 years’ experience working in the IT field we can help with anything IT/computer related.  </p>
+    <p>With more than 30 years of experience working in the IT field we can help with anything IT/computer related.  </p>
           </div>
           </div>
         </div>

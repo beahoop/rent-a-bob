@@ -234,12 +234,38 @@ input[type="file"] {
   background-color: #54B6C8;
   color: white;
 }
+/* //////////////////////////////CLIENT DETAIL/ */
+
+/* .client-container{
+  background-color: #DFEBFF;
+  margin: 10px;
+} */
+.client-name{
+  background-color: #54B6C8;
+  color: white;
+  padding: 10px 30px;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.client-info{
+  margin: 30px;
+}
+
+.client-jobs-header{
+  background-color: #C5C5C5;
+  color: white;
+  padding: 10px 30px;
+  font-size: 2em;
+  font-weight: bold;
+}
 
 /* /////////////////////////////////LOGINFORM/ */
 
 .loginform, .regform{
   margin: 100px;
 }
+
 /* ////////////////////////MEDIA// */
 /* @media (max-width: 2000px) {
   .container{

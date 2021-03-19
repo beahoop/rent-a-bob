@@ -6,6 +6,7 @@ class ClientDetail extends Component{
     super(props);
     this.state = {
       client: [],
+      jobs: [],
     }
   }
 
@@ -16,7 +17,8 @@ componentDidMount() {
         (result) => {
           console.log('response', result)
           this.setState({
-            client: result
+            client: result,
+            jobs: result.jobs,
           });
         },
         (error) => {
@@ -30,23 +32,38 @@ componentDidMount() {
 render(){
   const client = this.state.client;
   const clientJobs = this.state.client.jobs?.map((job) => (
-    <div key={job.id} className="listImg">
-      <div className="job-container">
-      <p className="jobs-client">Client: {job.client}</p>
-      <p className="jobs-hardware">Hardware: {job.hardware} </p>
-      <p className="jobs-issue"> Issue: {job.issue}</p>
+    <div key={job.id} className="client-job-listImg">
+      <div className="client-job-container">
+      <p className="client-jobs-hardware">Hardware: {job.hardware} </p>
+      <p className="client-jobs-issue"> Issue: {job.issue}</p>
       </div>
     </div>
 ));
 
   return(
     <>
-        <h2>Clients</h2>
-          <div key={client.id} className="listImg">
-            <p className="client-name">Name: {client.last_name}, {client.first_name}</p>
-            <p className="client-location"> Location: {client.location}</p>
-            <p>{ clientJobs }</p>
-          </div>
+
+    <div className="row client-container">
+      <p className="client-name">{client.last_name}, {client.first_name}</p>
+      <div className="client-info">
+        <p className="client-location"> Location: {client.location}</p>
+        <p className="client-location"> Phone: {client.phone}</p>
+        <p className="client-location"> Email: {client.email}</p>
+      </div>
+    </div>
+    {this.state.jobs.length === 0
+    ?
+    null
+    :
+    <div className="row client-container">
+    <div className="client-jobs-header">Jobs</div>
+    <div className="client-info">
+      <p>{ clientJobs }</p>
+    </div>
+    </div>
+    }
+
+
 
     </>
   )
