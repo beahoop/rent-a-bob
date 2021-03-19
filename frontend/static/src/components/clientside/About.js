@@ -15,16 +15,18 @@ class About extends Component{
 render(){
   return(
     <>
-    <div className="row">
+    <div className="row  mx-0">
       <p className="col-12 about-title"> About Rent-A-Bob</p>
       <div className="row">
         <div className="col-10 col-md-5 mx-auto about-photo">
           <p className=" about-img" ></p>
         </div>
         <div className="col-10 col-md-6 col-lg-5 mx-auto about-text">
-          <p>
-            Big O subclass node_modules parameter RPC promise resource. Naming things vaporware machine learning off-by-one error compile child pivot. Lazy eval views stand-up compilation configuration devops dog-piling functional programming static. Distributed systems scale ICO IRC chmod raspberry pi imperative-mood. LIFO commit scrum master dynamic types internet button composition clean architecture convention elixir.
-          </p>
+          <p>Rent-A-Bob computers was started in 2005 in response to a need on the Isle of Palms for direct computer help to residents and small businesses.  We help in-home or at your business with all computer related problems, networking issues and printer problems.</p>
+
+    <p>Bob Hooper is the owner and with part-time help he keeps the islands humming on the internet, solving hardware and software problems, network demons and keeping crazy printers online and working.</p>
+
+    <p>With more than 30 years’ experience working in the IT field we can help with anything IT/computer related.  </p>
           </div>
           </div>
         </div>

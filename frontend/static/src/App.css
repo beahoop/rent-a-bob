@@ -131,6 +131,7 @@ body { padding-top: 50px; }
 /* /////////////////////ABOUT */
 #about{
   background-color: #5694FF;
+  padding: 0px;
 }
 
 .about-title{
@@ -240,12 +241,12 @@ input[type="file"] {
   margin: 100px;
 }
 /* ////////////////////////MEDIA// */
-@media (max-width: 2000px) {
+/* @media (max-width: 2000px) {
   .container{
     max-width:2000px;
     padding: 10px
   }
-}
+} */
 /* //hide the other products when on moblie */
 @media (max-width: 800px) {
   .pricing:not(:first-child){
