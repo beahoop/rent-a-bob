@@ -13,18 +13,22 @@ class Home extends Component{
 render(){
   return(
     <>
-    <div className="navbar sticky-top navbar-dark homepage-nav">
+    <div className="sticky-top homepage-nav  navbar-dark row px-0">
+    <div className="navbar ">
       <a href="#top">
         <span className="navbar-1 navbar-brand" >Home</span>
       </a>
       <a href="#reviews">
         <span className="navbar-1 navbar-brand">Reviews</span>
       </a>
+      <a href="#about">
+        <span className="navbar-1 navbar-brand">About Us</span>
+      </a>
       <a href="#form">
         <span className="navbar-1 navbar-brand">Help!</span>
       </a>
     </div>
-
+    </div>
 
     <div className="row">
       <div id="top" className="divider-container col-12">
@@ -39,14 +43,23 @@ render(){
         </div>
       </div>
     </div>
+    <div className="row">
     <div className="blue-divider"></div>
     <div id="products"><Products/></div>
+      </div>
+      <div className="row">
     <div className="blue-divider"></div>
     <div id="reviews"><Reviews/></div>
+    </div>
+    <div className="row">
       <div className="blue-divider"></div>
-      <div id="products"><About/></div>
+      <div id="about"><About/></div>
+      </div>
+      <div className="row">
     <div className="blue-divider"></div>
     <div id="form"><Form/></div>
+    </div>
+
     </>
   )
 }

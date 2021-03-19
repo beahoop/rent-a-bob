@@ -14,6 +14,7 @@ componentDidMount() {
       .then(
         (result) => {
           console.log('response', result)
+          
           this.setState({
             clients: result
           });
@@ -27,6 +28,7 @@ componentDidMount() {
   }
 
 render(){
+
   const client = this.state.clients.map((client) => (
     <div key={client.id} className="listImg">
       <a href={`/client/${client.id}`}>

@@ -4,7 +4,8 @@ function Header(props) {
 
   return (
     <>
-    <div className="navbar sticky-top navbar-light bg-light">
+    <div className="sticky-top row px-0">
+    <div className="navbar-light bg-light">
     <span className="navbar-1 navbar-brand">< NavLink to="/home/">Home</NavLink></span>
       {!isAuth
       ?
@@ -28,6 +29,7 @@ function Header(props) {
         :
         null
       }
+    </div>
     </div>
 
 

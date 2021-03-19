@@ -31,7 +31,7 @@ class ListClients(APIView):
 
 
 class ClientsListView(generics.ListCreateAPIView):
-    queryset = models.Client.objects.all()
+    queryset = models.Client.objects.all().order_by('last_name')
     serializer_class = ClientSerializer
 
     #if it gets a post request

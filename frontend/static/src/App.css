@@ -1,8 +1,7 @@
 .flex{
   display: flex;
 }
-
-
+/* //////////// */
 .homepage-nav{
   background-color: #5694FF;
 }
@@ -29,6 +28,7 @@
 .divider-container {
   height: 500px;
   margin-top: -75px;
+  padding: 0px;
 }
 
 .divider-top {
@@ -43,8 +43,9 @@
 }
 
 .divider-button{
-  margin-top: 275px;
+  margin-top: 375px;
   margin-left: 80%;
+  margin-right: 10px;
 }
 
 /* /////////////////////PRODUCTS */
@@ -119,6 +120,41 @@
   color: #ED6242;
   margin-left: auto;
 }
+/* /////////////////////ABOUT */
+#about{
+  background-color: #5694FF;
+}
+
+.about-title{
+  font-size: 3em;
+  font-weight: bolder;
+  text-align: center;
+  padding: 0px;
+  color: white;
+  background-color:  #ED6242;
+}
+.about-text{
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+}
+
+.about-photo{
+  height: 300px;
+  min-width: 350px;
+}
+
+.about-img {
+  height: 100%;
+  padding-top: -50px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-image: url('https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1949&q=80');
+}
+
+
 /* ////////////////////CLIENT FORM */
 
 .clientForm{
@@ -140,6 +176,15 @@
 .hardware-btn{
   font-size: 2rem;
   font-weight: bolder;
+}
+
+.btn-orange{
+  background-color: #ED6242;
+  color: white;
+}
+.btn-orange:hover{
+  background-color: #5694FF;
+  color: white;
 }
 /* ////////////////////FILE UPLOADS */
 input[type="file"] {
@@ -172,9 +217,9 @@ input[type="file"] {
 
 
 /* ////////////////////////MEDIA// */
-@media (max-width: 1000px) {
+@media (max-width: 2000px) {
   .container{
     max-width:2000px;
-    padding: 0px
+    padding: 10px
   }
 }

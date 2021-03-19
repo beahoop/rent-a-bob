@@ -43,7 +43,7 @@ render(){
       <div className="card-body">
         <h5 className="card-title ">{product.title}</h5>
         <p className="card-text">{product.body}</p>
-        <a href="#form" class="btn product-btn">$95</a>
+        <p class="btn product-btn">$95</p>
       </div>
     </div>
 

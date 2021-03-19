@@ -111,23 +111,23 @@ render(){
 
   return(
     <>
-    <div className="container">
+
     <div className="row form" >
       {this.state.hardwareSelection === "None"
         ?
         <div className="col-11 mx-auto">
           <p id="form" className="form-title">I need help with: </p>
             <div className="row">
-              <button data-type="Computer" onClick={this.filterHardware} className="col-8 mx-auto btn btn-info hardware-btn">
+              <button data-type="Computer" onClick={this.filterHardware} className="col-8 mx-auto btn btn-orange hardware-btn">
                 COMPUTER </button>
-              <button data-type="Printer" onClick={this.filterHardware}  className="mt-5 col-8 mx-auto btn btn-info hardware-btn">
+              <button data-type="Printer" onClick={this.filterHardware}  className="mt-5 col-8 mx-auto btn btn-orange hardware-btn">
                 PRINTER </button>
-              <button data-type="Other" onClick={this.filterHardware}className="my-5 col-8 mx-auto btn btn-info hardware-btn">
+              <button data-type="Other" onClick={this.filterHardware}className="my-5 col-8 mx-auto btn btn-orange hardware-btn">
                 NETWORK/OTHER </button>
             </div>
         </div>
         :
-        <button data-type="None" onClick={this.filterHardware}className="my-5 col-8 mx-auto btn btn-info hardware-btn">
+        <button data-type="None" onClick={this.filterHardware}className="my-5 col-8 mx-auto btn btn-orange hardware-btn">
           Go Back</button>
       }
       {this.state.hardwareSelection !== "None" && !this.state.clientAdded
@@ -175,7 +175,7 @@ render(){
                 <option value="Vacationer">Vacationer</option>
               </select>
             </div>
-            <button className="btn btn-outline-info" type="submit">Submit</button>
+            <button className="btn  btn-orange" type="submit">Submit</button>
         </div>
       </div>
         </form>
@@ -214,15 +214,13 @@ render(){
                 <input type="text" className="form-control" id="model_number" name="model_number" value={this.state.model_number} onChange={this.handleInput} required/><br/>
               </div>
             </div>
-            <button className="btn btn-outline-info" type="submit">Submit</button>
+            <button className="btn btn-orange" type="submit">Submit</button>
         </div>
         </form>
         :
         null
       }
-
     </div>
-  </div>
     </>
   )
 }
