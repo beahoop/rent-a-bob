@@ -35,7 +35,7 @@ render(){
   }).map((job) => (
     <div key={job.id} className="listImg">
       <a href={`/job/${job.id}`}>
-      <p>{job.client}{job.hardware}{job.issue}</p>
+      <p>{job.clientname}, Hardware: {job.hardware}, Issue: {job.issue}</p>
       </a>
     </div>
 ));

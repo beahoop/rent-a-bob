@@ -38,7 +38,7 @@ class Products extends Component{
 render(){
 
   const products = this.state.products.map((product, index) => (
-    <div className="card"  key={product.id}>
+    <div className="card col"  key={product.id}>
     <img className="card-img-top mx-auto" src={Download} alt="Card  cap"/>
       <div className="card-body">
         <h5 className="card-title ">{product.title}</h5>
