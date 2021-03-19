@@ -4,6 +4,7 @@
 /* //////////// */
 .homepage-nav{
   background-color: #5694FF;
+  top:50px;
 }
 
 .help-btn{
@@ -219,8 +220,10 @@ input[type="file"] {
 }
 .header{
   top: 50px;
-  height: 50px;
-  background-color: #ED6242;
+  font-size: 1em;
+  font-weight: bolder;
+  padding: 5px 10px;
+  background-color: #54B6C8;
   color: white;
 }
 
