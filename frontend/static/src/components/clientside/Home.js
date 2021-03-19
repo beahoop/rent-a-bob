@@ -13,7 +13,7 @@ class Home extends Component{
 render(){
   return(
     <>
-    <div className="sticky-top homepage-nav  navbar-dark row px-0">
+    <div className="sticky-top homepage-nav navbar-dark row px-0">
     <div className="navbar ">
       <a href="#top">
         <span className="navbar-1 navbar-brand" >Home</span>

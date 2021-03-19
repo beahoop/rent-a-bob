@@ -28,6 +28,7 @@ componentDidMount() {
   }
 
 render(){
+  //look up sort
   const clientA = this.state.clients.filter(client => {
     if(client.last_name[0] === "A" || client.last_name[0] ===  "a"){
       console.log(client.last_name[0]);

@@ -1,10 +1,17 @@
 .flex{
   display: flex;
 }
+
+body { padding-top: 50px; }
 /* //////////// */
 .homepage-nav{
   background-color: #5694FF;
-  top:50px;
+
+
+}
+
+.header-nav{
+  margin-bottom: 50px;
 }
 
 .help-btn{
@@ -28,7 +35,7 @@
 
 .divider-container {
   height: 500px;
-  margin-top: -75px;
+  padding-top: -75px;
   padding: 0px;
 }
 
@@ -227,7 +234,11 @@ input[type="file"] {
   color: white;
 }
 
+/* /////////////////////////////////LOGINFORM/ */
 
+.loginform, .regform{
+  margin: 100px;
+}
 /* ////////////////////////MEDIA// */
 @media (max-width: 2000px) {
   .container{
