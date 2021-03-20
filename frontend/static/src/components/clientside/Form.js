@@ -135,45 +135,46 @@ render(){
         ?
         <form onSubmit={this.handleClientSubmit}>
 
-        <div className="col-10 mx-auto">
-          <p id="form" className="form-title">We’re sorry you are experincing computer
-            issues. Please, fill out the form below and
-            we will be in contact with you shortly. </p>
             <div className="row">
+            <p id="form" className="form-title">We’re sorry you are experincing computer
+              issues. Please, fill out the form below and
+              we will be in contact with you shortly. </p>
+                <div className="col-10 mx-auto">
+            <div className="row">
+              <div class="mb-3 col-4">
+                <label for="exampleInputEmail1" class="form-label">First Name</label>
+                <input type="text" className="form-control" id="first_name" name="first_name" value={this.state.first_name} onChange={this.handleInput} required/>
+              </div>
 
-            <div class="mb-3 col-4">
-              <label for="exampleInputEmail1" class="form-label">First Name</label>
-              <input type="text" className="form-control" id="first_name" name="first_name" value={this.state.first_name} onChange={this.handleInput} required/>
+              <div class="mb-3 col-4">
+                <label class="form-label">Last Name</label>
+                <input type="text" className="form-control" id="last_name" name="last_name" value={this.state.last_name} onChange={this.handleInput} required/>
+              </div>
             </div>
 
-            <div class="mb-3 col-4">
-              <label for="exampleInputEmail1" class="form-label">Last Name</label>
-              <input type="text" className="form-control" id="last_name" name="last_name" value={this.state.last_name} onChange={this.handleInput} required/>
-            </div>
-
-            <div class="mb-3 col-8">
+            <div class="mb-3 p-0 col-8">
               <label for="InputEmail1" class="form-label">Email address</label>
               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value={this.state.email} onChange={this.handleInput} placeholder="username@example.com" required/>
             </div>
 
-            <div class="mb-3 col-8">
+            <div class="mb-3 p-0 col-8">
               <label for="exampleInputEmail1" class="form-label">Phone Number</label>
-              <input type="tel"  pattern="[0-9]{3}[0-9]{3}[0-9]{4}" className="form-control" id="phone" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} placeholder="8438888888" required/>
+              <input type="tel"  className="form-control" id="phone" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} placeholder="8438888888" required/>
               <div id="emailHelp" class="form-text">We'll never share your phone number with anyone else.</div>
             </div>
 
-            <div class="mb-3">
-            <label for="InputEmail1" class="form-label">Location</label>
-              <select className=" col-3 custom-select custom-select-sm"  id="location" name="location" value={this.state.location} onChange={this.handleInput} required>
+            <div class="mb-3 p-0 col-8">
+            <label for="InputEmail1" class="mr-4 form-label">Location</label>
+              <select className="col-4 custom-select custom-select-sm"  id="location" name="location" value={this.state.location} onChange={this.handleInput} required>
                  <option value="IOP">IOP</option>
                  <option value="Remote">Remote</option>
                  <option value="Vacationer">Vacationer</option>
                </select>
             </div>
-          </div>
-          <button className="btn  btn-orange" type="submit">Submit</button>
+          <button className="m-3 col-2 btn  btn-orange" type="submit">Submit</button>
+            </div>
         </div>
-      </form>
+        </form>
         :
         null
       }
