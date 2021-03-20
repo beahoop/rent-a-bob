@@ -5,7 +5,9 @@ class Client extends Component{
     super(props);
     this.state = {
       clients: [],
+      search: "",
     }
+    this.handleInput = this.handleInput.bind(this);
   }
 
 componentDidMount() {
@@ -26,6 +28,11 @@ componentDidMount() {
         }
       )
   }
+
+  handleInput(event){
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
 
 render(){
   //look up sort
@@ -406,6 +413,29 @@ return console.log('nope');
     <p>{client.last_name}, {client.first_name}, {client.location}</p>
   </a>
 </div>
+
+));
+
+const search = this.state.clients.filter(client => {
+if(this.state.search === client.last_name){
+  return client
+}
+else if(this.state.search === client.first_name){
+  return client
+}
+else if(this.state.search === client.phone_number){
+  return client
+}
+else if(this.state.search === client.email){
+  return client
+}
+return console.log('nope');
+}).map((client) => (
+<div key={client.id} className="listImg">
+  <a href={`/client/${client.id}`}>
+    <p>{client.last_name}, {client.first_name}, {client.location}</p>
+  </a>
+</div>
 ));
 
 
@@ -417,7 +447,32 @@ return console.log('nope');
 
   return(
     <>
-    <h2> Clients</h2>
+
+    <div class="row">
+      <div className="client-name">
+        <div className="row">
+        <p className="col-8">Clients</p>
+            <div class="col-4 input-group">
+              <div class="form-outline">
+                <input id="search-focus" name="search" type="search" class="form-control"
+                  value={this.state.search}  onChange={this.handleInput} placeholder="Search"/>
+              </div>
+              <button type="button" class="btn btn-primary" onClick={()=> this.setState({search: this.state.search})}>
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    {this.state.search.length === 0
+      ?
+  null
+      :
+      <div>
+        {search}
+      </div>
+    }
 
     <div className="A">
       <div className="header sticky-top"> A </div>
@@ -527,6 +582,7 @@ return console.log('nope');
       <div className="header sticky-top"> Other</div>
       <div>{ clientOther }</div>
     </div>
+
 
 
     </>

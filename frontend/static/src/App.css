@@ -266,6 +266,27 @@ input[type="file"] {
 .loginform, .regform{
   margin: 100px;
 }
+/* ///ADD JOB/CLIENT */
+
+.header-backend{
+  background-color: #54B6C8;
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.btn-add {
+  color: white;
+  font-size: 1em;
+  padding: 10px 30px;
+  font-weight: bold;
+  border: none;
+  background-color: inherit;
+}
+.btn-add:hover, .btn-add:active, .btn-add:focus{
+  background-color:  #307DF6;
+  border: none;
+}
 
 /* ////////////////////////MEDIA// */
 /* @media (max-width: 2000px) {

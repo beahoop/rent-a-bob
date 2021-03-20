@@ -29,7 +29,6 @@ render(){
       </a>
     </div>
     </div>
-
     <div className="row">
       <div id="top" className="divider-container col-12">
         <div className="divider-top">

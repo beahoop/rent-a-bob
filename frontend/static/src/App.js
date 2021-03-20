@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import Cookies from 'js-cookie';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import Joblist from './components/Joblist';
+import JobForm from './components/JobForm';
 import JobItem from './components/JobItem';
 import Clients from './components/Clients';
 import ClientDetail from './components/ClientDetail';
@@ -157,17 +157,12 @@ async handleRegistration(e, obj) {
                   />
                 }></Route>
               <Route exact path="/client/:id" children={
-                  <ClientDetail
+                <ClientDetail/>}/>
 
-                  />
-                }></Route>
-
-                    <Route exact path="/home/" children={
-                    <Home
-                    />
-
-                    }></Route>
-
+              <Route exact path="/home/" children={
+              <Home/>}/>
+                <Route exact path="/createjob/" children={
+                <JobForm/>}/>
 
       </Switch>
       </BrowserRouter>

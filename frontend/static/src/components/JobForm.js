@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 
-class Form extends Component{
+class JobForm extends Component{
   constructor(props){
     super(props);
     this.state = {
+      section: 'None',
+      clients: [],
       hardwareSelection: "None",
       clientAdded: false,
       job_status: 'New',
@@ -24,6 +26,26 @@ class Form extends Component{
     this.handleClientSubmit = this.handleClientSubmit.bind(this);
     this.handleJobSubmit = this.handleJobSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.chooseClient = this.chooseClient.bind(this);
+  }
+
+componentDidMount() {
+    fetch("/api/v1/clients")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log('response', result)
+
+          this.setState({
+            clients: result
+          });
+        },
+        (error) => {
+          this.setState({
+            error
+          });
+        }
+      )
   }
 
 filterHardware(event){
@@ -107,38 +129,95 @@ handleJobSubmit(event){
         .finally('I am always going to fire!');
         this.setState({text: ""})
   };
+  chooseClient(id){
+
+    fetch(`/api/v1/clients/${id}/`)
+        .then(res => res.json())
+        .then(
+          (result) => {
+            console.log('response', result)
+            this.setState({
+              client: result,
+              jobs: result.jobs,
+              first_name: result.first_name,
+              last_name: result.last_name,
+              email: result.email,
+              phone_number:result.phone_number,
+              location: result.location,
+              client_id: result.id,
+            });
+          },
+          (error) => {
+            this.setState({
+              error
+            });
+          }
+        )
+    }
+
+  // if clicked on then set that clients values to the state.
+
 
 render(){
 
+  const search = this.state.clients.filter(client => {
+  if(this.state.search === client.last_name){
+
+    return client
+  }
+  else if(this.state.search === client.first_name){
+    return client
+  }
+  else if(this.state.search === client.phone_number){
+    return client
+  }
+  else if(this.state.search === client.email){
+    return client
+  }
+  return console.log('nope');
+  }).map((client) => (
+  <div key={client.id} className="listImg">
+      <p onClick={()=>this.chooseClient(client.id)}> {client.last_name}, {client.first_name}, {client.location}</p>
+  </div>
+  ));
+//   Buttons for
+//     add new client
+//     add new job ->
+//       search for existing client to add job too.
+//       the add the new job.
 
   return(
     <>
-    <div className="row form" >
-      {this.state.hardwareSelection === "None"
-        ?
-        <div className="col-11 mx-auto">
-          <p id="form" className="form-title">I need help with: </p>
-            <div className="row">
-              <button data-type="Computer" onClick={this.filterHardware} className="col-8 mx-auto btn btn-orange hardware-btn">
-                COMPUTER </button>
-              <button data-type="Printer" onClick={this.filterHardware}  className="mt-5 col-8 mx-auto btn btn-orange hardware-btn">
-                PRINTER </button>
-              <button data-type="Other" onClick={this.filterHardware}className="my-5 col-8 mx-auto btn btn-orange hardware-btn">
-                NETWORK/OTHER </button>
-            </div>
-        </div>
-        :
-        <button data-type="None" onClick={this.filterHardware}className="my-5 col-8 mx-auto btn btn-orange hardware-btn">
-          Go Back</button>
-      }
-      {this.state.hardwareSelection !== "None" && !this.state.clientAdded
-        ?
-        <form onSubmit={this.handleClientSubmit}>
+    <div className="row">
+      <div className="header-backend">
+        <button onClick={()=> this.setState({section:"Client"})} className="col-6 btn-add">Add New Client </button>
+        <button onClick={()=> this.setState({section:"Job"})} className="col-6 btn-add">Add New Job</button></div>
+    </div>
 
+    <div className="row form" >
+      <div class="col-4 input-group">
+        <div class="form-outline">
+          <input id="search-focus" name="search" type="search" class="form-control"
+            value={this.state.search}  onChange={this.handleInput} placeholder="Search"/>
+        </div>
+        <button type="button" class="btn btn-primary" onClick={()=> this.setState({search: this.state.search})}>
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+      <div>
+        {search}
+      </div>
+
+        <form onSubmit={this.handleClientSubmit}>
         <div className="col-10 mx-auto">
-          <p id="form" className="form-title">We’re sorry you are experincing computer
-            issues. Please, fill out the form below and
-            we will be in contact with you shortly. </p>
+          <div class="mb-3">
+          <label for="InputEmail1" class="form-label">Hardware</label>
+            <select className=" col-3 custom-select custom-select-sm"  id="hardware" name="hardware" value={this.state.hardware} onChange={this.handleInput} required>
+               <option value="Computer">Computer</option>
+               <option value="Printer">Printer</option>
+               <option value="Other">Other</option>
+             </select>
+          </div>
             <div className="row">
 
             <div class="mb-3 col-4">
@@ -158,7 +237,7 @@ render(){
 
             <div class="mb-3 col-8">
               <label for="exampleInputEmail1" class="form-label">Phone Number</label>
-              <input type="tel"  pattern="[0-9]{3}[0-9]{3}[0-9]{4}" className="form-control" id="phone" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} placeholder="8438888888" required/>
+              <input type="tel"  className="form-control" id="phone" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} placeholder="8438888888" required/>
               <div id="emailHelp" class="form-text">We'll never share your phone number with anyone else.</div>
             </div>
 
@@ -174,16 +253,10 @@ render(){
           <button className="btn  btn-orange" type="submit">Submit</button>
         </div>
       </form>
-        :
-        null
-      }
-      {this.state.clientAdded
-        ?
+
+
         <form onSubmit={this.handleJobSubmit}>
         <div className="col-10 mx-auto">
-          <p id="form" className="form-title">Let us know more about the issue.
-            If you don’t know the anwser,
-            choose or write I don’t know. </p>
           <div className="row">
             <div class="mb-3">
             <label for="InputEmail1" class="form-label">Issue</label>
@@ -210,9 +283,7 @@ render(){
             <button className="btn btn-orange" type="submit">Submit</button>
         </div>
         </form>
-        :
-        null
-      }
+
     </div>
     </>
   )
@@ -221,4 +292,4 @@ render(){
 }
 
 
-export default Form;
+export default JobForm;
