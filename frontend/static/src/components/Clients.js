@@ -471,6 +471,19 @@ return console.log('nope');
         </div>
       </div>
     </div>
+    {this.state.clients.length === 0
+      ?
+      <div className="row mx-auto">
+        <div className="col-2 m-5 mx-auto">
+      <div className="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      </div>
+      </div>
+      :
+      null
+    }
+
     {this.state.search.length === 0
       ?
       null

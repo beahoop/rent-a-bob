@@ -8,9 +8,12 @@ class Form extends Component{
       hardwareSelection: "None",
       clientAdded: false,
       job_status: 'New',
+      issue_speical: '',
+      call_time: '',
       hardware: '',
       issue: '',
       os: '',
+      address_street: "",
       model: '',
       client: '',
       first_name: '',
@@ -25,6 +28,7 @@ class Form extends Component{
     this.handleClientSubmit = this.handleClientSubmit.bind(this);
     this.handleJobSubmit = this.handleJobSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.handleShowIssue = this.handleShowIssue.bind(this);
     this.handleshow = this.handleshow.bind(this);
   }
 
@@ -47,6 +51,7 @@ handleClientSubmit(event){
   const client = {
     first_name: first_name,
     last_name: last_name,
+    address_street: this.state.address_street,
     email: this.state.email,
     phone_number: this.state.phone_number,
     location: this.state.location,
@@ -85,6 +90,8 @@ handleJobSubmit(event){
   event.preventDefault();
   const client = {
     job_status: "New",
+    issue_speical: this.state.issue_speical,
+    call_time:  this.state.call_time,
     hardware: this.state.hardware,
     issue: this.state.issue,
     os: this.state.os,
@@ -118,11 +125,21 @@ handleJobSubmit(event){
 handleshow(event){
   console.log("HI");
   this.setState({ [event.target.name]: event.target.value });
-  if(this.state.location === "Remote"){
+  if(this.state.location !== "Remote"){
     this.setState({show: "hide"})
   }
-  else if(this.state.location !== "Remote")
+  else if(this.state.location === "Remote")
   this.setState({show:"show"})
+}
+
+handleShowIssue(event){
+  console.log("HI");
+  this.setState({ [event.target.name]: event.target.value });
+  if(this.state.issue !== "Other"){
+    this.setState({show: "show"})
+  }
+  else if(this.state.issue === "Other")
+  this.setState({show:"hide"})
 }
 
 render(){
@@ -183,6 +200,14 @@ render(){
               <input type="tel"  className="form-control" id="phone" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} placeholder="8438888888" required/>
               <div id="emailHelp" class="form-text">We'll never share your phone number with anyone else.</div>
             </div>
+            <div class="mb-3 p-0  mx-5 col">
+            <label for="InputEmail1" class="mr-4 form-label">Best Time to Call:</label>
+              <select className="col-4 custom-select custom-select-sm"  id="call_time" name="call_time" value={this.state.call_time} onChange={this.handleInput} required>
+                 <option value="Moring">Moring</option>
+                 <option value="MidDay">Mid-Day</option>
+                 <option value="Evening">Evening</option>
+               </select>
+             </div>
 
             <div class="mb-3 p-0  mx-5 col">
             <label for="InputEmail1" class="mr-4 form-label">Location</label>
@@ -198,14 +223,14 @@ render(){
                  <option value="GooseCreek">Goose Creek</option>
                  <option value="Summerville">Summerville</option>
                  <option value="Charleston">Charleston</option>
-                 <option onClick={this.handleshow} value="Remote">Remote</option>
+                 <option value="Remote">Remote</option>
                  <option value="Vacationer">I'm vacation here.</option>
                </select>
                <div className={this.state.show}>
                  <div className="mb-3 p-0 col" >
-                   <label for="exampleInputEmail1" className="form-label">Street address</label>
-                   <input type="tel"  className="form-control" id="phone" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} placeholder="123 Island Drive" required/>
-                   <div id="emailHelp" class="form-text">We'll never share your phone number with anyone else.</div>
+                   <label for="Street" className="form-label">Street address</label>
+                   <input type="tel"  className="form-control" id="address_street" name="address_street" value={this.state.address_street} onChange={this.handleInput} placeholder="123 Island Drive" />
+                   <div id="street" class="form-text">We'll never share your phone number with anyone else.</div>
                  </div>
                </div>
 
@@ -226,12 +251,19 @@ render(){
             If you don’t know the anwser,
             choose or write I don’t know. </p>
           <div className="row">
-            <div class="mb-3">
-            <label for="InputEmail1" class="form-label">Issue</label>
-              <select className=" col-3 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleInput} required>
+            <div class="mb-3 col-8">
+            <label for="Issue" class="form-label">Issue</label>
+              <select className=" col-3 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleShowIssue} required>
                  <option value="Not">Not Turning on</option>
                  <option value="Unknown">I don't know</option>
+                  <option value="Other">Other</option>
                </select>
+
+              <div className={this.state.show}>
+
+              <label for="Number" class="form-label">Issue Description </label>
+                  <input type="text" className="form-control" id="issue_speical" name="issue_speical" value={this.state.issue_speical} onChange={this.handleInput} required/>
+            </div>
             </div>
             <div class="mb-3">
             <label for="InputEmail1" class="form-label">OS</label>
