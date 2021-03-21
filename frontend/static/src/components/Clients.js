@@ -431,18 +431,25 @@ else if(this.state.search === client.email){
 }
 return console.log('nope');
 }).map((client) => (
-<div key={client.id} className="listImg">
-  <a href={`/client/${client.id}`}>
-    <p>{client.last_name}, {client.first_name}, {client.location}</p>
-  </a>
-</div>
+  <tr  key={client.id} className="listImg">
+    <td onClick={()=>this.chooseClient(client.id)}>
+      <a href={`/client/${client.id}`}>
+        {client.first_name}
+      </a>
+    </td>
+    <td onClick={()=>this.chooseClient(client.id)}>
+      <a href={`/client/${client.id}`}>
+        {client.last_name}
+      </a>
+    </td>
+    <td onClick={()=>this.chooseClient(client.id)}>
+      <a href={`/client/${client.id}`}>
+        {client.location}
+      </a>
+    </td>
+  </tr>
+
 ));
-
-
-
-
-
-
 
 
   return(
@@ -450,28 +457,37 @@ return console.log('nope');
 
     <div class="row">
       <div className="client-name">
-        <div className="row">
-        <p className="col-8">Clients</p>
-            <div class="col-4 input-group">
-              <div class="form-outline">
+        <div className="row m-0">
+        <p className="col-6 col-lg-8">Clients</p>
+          <div className="col-6 col-lg-4" >
+            <div class="my-3 input-group">
                 <input id="search-focus" name="search" type="search" class="form-control"
-                  value={this.state.search}  onChange={this.handleInput} placeholder="Search"/>
-              </div>
+                  value={this.state.search}  onChange={this.handleInput} placeholder="Search for Client"/>
               <button type="button" class="btn btn-primary" onClick={()=> this.setState({search: this.state.search})}>
                 <i class="fas fa-search"></i>
               </button>
             </div>
+          </div>
         </div>
       </div>
     </div>
-
     {this.state.search.length === 0
       ?
-  null
+      null
       :
-      <div>
-        {search}
-      </div>
+      <table className="table search-results">
+      <thead>
+        <tr>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Location</th>
+        </tr>
+      </thead>
+      <tbody>
+          {search}
+      </tbody>
+      </table>
+
     }
 
     <div className="A">

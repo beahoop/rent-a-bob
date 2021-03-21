@@ -2,9 +2,13 @@
   display: flex;
 }
 
-body { padding-top: 50px; }
+/* body { background-color: #5694FF} */
 .bold{
   font-weight: bolder;
+}
+
+.btn-add {
+  font-size: 2rem;
 }
 /* //////////// */
 .homepage-nav{
@@ -191,6 +195,7 @@ body { padding-top: 50px; }
 .btn-orange{
   background-color: #ED6242;
   color: white;
+
 }
 .btn-orange:hover{
   background-color: #5694FF;
@@ -232,7 +237,7 @@ input[type="file"] {
   font-size: 1em;
   font-weight: bolder;
   padding: 5px 10px;
-  background-color: #54B6C8;
+  background-color: #9EA7B2;
   color: white;
 }
 /* //////////////////////////////CLIENT DETAIL/ */
@@ -254,7 +259,7 @@ input[type="file"] {
 }
 
 .client-jobs-header{
-  background-color: #C5C5C5;
+  background-color: #9EA7B2;
   color: white;
   padding: 10px 30px;
   font-size: 2em;
@@ -296,9 +301,13 @@ input[type="file"] {
   }
 } */
 /* //hide the other products when on moblie */
-@media (max-width: 800px) {
+@media (max-width: 650px) {
   .card:not(:first-child){
     display: none;
+  }
+
+  .btn-add {
+    font-size: 1rem;
   }
 
 }

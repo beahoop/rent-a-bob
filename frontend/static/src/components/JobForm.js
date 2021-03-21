@@ -93,8 +93,14 @@ handleClientSubmit(event){
         } )
         .catch(error => console.log('Error:', error))
         .finally('I am always going to fire!');
-        this.setState({text: ""})
+        this.setState({first_name: "",
+        last_name: "",
+        email: "",
+        phone_number: "",
+        location: "", })
+        alert("Successful")
         };
+
 
 handleJobSubmit(event){
   event.preventDefault();
@@ -175,9 +181,12 @@ render(){
   }
   return console.log('nope');
   }).map((client) => (
-  <div key={client.id} className="listImg">
-      <p onClick={()=>this.chooseClient(client.id)}> Name:{client.last_name}, {client.first_name} Location:{client.location}</p>
-  </div>
+    <tr  key={client.id} className="listImg">
+      <td onClick={()=>this.chooseClient(client.id)}>{client.first_name} </td>
+      <td onClick={()=>this.chooseClient(client.id)}>{client.last_name}</td>
+      <td onClick={()=>this.chooseClient(client.id)}>{client.location}</td>
+    </tr>
+
   ));
 //   Buttons for
 //     add new client
@@ -227,9 +236,7 @@ render(){
           </div>
       </div>
     </form>
-
       :
-        <div>
         <form onSubmit={this.handleJobSubmit}>
           <div className="row">
             <div className="col-10 mx-auto">
@@ -241,9 +248,19 @@ render(){
                     <i class="fas fa-search"></i>
                   </button>
                 </div>
-                <div className="search-results">
-                  {search}
-                </div>
+                <table className="table search-results">
+                <thead>
+                  <tr>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Location</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {search}
+                </tbody>
+                </table>
+
               </div>
 
               <label for="exampleInputEmail1" class="form-label">First Name</label>
@@ -283,12 +300,10 @@ render(){
                   <input type="text" className="form-control" id="model_number" name="model_number" value={this.state.model_number} onChange={this.handleInput} required/>
               </div>
               <button className="col-4 btn btn-orange" type="submit">Submit</button>
-
               </div>
             </div>
           </form>
 
-    </div>
     }
 
 

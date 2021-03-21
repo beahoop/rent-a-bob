@@ -51,7 +51,6 @@ render(){
     <div id="reviews"><Reviews/></div>
     </div>
     <div className="row">
-      <div className="blue-divider"></div>
       <div id="about"><About/></div>
       </div>
       <div className="row">

@@ -1,11 +1,13 @@
 import { NavLink } from 'react-router-dom';
 function Header(props) {
   const isAuth = props.isLoggedIn;
-
+//only render if on backend
+//make footer and another nav that is sticky for back end 
   return (
     <>
+
     <div className="row px-0">
-      <div className="navbar-light bg-light fixed-top">
+      <div className="navbar-light bg-light fixed-bottom">
       <span className="navbar-1 navbar-brand">< NavLink to="/home/">Home</NavLink></span>
         {!isAuth
         ?
