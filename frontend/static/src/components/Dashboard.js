@@ -78,10 +78,19 @@ return console.log('nope');
   return(
     <>
     <div className="row">
-      <div className="header-backend">
-        <button onClick={()=> this.setState({section:"New"})} className="col-4 btn-add">New Jobs</button>
-        <button onClick={()=> this.setState({section:"Open"})} className="col-4 btn-add">Open Jobs</button>
-        <button onClick={()=> this.setState({section:"All"})} className="col-4 btn-add">All Jobs</button>
+      <div className="col-12 header-backend">
+        <div className="row">
+          <button onClick={()=> this.setState({section:"New"})} className="col-3 btn-add">New Jobs</button>
+          <button onClick={()=> this.setState({section:"Open"})} className="col-3 btn-add">Open Jobs</button>
+          <button onClick={()=> this.setState({section:"All"})} className="col-3 btn-add">All Jobs</button>
+            <div class="col-3 my-3 input-group">
+                <input id="search-focus" name="search" type="search" class="form-control"
+                  value={this.state.search}  onChange={this.handleInput} placeholder="Search for Client"/>
+              <button type="button" class="btn btn-primary" onClick={()=> this.setState({search: this.state.search})}>
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
       </div>
     </div>
     {this.state.section === "New"

@@ -59,6 +59,8 @@ class Job(models.Model):
         choices= ISSUE,
         default= Unknown,
     )
+    issue_speical =  models.CharField(max_length=255, null=True)
+    
     os =  models.CharField(
         max_length=50,
         choices=OS,

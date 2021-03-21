@@ -34,9 +34,9 @@ render(){
         <div className="divider-top">
           <div className="divider-words">Rent-A-Bob
           </div>
-          <div className="divider-button">
+          <div className="divider-button px-4">
             <a href="#form">
-              <button className="btn  flex-nowrap help-btn">Get Help!</button>
+              <button className="btn  help-btn">Get Help!</button>
             </a>
           </div>
         </div>

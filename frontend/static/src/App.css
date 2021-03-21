@@ -1,8 +1,22 @@
+/* //////////// helpful selectors */
+
+*{
+  font-family: 'Roboto', cursive;
+}
 .flex{
   display: flex;
 }
 
-/* body { background-color: #5694FF} */
+body {
+ padding-bottom: 50px;
+}
+.hide {
+  display: none;
+}
+.show {
+
+}
+
 .bold{
   font-weight: bolder;
 }
@@ -10,7 +24,7 @@
 .btn-add {
   font-size: 2rem;
 }
-/* //////////// */
+/* //////////// Homepage */
 .homepage-nav{
   background-color: #5694FF;
 }
@@ -57,7 +71,7 @@
 
 .divider-button{
   margin-top: 375px;
-  margin-left: 80%;
+  margin-left: 70%;
   margin-right: 10px;
 }
 
@@ -235,7 +249,7 @@ input[type="file"] {
 .header{
   top: 50px;
   font-size: 1em;
-  font-weight: bolder;
+  font-weight: 900;
   padding: 5px 10px;
   background-color: #9EA7B2;
   color: white;

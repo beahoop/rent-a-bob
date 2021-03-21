@@ -185,6 +185,7 @@ render(){
       <td onClick={()=>this.chooseClient(client.id)}>{client.first_name} </td>
       <td onClick={()=>this.chooseClient(client.id)}>{client.last_name}</td>
       <td onClick={()=>this.chooseClient(client.id)}>{client.location}</td>
+      <td onClick={()=>this.chooseClient(client.id)}><button className="btn  btn-orange" >Add Client</button></td>
     </tr>
 
   ));
@@ -254,6 +255,7 @@ render(){
                     <th scope="col">First</th>
                     <th scope="col">Last</th>
                     <th scope="col">Location</th>
+                    <th scope="col">Add Client</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -305,8 +307,6 @@ render(){
           </form>
 
     }
-
-
     </>
   )
 }

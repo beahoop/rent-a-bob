@@ -19,11 +19,13 @@ class Form extends Component{
       phone_number: '',
       location: 'Remote',
       client_id: '',
+      show: 'hide',
     }
     this.filterHardware = this.filterHardware.bind(this);
     this.handleClientSubmit = this.handleClientSubmit.bind(this);
     this.handleJobSubmit = this.handleJobSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.handleshow = this.handleshow.bind(this);
   }
 
 filterHardware(event){
@@ -113,6 +115,16 @@ handleJobSubmit(event){
         this.setState({text: ""})
   };
 
+handleshow(event){
+  console.log("HI");
+  this.setState({ [event.target.name]: event.target.value });
+  if(this.state.location === "Remote"){
+    this.setState({show: "hide"})
+  }
+  else if(this.state.location !== "Remote")
+  this.setState({show:"show"})
+}
+
 render(){
 
 
@@ -150,12 +162,12 @@ render(){
               we will be in contact with you shortly. </p>
                 <div className="col-10 mx-auto">
             <div className="row">
-              <div class="mb-3  ml-5 col">
+              <div class="mb-3  ml-5 col-12 ">
                 <label for="exampleInputEmail1" class="form-label">First Name</label>
                 <input type="text" className="form-control" id="first_name" name="first_name" value={this.state.first_name} onChange={this.handleInput} required/>
               </div>
 
-              <div class="mb-3  ml-5 col">
+              <div class="mb-3  ml-5 col-12 ">
                 <label class="form-label">Last Name</label>
                 <input type="text" className="form-control" id="last_name" name="last_name" value={this.state.last_name} onChange={this.handleInput} required/>
               </div>
@@ -174,12 +186,30 @@ render(){
 
             <div class="mb-3 p-0  mx-5 col">
             <label for="InputEmail1" class="mr-4 form-label">Location</label>
-              <select className="col-6 custom-select custom-select-sm"  id="location" name="location" value={this.state.location} onChange={this.handleInput} required>
+              <select className="col-6 custom-select custom-select-sm"  id="location" name="location" value={this.state.location} onChange={this.handleshow} required>
                  <option value="IOP">IOP</option>
-                 <option value="Remote">Remote</option>
-                 <option value="Vacationer">Vacationer</option>
+                 <option value="Sullivan">Sullivan's</option>
+                 <option value="Kiawah">Kiawah</option>
+                 <option value="Seabrook">Seabrook</option>
+                 <option value="MtPleasant">Mt. Pleasant</option>
+                 <option value="NorthCharleston">North Charleston</option>
+                 <option value="WestAshely">West Ashely</option>
+                 <option value="JamesIsland">James Island</option>
+                 <option value="GooseCreek">Goose Creek</option>
+                 <option value="Summerville">Summerville</option>
+                 <option value="Charleston">Charleston</option>
+                 <option onClick={this.handleshow} value="Remote">Remote</option>
+                 <option value="Vacationer">I'm vacation here.</option>
                </select>
-                 <button className="m-3  mx-5 ccol-4 btn  btn-orange" type="submit">Submit</button>
+               <div className={this.state.show}>
+                 <div className="mb-3 p-0 col" >
+                   <label for="exampleInputEmail1" className="form-label">Street address</label>
+                   <input type="tel"  className="form-control" id="phone" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} placeholder="123 Island Drive" required/>
+                   <div id="emailHelp" class="form-text">We'll never share your phone number with anyone else.</div>
+                 </div>
+               </div>
+
+                 <button className="mr-5 col-4 btn  btn-orange" type="submit">Submit</button>
             </div>
 
             </div>
