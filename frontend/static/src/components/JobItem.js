@@ -12,6 +12,8 @@ class JobItem extends Component{
       text: '',
       image: null,
       job: [],
+      clientId: 0,
+      client: [],
       preview: "",
       showNotes: false,
     }
@@ -31,7 +33,23 @@ componentDidMount() {
           job: result,
           notes: result.notes,
           image: result.image,
+          clientId: result.client,
         });
+        fetch(`/api/v1/clients/${result.client}`)
+          .then(res => res.json())
+          .then(
+            (client) => {
+              console.log('response', client)
+              this.setState({
+                client: client,
+              });
+            },
+            (error) => {
+              this.setState({
+                error
+              });
+            }
+          )
       },
       (error) => {
         this.setState({
@@ -40,6 +58,7 @@ componentDidMount() {
       }
     )
 }
+
 
 handleImage(event) {
   let file = event.target.files[0];
@@ -88,18 +107,11 @@ handleImage(event) {
 
 handleCreatingNote(event){
     event.preventDefault();
-    // const note = {
-    //   text: this.state.text,
-    //   job: this.state.job.id,
-    //   image: this.state.image,
-    //    }
       let formData = new FormData();//this is an objects
       // https://developer.mozilla.org/en-US/docs/Web/API/FormData
       formData.append('text', this.state.text);
       formData.append('job', this.state.job.id);
       formData.append('image', this.state.image);
-
-
       fetch('/api/v1/note/', {
             method: 'POST',
             headers: {
@@ -127,63 +139,79 @@ handleCreatingNote(event){
 
     const job = this.state.job
     const notes = this.state.notes.map((note, index) => (
-      <div>
-        <NoteItem key={note.id} notes={note} image={note.image} />
-        <button className="btn btn-danger" type="btn" onClick={()=> this.removeNote(note)}>Remove</button>
-        </div>
+
+        <NoteItem key={note.id} removeNote={this.removeNote} notes={note} image={note.image} />
+
  ));
+ const client = this.state.client
   return(
-
-
-      <li key={job.id} className="job-item" >
-          <div className="job-container">
-          <p className="jobs-client">Client:
-            <a href={`/client/${job.client}`}>
-              {job.clientname}
-            </a>
-          </p>
-          <p className="jobs-hardware">Hardware: {job.hardware} </p>
-          <p className="jobs-issue"> Issue: {job.issue}</p>
-
-          {!this.state.image && this.state.isAdding
-            ?
-            <span>
-            <label for="file-upload" className="custom-file-upload">
-          <p className="imagePlus"> + </p>
-          <p className="imageText"> Add photo</p>
-          </label> <input id="file-upload" type="file" name='image'  onChange={this.handleImage}/>
-          </span>
-          :
-          null
-        }
-          {this.state.image &&
-          <img className="pre-img" src={this.state.preview} alt="preview"/>}
-          {!this.state.isAdding
-            ?
-          <button className="btn btn-info" type="button" onClick={() => this.setState({ isAdding: !this.state.isAdding })}>
-          Add Note</button>
-          :
-          <div className="note-addNote">
-          <form className="form"onSubmit={this.handleCreatingNote}>
-          <input type="text" id="note-text" name="text"
-            value={this.state.text} onChange={this.handleInput}
-            placeholder="Note" required/>
-          <label htmlFor="note-text"></label><br/>
-          <button className="btn btn-info" type="submit">Add Note</button>
-        </form>
-          </div>
-        }
-        {!this.state.showNotes
-          ?
-            <button className="btn btn-info" onClick={() => this.setState({ showNotes: !this.state.showNotes })} type="button">Show Notes</button>
-            :
-            <div>
-            <button className="btn btn-info" onClick={() => this.setState({ showNotes: !this.state.showNotes })} type="button">Hide Notes</button>
-            <ul>{ notes }</ul>
+          <>
+            <div className="row client-container">
+              <p className="client-name">{client.last_name}, {client.first_name}</p>
+              <div className="client-info">
+                <p className="client-location"> Location: {client.location}</p>
+                <p className="client-location"> Address: {client.address_street} </p>
+                <p className="client-location"> Phone: {client.phone}</p>
+                <p className="client-location"> Email: {client.email}</p>
+                <a href={`/client/${job.client}`}>
+                  <p>See {client.first_name} {client.last_name}''s profile</p>
+                </a>
+              </div>
             </div>
-        }
-          </div>
-          </li>
+                <div className="row client-container">
+                  <div className="client-jobs-header">Jobs</div>
+                    <div className="client-info">
+                      <p className="jobs-hardware">Hardware: {job.hardware} </p>
+                      <p className="jobs-issue"> Issue: {job.issue}</p>
+                    </div>
+                </div>
+                <div className=" client-container">
+                <div className="row client-jobs-header">
+                  <p className="col-3"> Notes </p>
+                  <button className="col-3 btn btn-info" type="button" onClick={() => this.setState({ isAdding: !this.state.isAdding })}>
+                  Add Note</button>
+                  {!this.state.showNotes
+                    ?
+                      <button className="col-3 btn btn-info" onClick={() => this.setState({ showNotes: !this.state.showNotes })} type="button">Show Notes</button>
+                      :
+                      <button className="col-3 btn btn-info" onClick={() => this.setState({ showNotes: !this.state.showNotes })} type="button">Hide Notes</button>
+                  }
+                </div>
+                </div>
+                <form className="form"onSubmit={this.handleCreatingNote}>
+                  {!this.state.image && this.state.isAdding
+                    ?
+                  <span>
+                    <label for="file-upload" className="custom-file-upload">
+                      <p className="imagePlus"> + </p>
+                      <p className="imageText"> Add photo</p>
+                    </label>
+                    <input id="file-upload" type="file" name='image'  onChange={this.handleImage}/>
+                  </span>
+                  :
+                  null
+                }
+                {this.state.image && <img className="pre-img" src={this.state.preview} alt="preview"/>}
+                {!this.state.isAdding
+                  ?
+                  null
+                  :
+                  <div className="note-addNote">
+                    <input type="text" id="note-text" name="text"
+                      value={this.state.text} onChange={this.handleInput}
+                      placeholder="Note" required/>
+                    <label htmlFor="note-text"></label><br/>
+                    <button className="btn btn-info" type="submit">Add Note</button>
+                  </div>
+                }
+            </form>
+              {!this.state.showNotes
+                ?
+                null
+                  :
+                  <ul>{ notes }</ul>
+              }
+          </>
       )
     }
 

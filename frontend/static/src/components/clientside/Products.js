@@ -43,7 +43,7 @@ render(){
       <div className="card-body">
         <h5 className="card-title ">{product.title}</h5>
         <p className="card-text">{product.body}</p>
-        <p class="btn product-btn">$95</p>
+        <p className="btn product-btn">$95</p>
       </div>
     </div>
 

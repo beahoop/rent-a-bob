@@ -179,29 +179,29 @@ render(){
               we will be in contact with you shortly. </p>
                 <div className="col-10 mx-auto">
             <div className="row">
-              <div class="mb-3  ml-5 col-12 ">
-                <label for="exampleInputEmail1" class="form-label">First Name</label>
+              <div className="mb-3  ml-5 col-12 ">
+                <label for="exampleInputEmail1" className="form-label">First Name</label>
                 <input type="text" className="form-control" id="first_name" name="first_name" value={this.state.first_name} onChange={this.handleInput} required/>
               </div>
 
-              <div class="mb-3  ml-5 col-12 ">
-                <label class="form-label">Last Name</label>
+              <div className="mb-3  ml-5 col-12 ">
+                <label className="form-label">Last Name</label>
                 <input type="text" className="form-control" id="last_name" name="last_name" value={this.state.last_name} onChange={this.handleInput} required/>
               </div>
             </div>
 
-            <div class="mb-3 p-0  ml-5 col">
-              <label for="InputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value={this.state.email} onChange={this.handleInput} placeholder="username@example.com" required/>
+            <div className="mb-3 p-0  ml-5 col">
+              <label for="InputEmail1" className="form-label">Email address</label>
+              <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value={this.state.email} onChange={this.handleInput} placeholder="username@example.com" required/>
             </div>
 
-            <div class="mb-3 p-0  ml-5 col">
-              <label for="exampleInputEmail1" class="form-label">Phone Number</label>
+            <div className="mb-3 p-0  ml-5 col">
+              <label for="exampleInputEmail1" className="form-label">Phone Number</label>
               <input type="tel"  className="form-control" id="phone" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} placeholder="8438888888" required/>
-              <div id="emailHelp" class="form-text">We'll never share your phone number with anyone else.</div>
+              <div id="emailHelp" className="form-text">We'll never share your phone number with anyone else.</div>
             </div>
-            <div class="mb-3 p-0  mx-5 col">
-            <label for="InputEmail1" class="mr-4 form-label">Best Time to Call:</label>
+            <div className="mb-3 p-0  mx-5 col">
+            <label for="InputEmail1" className="mr-4 form-label">Best Time to Call:</label>
               <select className="col-4 custom-select custom-select-sm"  id="call_time" name="call_time" value={this.state.call_time} onChange={this.handleInput} required>
                  <option value="Moring">Moring</option>
                  <option value="MidDay">Mid-Day</option>
@@ -209,8 +209,8 @@ render(){
                </select>
              </div>
 
-            <div class="mb-3 p-0  mx-5 col">
-            <label for="InputEmail1" class="mr-4 form-label">Location</label>
+            <div className="mb-3 p-0  mx-5 col">
+            <label for="InputEmail1" className="mr-4 form-label">Location</label>
               <select className="col-6 custom-select custom-select-sm"  id="location" name="location" value={this.state.location} onChange={this.handleshow} required>
                  <option value="IOP">IOP</option>
                  <option value="Sullivan">Sullivan's</option>
@@ -230,7 +230,7 @@ render(){
                  <div className="mb-3 p-0 col" >
                    <label for="Street" className="form-label">Street address</label>
                    <input type="tel"  className="form-control" id="address_street" name="address_street" value={this.state.address_street} onChange={this.handleInput} placeholder="123 Island Drive" />
-                   <div id="street" class="form-text">We'll never share your phone number with anyone else.</div>
+                   <div id="street" className="form-text">We'll never share your address with anyone else.</div>
                  </div>
                </div>
 
@@ -251,8 +251,8 @@ render(){
             If you don’t know the anwser,
             choose or write I don’t know. </p>
           <div className="row">
-            <div class="mb-3 col-8">
-            <label for="Issue" class="form-label">Issue</label>
+            <div className="mb-3 col-8">
+            <label for="Issue" className="form-label">Issue</label>
               <select className=" col-3 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleShowIssue} required>
                  <option value="Not">Not Turning on</option>
                  <option value="Unknown">I don't know</option>
@@ -260,13 +260,12 @@ render(){
                </select>
 
               <div className={this.state.show}>
-
-              <label for="Number" class="form-label">Issue Description </label>
+              <label for="Number" className="form-label">Issue Description </label>
                   <input type="text" className="form-control" id="issue_speical" name="issue_speical" value={this.state.issue_speical} onChange={this.handleInput} required/>
             </div>
             </div>
-            <div class="mb-3">
-            <label for="InputEmail1" class="form-label">OS</label>
+            <div className="mb-3">
+            <label for="InputEmail1" className="form-label">OS</label>
               <select className=" col-3 custom-select custom-select-sm"  id="os" name="os" value={this.state.os} onChange={this.handleInput} required>
                  <option value="Mac">Mac</option>
                  <option value="PC">PC</option>
@@ -274,8 +273,8 @@ render(){
                </select>
             </div>
 
-            <div class="mb-3 col-8">
-              <label for="InputEmail1" class="form-label">Model Number</label>
+            <div className="mb-3 col-8">
+              <label for="InputEmail1" className="form-label">Model Number</label>
                   <input type="text" className="form-control" id="model_number" name="model_number" value={this.state.model_number} onChange={this.handleInput} required/>
             </div>
 

@@ -62,6 +62,7 @@ render(){
       <p className="client-name">{client.last_name}, {client.first_name}</p>
       <div className="client-info">
         <p className="client-location"> Location: {client.location}</p>
+        <p className="client-location"> Address: {client.address_street} </p>
         <p className="client-location"> Phone: {client.phone}</p>
         <p className="client-location"> Email: {client.email}</p>
       </div>

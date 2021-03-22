@@ -110,6 +110,18 @@ return console.log('nope');
       </table>
     </div>
     : null }
+    {this.state.jobs.length === 0
+      ?
+      <div className="row mx-auto">
+        <div className="col-2 m-5 mx-auto">
+      <div className="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      </div>
+      </div>
+      :
+      null
+    }
 
     {this.state.section === "Open"
       ?

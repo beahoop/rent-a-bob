@@ -13,6 +13,7 @@ class NoteItem extends Component{
     this.handleEdit = this.handleEdit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
 handleSubmit(event){
   const id = this.state.note.id
   event.preventDefault();
@@ -61,34 +62,43 @@ handleInputEdit(event) {
   render(){
     const note = this.state.note;
   return(
-    <li key={note.id}>
+    <div key={note.id} className="row m-4">
+
       {!note.image
         ?
         null
         :
-        <img className="pre-img" src={note.image} alt="preview"/>
+        <div className="col-6">
+        <img className="pre-img pre-fluid-img" src={note.image} alt="preview"/>
+        </div>
       }
-
+      <div className="col-4">
+        <div className="row">
       {this.state.isEditing
         ?
         <input type="body" name="text"
         value={this.state.text} onChange={this.handleInputEdit}
         onKeyUp={(event) => this.handleEdit(event)}/>
         :
-
+        <div>
+        <p className="jobs-owner">By: {note.owner}</p>
         <p className="jobs-note" name="text" value={this.state.text}>Note: {this.state.text}</p>
+        </div>
       }
       <span className="jobs-createdDate"> {note.created_date}</span>
-      <p className="jobs-owner">by: {note.owner}</p>
+
       {!this.state.isEditing
         ?
-      <button className="btn btn-info" type="button" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>
+      <button className="col-12 col-md-6 btn btn-info" type="button" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>
       Edit</button>
       :
       null
-    }
+      }
+    <button className="col-12 col-md-6 btn btn-danger" type="btn" onClick={()=> this.props.removeNote(note)}>Remove</button>
+      </div>
+    </div>
 
-    </li>
+  </div>
 
       )
     }

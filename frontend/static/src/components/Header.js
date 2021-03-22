@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 function Header(props) {
   const isAuth = props.isLoggedIn;
 //only render if on backend
-//make footer and another nav that is sticky for back end 
+//make footer and another nav that is sticky for back end
   return (
     <>
 
@@ -22,7 +22,7 @@ function Header(props) {
           <span>
             <span className="navbar-1 navbar-brand">< NavLink to="/dashboard/">Dashboard</NavLink></span>
             <span className="navbar-1 navbar-brand">< NavLink to="/clients/">Clients</NavLink></span>
-            <span className="navbar-1 navbar-brand">< NavLink to="/jobs/">Jobs</NavLink></span>
+
             <span className="navbar-1 navbar-brand">< NavLink to="/createjob/">+</NavLink></span>
             <span  className="navbar-1 navbar-brand" onClick={(e) => props.handleLogOut(e)} type="submit">LogOut</span>
           </span>

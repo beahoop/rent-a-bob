@@ -33,7 +33,6 @@ componentDidMount() {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log('response', result)
           this.setState({
             jobs: result
           });
