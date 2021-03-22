@@ -16,6 +16,7 @@ django-phone-field = "*"
 pillow = "*"
 django-storages = "*"
 boto3 = "*"
+twilio = "==6.32.0"
 
 [dev-packages]
 
