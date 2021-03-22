@@ -9,7 +9,9 @@
 
 body {
  padding-bottom: 50px;
+ /* padding-top: 50px; */
 }
+
 .hide {
   display: none;
 }
@@ -28,6 +30,18 @@ body {
 .homepage-nav{
   background-color: #5694FF;
 }
+
+.backend-nav{
+  padding: 10px;
+  text-align: right;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.navbar-2{
+float: left;
+}
+
+
 
 .header-nav{
   margin-bottom: 50px;
@@ -251,12 +265,26 @@ input[type="file"] {
   background-color: #DFEBFF;
 }
 .header{
-  top: 50px;
+  /* top: 50px; */
   font-size: 1em;
   font-weight: 900;
   padding: 5px 10px;
   background-color: #9EA7B2;
   color: white;
+}
+.client-by-letter{
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 5px;
+}
+
+.client-by-letter p{
+  border-bottom: 1px solid #9EA7B2;
+  color: #6DB4C5;
+}
+
+.location{
+  float: right;
 }
 /* //////////////////////////////CLIENT DETAIL/ */
 

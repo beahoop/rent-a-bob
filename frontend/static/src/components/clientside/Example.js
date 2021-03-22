@@ -1,5 +1,5 @@
-import Spinner from 'react-bootstrap/Spinner'
-
+import Carousel from 'react-bootstrap/Carousel';
+import Spinner from 'react-bootstrap/Spinner';
 
 function Example() {
 

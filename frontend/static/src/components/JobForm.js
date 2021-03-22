@@ -347,7 +347,7 @@ render(){
 
               <div className={this.state.show}>
               <label htmlFor="Number" className="form-label">Issue Description </label>
-                  <input type="text" className="form-control" id="issue_speical" name="issue_speical" value={this.state.issue_speical} onChange={this.handleInput} required/>
+                  <input type="text" className="form-control" id="issue_speical" name="issue_speical" value={this.state.issue_speical} onChange={this.handleInput} />
             </div>
             </div>
 

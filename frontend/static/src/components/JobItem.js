@@ -154,7 +154,7 @@ handleCreatingNote(event){
                 <p className="client-location"> Phone: {client.phone}</p>
                 <p className="client-location"> Email: {client.email}</p>
                 <a href={`/client/${job.client}`}>
-                  <p>See {client.first_name} {client.last_name}''s profile</p>
+                  <p>{`See ${client.first_name} ${client.last_name}'s profile`}</p>
                 </a>
               </div>
             </div>

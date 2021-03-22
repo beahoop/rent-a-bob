@@ -90,14 +90,14 @@ return console.log('nope');
     <div className="row">
       <div className="col-12 header-backend">
         <div className="row">
-          <button onClick={()=> this.setState({section:"New"})} className="col-3 btn-add">New Jobs</button>
-          <button onClick={()=> this.setState({section:"Open"})} className="col-3 btn-add">Open Jobs</button>
-          <button onClick={()=> this.setState({section:"All"})} className="col-3 btn-add">All Jobs</button>
-            <div class="col-3 my-3 input-group">
+          <button onClick={()=> this.setState({section:"New"})} className="col-2 col-md-3 btn-add">New Jobs</button>
+          <button onClick={()=> this.setState({section:"Open"})} className="col-2 col-md-3  btn-add">Open Jobs</button>
+          <button onClick={()=> this.setState({section:"All"})} className="col-2 col-md-3  btn-add">All Jobs</button>
+            <div className="col-5 col-md-3  my-3 input-group">
                 <input id="search-focus" name="search" type="search" class="form-control"
-                  value={this.state.search}  onChange={this.handleInput} placeholder="Search for Client"/>
-                <button type="button" class="btn btn-primary" onClick={()=> this.setState({search: this.state.search, section: "Search"})}>
-                <i class="fas fa-search"></i>
+                  value={this.state.search}  onChange={this.handleInput} placeholder="Search"/>
+                <button type="button" className="form-control btn btn-primary" onClick={()=> this.setState({search: this.state.search, section: "Search"})}>
+                <i className="fas fa-search"></i>
               </button>
             </div>
           </div>

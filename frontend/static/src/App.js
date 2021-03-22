@@ -158,7 +158,7 @@ async handleRegistration(e, obj) {
               <Route exact path="/client/:id" children={
                 <ClientDetail/>}/>
 
-              <Route exact path="/home/" children={
+              <Route exact path="/" children={
               <Home/>}/>
                 <Route exact path="/createjob/" children={
                 <JobForm/>}/>

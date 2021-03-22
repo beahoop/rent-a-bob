@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Form from "./Form";
 import Reviews from "./Reviews";
 import Products from "./Products";
+import Example from "./Example";
 import About from "./About";
 
 
@@ -16,7 +17,7 @@ render(){
     <div className="sticky-top homepage-nav navbar-dark row px-0">
     <div className="navbar ">
       <a href="#top">
-        <span className="navbar-1 navbar-brand" >Home</span>
+        <span className="navbar-1 navbar-brand" >Rent-a-bob</span>
       </a>
       <a href="#reviews">
         <span className="navbar-1 navbar-brand">Reviews</span>
