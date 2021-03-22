@@ -4,8 +4,7 @@ from twilio.rest import Client
 
 
 def broadcast_sms(request):
-    message_to_broadcast = ("You have a new job! Go check it out! "
-                                                "yet? Grab it here: https://www.twilio.com/quest")
+    message_to_broadcast = ("You have a new job! Go check it out!")
     client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
     for recipient in settings.SMS_BROADCAST_TO_NUMBERS:
         if recipient:
