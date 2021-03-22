@@ -8,6 +8,7 @@ class Dashboard extends Component{
       section:"New",
       search: "",
     }
+    this.handleInput = this.handleInput.bind(this);
   }
 
 componentDidMount() {
@@ -28,6 +29,11 @@ componentDidMount() {
       )
   }
 
+  handleInput(event){
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+
 render(){
   const newjobs = this.state.jobs.filter(job => {
     if(job.job_status === "New"){
@@ -39,6 +45,7 @@ render(){
       <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
       <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
       <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
+        <td><a href={`/job/${job.id}`}><button className="btn  btn-orange">View Job</button> </a></td>
     </tr>
 ));
 const openjobs = this.state.jobs.filter(job => {
@@ -51,6 +58,7 @@ const openjobs = this.state.jobs.filter(job => {
     <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
     <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
     <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
+      <td><a href={`/job/${job.id}`}><button className="btn  btn-orange">View Job</button> </a></td>
   </tr>
 ));
 const alljobs = this.state.jobs.map((job) => (
@@ -58,20 +66,22 @@ const alljobs = this.state.jobs.map((job) => (
     <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
     <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
     <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
+      <td><a href={`/job/${job.id}`}><button className="btn  btn-orange">View Job</button> </a></td>
   </tr>
 ));
 const search = this.state.jobs.filter(job => {
-if(this.state.search === job.client){
+if(this.state.search === job.clientname){
   return job
 }
 return console.log('nope');
 }).map((job) => (
   <tr  key={job.id} className="listImg">
-    <td >
-      hi
-    </td>
-
+    <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
+    <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
+    <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
+    <td><a href={`/job/${job.id}`}><button className="btn  btn-orange">View Job</button> </a></td>
   </tr>
+
 
 ));
 
@@ -86,7 +96,7 @@ return console.log('nope');
             <div class="col-3 my-3 input-group">
                 <input id="search-focus" name="search" type="search" class="form-control"
                   value={this.state.search}  onChange={this.handleInput} placeholder="Search for Client"/>
-              <button type="button" class="btn btn-primary" onClick={()=> this.setState({search: this.state.search})}>
+                <button type="button" class="btn btn-primary" onClick={()=> this.setState({search: this.state.search, section: "Search"})}>
                 <i class="fas fa-search"></i>
               </button>
             </div>
@@ -102,6 +112,7 @@ return console.log('nope');
           <th scope="col">Client Name</th>
           <th scope="col">Hardware</th>
           <th scope="col">Issue</th>
+          <th scope="col">View Job</th>
         </tr>
       </thead>
       <tbody>
@@ -133,6 +144,7 @@ return console.log('nope');
             <th scope="col">Client Name</th>
             <th scope="col">Hardware</th>
             <th scope="col">Issue</th>
+            <th scope="col">View Job</th>
           </tr>
         </thead>
         <tbody>
@@ -150,6 +162,7 @@ return console.log('nope');
             <th scope="col">Client Name</th>
             <th scope="col">Hardware</th>
             <th scope="col">Issue</th>
+            <th scope="col">View Job</th>
           </tr>
         </thead>
         <tbody>
@@ -158,25 +171,26 @@ return console.log('nope');
         </table>
     </div>
     : null }
-
-    {this.state.search.length === 0
+    {this.state.section === "Search"
       ?
-      null
-      :
       <table className="table search-results">
       <thead>
         <tr>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Location</th>
+          <th scope="col">Client Name</th>
+          <th scope="col">Hardware</th>
+          <th scope="col">Issue</th>
+          <th scope="col">View Job</th>
         </tr>
       </thead>
       <tbody>
           {search}
       </tbody>
-      </table>
+    </table>
+      :
+      null
 
     }
+
     </>
   )
 }

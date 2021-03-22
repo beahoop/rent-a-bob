@@ -68,11 +68,11 @@ handleInputEdit(event) {
         ?
         null
         :
-        <div className="col-6">
+        <div className="col-12 col-md-6">
         <img className="pre-img pre-fluid-img" src={note.image} alt="preview"/>
         </div>
       }
-      <div className="col-4">
+      <div className="mt-4 col-12 col-md-6">
         <div className="row">
       {this.state.isEditing
         ?
@@ -81,11 +81,11 @@ handleInputEdit(event) {
         onKeyUp={(event) => this.handleEdit(event)}/>
         :
         <div>
-        <p className="jobs-owner">By: {note.owner}</p>
-        <p className="jobs-note" name="text" value={this.state.text}>Note: {this.state.text}</p>
+        <p className="row jobs-owner header">{note.owner} said:</p>
+        <p className="row jobs-note" name="text" value={this.state.text}>Note: {this.state.text}</p>
         </div>
       }
-      <span className="jobs-createdDate"> {note.created_date}</span>
+      <span className="row jobs-createdDate"> {note.created_date}</span>
 
       {!this.state.isEditing
         ?
