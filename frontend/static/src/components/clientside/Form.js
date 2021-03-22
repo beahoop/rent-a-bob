@@ -120,7 +120,27 @@ handleJobSubmit(event){
         .catch(error => console.log('Error:', error))
         .finally('I am always going to fire!');
         this.setState({text: ""})
-  };
+  fetch("/send/broadcast", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken' : Cookies.get('csrftoken'),
+        },
+      })
+        .then(response => {
+        if(!response.ok){
+          throw new Error ('Bad Post request');
+        }
+        return response.json()
+        })
+      .then(data => {
+        this.setState({client_id : data.id})
+        console.log('Success. Message created!', data)
+      } )
+      .catch(error => console.log('Error:', error))
+      .finally('I am always going to fire!');
+      this.setState({text: ""})
+};
 
 handleshow(event){
   console.log("HI");

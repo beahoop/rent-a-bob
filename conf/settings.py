@@ -30,6 +30,12 @@ DEBUG = True
 
 ALLOWED_HOSTS =  ['127.0.0.1', 'rent-a-bob.herokuapp.com']
 
+TWILIO_ACCOUNT_SID = os.environ.get("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN")
+TWILIO_NUMBER = os.environ.get("TWILIO_NUMBER")
+SMS_BROADCAST_TO_NUMBERS = [
+    "+18438227793", # use the format +19735551234
+]
 
 
 # Application definition
@@ -54,6 +60,7 @@ INSTALLED_APPS = [
     'phone_field',
 
     # local
+    'broadcast.apps.BroadcastConfig',
     'accounts.apps.AccountsConfig',
     'jobs.apps.JobsConfig',
     'frontend.apps.FrontendConfig',

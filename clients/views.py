@@ -12,18 +12,15 @@ class ListClients(APIView):
     serializer_class = ClientSerializer
 
     def post(self, request, format=None):
-        serializer = ClientSerializer(data=request.data)
         phone = request.data["phone_number"]
-        # import pdb; pdb.set_trace()
 
         if models.Client.objects.filter(phone_number=phone).exists():
             client = models.Client.objects.get(phone_number=phone)
             print("already exists", client)
-            serializer.is_valid()
-            # import pdb; pdb.set_trace()
-            #if the client exist then return that client back
-            return Response(client)
+            serializer = ClientSerializer(client)
+            return Response(serializer.data)
         else:
+            serializer = ClientSerializer(data=request.data)
             print("Creating new client", phone)
             serializer.is_valid()
             serializer.save()
@@ -39,3 +36,25 @@ class ClientsListView(generics.ListCreateAPIView):
 class ClientsDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Client.objects.all()
     serializer_class = ClientSerializer
+
+
+
+
+
+
+
+
+# def post(self, request, format=None):
+#     serializer = ClientSerializer(data=request.data)
+#     phone = request.data["phone_number"]
+#     # import pdb; pdb.set_trace()
+#
+#     if models.Client.objects.filter(phone_number=phone).exists():
+#         # import pdb; pdb.set_trace()
+#         client = models.Client.objects.get(phone_number=phone)
+#         print("already exists", client)
+#         serializer.is_valid()
+#         # # import pdb; pdb.set_trace()
+#         # #if the client exist then return that client back
+#         # serializer = serializer(client)
+#         return Response(serializer.data)
