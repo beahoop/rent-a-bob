@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Form from "./Form";
 import Reviews from "./Reviews";
 import Products from "./Products";
-import Example from "./Example";
 import About from "./About";
 
 

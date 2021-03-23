@@ -45,8 +45,8 @@ render(){
       <span className="review-author">{review.author}</span>
       <span className="review-stars">{fillStar.repeat(review.starRating)}{emptyStar.repeat(5-review.starRating)}</span>
       </div>
-      <span onClick={()=> this.setState({id: 1})}>back</span>
-      <span onClick={()=> this.setState({id: 2})}>forward</span>
+      <span className="left-arrow" onClick={()=> this.setState({id: 1})}><i class="fas fa-arrow-alt-circle-left"></i></span>
+      <span className="right-arrow" onClick={()=> this.setState({id: 2})}><i class="fas fa-arrow-alt-circle-right"></i></span>
       </div>
 ));
   return(

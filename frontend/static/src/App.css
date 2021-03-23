@@ -6,7 +6,13 @@
 .flex{
   display: flex;
 }
-
+.spinner-border{
+  font-size: 6rem;
+  height: 200px;
+  width: 200px;
+  color: #ED6242;
+  text-align: center;
+}
 body {
  padding-bottom: 50px;
  /* padding-top: 50px; */
@@ -40,6 +46,8 @@ body {
 .navbar-2{
 float: left;
 }
+
+
 
 
 
@@ -160,6 +168,29 @@ float: left;
   font-size: 2em;
   color: #ED6242;
   margin-left: auto;
+}
+
+.left-arrow{
+  float: left;
+
+}
+.left-arrow, .right-arrow{
+  padding-top: 10px;
+  color: #5694FF;
+  font-size: 2rem;
+}
+.right-arrow{
+  float: right;
+}
+
+.left-arrow:hover, .right-arrow:hover{
+  padding-top: 10px;
+  padding-right: 2px;
+  color: #ED6242;
+  font-size: 2rem;
+}
+.left-arrow:hover{
+  padding-left: 2px;
 }
 /* /////////////////////ABOUT */
 #about{
@@ -305,7 +336,15 @@ input[type="file"] {
 }
 
 .client-jobs-header{
-  background-color: #9EA7B2;
+  background-color: #87AEB8;
+
+  color: white;
+  padding: 10px 30px;
+  font-size: 2em;
+  font-weight: bold;
+}
+.client-notes-header{
+  background-color: #A0A7B1;
   color: white;
   padding: 10px 30px;
   font-size: 2em;

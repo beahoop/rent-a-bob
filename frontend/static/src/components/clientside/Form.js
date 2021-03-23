@@ -7,8 +7,11 @@ class Form extends Component{
     this.state = {
       hardwareSelection: "None",
       clientAdded: false,
+      jobAdded: false,
+      spinnerDone:false,
       job_status: 'New',
       issue_speical: '',
+      spinner: false,
       call_time: '',
       hardware: '',
       issue: '',
@@ -88,6 +91,8 @@ handleClientSubmit(event){
 
 handleJobSubmit(event){
   event.preventDefault();
+  this.setState({jobAdded: true,
+                spinner:true})
   const client = {
     job_status: "New",
     issue_speical: this.state.issue_speical,
@@ -97,6 +102,7 @@ handleJobSubmit(event){
     os: this.state.os,
     client: this.state.client_id,
      }
+    setTimeout(() => {this.setState({spinner:false, spinnerDone:true})}, 5000);
     fetch("/api/v1/", {
       // no begining slash mean from where I'm at add this to interval
       // with a slash mean this excatly
@@ -120,26 +126,26 @@ handleJobSubmit(event){
         .catch(error => console.log('Error:', error))
         .finally('I am always going to fire!');
         this.setState({text: ""})
-  fetch("/send/broadcast", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken' : Cookies.get('csrftoken'),
-        },
-      })
-        .then(response => {
-        if(!response.ok){
-          throw new Error ('Bad Post request');
-        }
-        return response.json()
-        })
-      .then(data => {
-        this.setState({client_id : data.id})
-        console.log('Success. Message created!', data)
-      } )
-      .catch(error => console.log('Error:', error))
-      .finally('I am always going to fire!');
-      this.setState({text: ""})
+  // fetch("/send/broadcast", {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'X-CSRFToken' : Cookies.get('csrftoken'),
+  //       },
+  //     })
+  //       .then(response => {
+  //       if(!response.ok){
+  //         throw new Error ('Bad Post request');
+  //       }
+  //       return response.json()
+  //       })
+  //     .then(data => {
+  //       this.setState({client_id : data.id})
+  //       console.log('Success. Message created!', data)
+  //     } )
+  //     .catch(error => console.log('Error:', error))
+  //     .finally('I am always going to fire!');
+  //     this.setState({text: ""})
 };
 
 handleshow(event){
@@ -163,8 +169,6 @@ handleShowIssue(event){
 }
 
 render(){
-
-
   return(
     <>
     <div className="row form" >
@@ -263,7 +267,7 @@ render(){
         :
         null
       }
-      {this.state.clientAdded
+      {this.state.clientAdded && !this.state.jobAdded
         ?
         <form onSubmit={this.handleJobSubmit}>
         <div className="col-10 mx-auto">
@@ -302,6 +306,28 @@ render(){
             <button className="btn btn-orange" type="submit">Submit</button>
         </div>
         </form>
+        :
+        null
+      }
+      {this.state.spinner ?
+        <div className="row">
+          <div className="col-2 mx-auto">
+        <div className="spinner-border"  role="status">
+          <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+          :
+          null
+      }
+      {this.state.clientAdded && this.state.jobAdded && this.state.spinnerDone ?
+        <div className="row">
+          <div className="col-10 mx-auto">
+            <p id="form" className="form-title">
+              Thank you for time! We have received your request and
+              will be in touch soon. </p>
+          </div>
+        </div>
         :
         null
       }

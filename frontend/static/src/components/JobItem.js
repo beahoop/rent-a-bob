@@ -166,7 +166,7 @@ handleCreatingNote(event){
                     </div>
                 </div>
                 <div className=" client-container">
-                <div className="row client-jobs-header">
+                <div className="row client-notes-header">
                   <p className="col-3"> Notes </p>
                   <button className="col-3 btn" type="button" onClick={() => this.setState({ isAdding: !this.state.isAdding })}>
                   Add Note</button>
