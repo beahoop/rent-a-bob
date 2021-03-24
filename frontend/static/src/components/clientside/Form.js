@@ -293,14 +293,14 @@ render(){
       {this.state.clientAdded && !this.state.jobAdded
         ?
         <form onSubmit={this.handleJobSubmit}>
-        <div className="col-10 mx-auto">
+        <div className="col col-md-10 mx-auto">
           <p id="form" className="form-title">Let us know more about the issue.
             If you don’t know the anwser,
             choose or write I don’t know. </p>
           <div className="row">
-            <div className="mb-3 col-8">
+            <div className="mb-3 col col-md-8">
             <label for="Issue" className="form-label">Issue</label>
-              <select className=" col-3 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleShowIssue} required>
+              <select className=" col col-md-3 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleShowIssue} required>
                  <option value="Not">Not Turning on</option>
                  <option value="Unknown">I don't know</option>
                   <option value="Other">Other</option>
@@ -313,14 +313,14 @@ render(){
             </div>
             <div className="mb-3">
             <label for="InputEmail1" className="form-label">OS</label>
-              <select className=" col-3 custom-select custom-select-sm"  id="os" name="os" value={this.state.os} onChange={this.handleInput} required>
+              <select className=" col col-md-3 custom-select custom-select-sm"  id="os" name="os" value={this.state.os} onChange={this.handleInput} required>
                  <option value="Mac">Mac</option>
                  <option value="PC">PC</option>
                  <option value="Unknown">I don't know</option>
                </select>
             </div>
 
-            <div className="mb-3 col-8">
+            <div className="mb-3 col col-md-8">
               <label for="InputEmail1" className="form-label">Model Number</label>
                   <input type="text" className="form-control" id="model_number" name="model_number" value={this.state.model_number} onChange={this.handleInput} required/>
             </div>
