@@ -123,6 +123,7 @@ async handleRegistration(e, obj) {
       <div className="container-fluid no-padding">
 
         <BrowserRouter>
+
           <Header   handleLogOut={this.handleLogOut}
             isLoggedIn={this.state.isLoggedIn}/>
         <Switch>
