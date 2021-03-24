@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, permissions
+from .permissions import IsClientOrReadOnly
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -10,6 +11,7 @@ from . import models
 
 class ListClients(APIView):
     serializer_class = ClientSerializer
+    permission_classes = [IsClientOrReadOnly]
 
     def post(self, request, format=None):
         phone = request.data["phone_number"]
@@ -30,12 +32,15 @@ class ListClients(APIView):
 class ClientsListView(generics.ListCreateAPIView):
     queryset = models.Client.objects.all().order_by('last_name')
     serializer_class = ClientSerializer
+    permission_classes = [IsClientOrReadOnly]
 
     #if it gets a post request
     #just api view... and attach api function
 class ClientsDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Client.objects.all()
     serializer_class = ClientSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly,
+                      IsClientOrReadOnly]
 
 
 
@@ -45,7 +50,7 @@ class ClientsDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 # def post(self, request, format=None):
-#     serializer = ClientSerializer(data=request.data)
+    # serializer = ClientSerializer(data=request.data)
 #     phone = request.data["phone_number"]
 #     # import pdb; pdb.set_trace()
 #

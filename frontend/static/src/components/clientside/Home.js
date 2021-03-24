@@ -3,6 +3,7 @@ import Form from "./Form";
 import Reviews from "./Reviews";
 import Products from "./Products";
 import About from "./About";
+import ContactUs from "./ContactUs";
 
 
 
@@ -57,6 +58,10 @@ render(){
     <div className="blue-divider"></div>
     <div id="form"><Form/></div>
     </div>
+    <div className="row">
+      <div id="contact"><ContactUs/></div>
+      </div>
+
 
     </>
   )

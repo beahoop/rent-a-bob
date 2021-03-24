@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, permissions
+from .permissions import IsClientOrReadOnly
 from .serializers import JobSerializer, NoteSerializer
 from . import models
 
@@ -7,14 +8,17 @@ from . import models
 class JobsListView(generics.ListCreateAPIView):
     queryset = models.Job.objects.all()
     serializer_class = JobSerializer
+    permission_classes = [IsClientOrReadOnly]
 
 class JobsDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Job.objects.all()
     serializer_class = JobSerializer
 
+
 class NotesListView(generics.ListCreateAPIView):
     queryset = models.Note.objects.all()
     serializer_class = NoteSerializer
+
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

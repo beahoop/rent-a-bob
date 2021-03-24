@@ -61,6 +61,7 @@ INSTALLED_APPS = [
 
     # local
     'broadcast.apps.BroadcastConfig',
+    'googlecal.apps.GooglecalConfig',
     'accounts.apps.AccountsConfig',
     'jobs.apps.JobsConfig',
     'frontend.apps.FrontendConfig',
@@ -159,17 +160,17 @@ USE_TZ = True
 
 REST_FRAMEWORK = {
 
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.IsAuthenticated',
-    # ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
     'DEFAULT_AUTHENICATION_CLASSES' : [
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication'
     ]
 }
-# REST_AUTH_SERIALIZERS = {
-#     'TOKEN_SERIALIZER': 'accounts.serializers.TokenSerializer'
-# }
+REST_AUTH_SERIALIZERS = {
+    'TOKEN_SERIALIZER': 'accounts.serializers.TokenSerializer'
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

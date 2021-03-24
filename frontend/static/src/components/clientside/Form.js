@@ -16,7 +16,7 @@ class Form extends Component{
       hardware: '',
       issue: '',
       os: '',
-      address_street: "",
+      address_street: " ",
       model: '',
       client: '',
       first_name: '',
@@ -27,6 +27,7 @@ class Form extends Component{
       client_id: '',
       show: 'hide',
     }
+    this.goBack = this.goBack.bind(this);
     this.filterHardware = this.filterHardware.bind(this);
     this.handleClientSubmit = this.handleClientSubmit.bind(this);
     this.handleJobSubmit = this.handleJobSubmit.bind(this);
@@ -34,7 +35,30 @@ class Form extends Component{
     this.handleShowIssue = this.handleShowIssue.bind(this);
     this.handleshow = this.handleshow.bind(this);
   }
-
+goBack(){
+  this.setState({
+    hardwareSelection: "None",
+    clientAdded: false,
+    jobAdded: false,
+    job_status: 'New',
+    issue_speical: '',
+    spinner: false,
+    call_time: '',
+    hardware: '',
+    issue: '',
+    os: '',
+    address_street: ' ',
+    model: '',
+    client: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone_number: '',
+    location: 'Remote',
+    client_id: '',
+    show: 'hide',
+  })
+}
 filterHardware(event){
   console.log("I'm firing");
   const hardwareType = event.target.dataset.type;
@@ -190,76 +214,75 @@ render(){
             </div>
         </div>
         :
-        <button data-type="None" onClick={this.filterHardware}className="my-5 col-12 col-md-8 mx-auto btn btn-orange hardware-btn">
+        <button data-type="None" onClick={this.goBack}className="my-5 col-12 col-md-8 mx-auto btn btn-orange hardware-btn">
           Go Back</button>
       }
       {this.state.hardwareSelection !== "None" && !this.state.clientAdded
         ?
         <form onSubmit={this.handleClientSubmit}>
-
-            <div className="row mx-auto">
+            <div className="row">
             <p id="form" className="col-8  mx-auto form-title">We’re sorry you are experincing computer
               issues. Please, fill out the form below and
               we will be in contact with you shortly. </p>
-                <div className="col-10 mx-auto">
-            <div className="row">
-              <div className="mb-3  ml-5 col-12 ">
-                <label for="exampleInputEmail1" className="form-label">First Name</label>
-                <input type="text" className="form-control" id="first_name" name="first_name" value={this.state.first_name} onChange={this.handleInput} required/>
-              </div>
+            <div className="col-10 mx-auto">
+                <div className="row">
+                  <div className="mb-3  col-12 ">
+                    <label for="exampleInputEmail1" className="form-label">First Name</label>
+                    <input type="text" className="form-control" id="first_name" name="first_name" value={this.state.first_name} onChange={this.handleInput} required/>
+                  </div>
 
-              <div className="mb-3  ml-5 col-12 ">
-                <label className="form-label">Last Name</label>
-                <input type="text" className="form-control" id="last_name" name="last_name" value={this.state.last_name} onChange={this.handleInput} required/>
-              </div>
-            </div>
+                  <div className="mb-3  col-12 ">
+                    <label className="form-label">Last Name</label>
+                    <input type="text" className="form-control" id="last_name" name="last_name" value={this.state.last_name} onChange={this.handleInput} required/>
+                  </div>
+                </div>
 
-            <div className="mb-3 p-0  ml-5 col">
-              <label for="InputEmail1" className="form-label">Email address</label>
-              <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value={this.state.email} onChange={this.handleInput} placeholder="username@example.com" required/>
-            </div>
+                <div className="mb-3 p-0  col">
+                  <label for="InputEmail1" className="form-label">Email address</label>
+                  <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value={this.state.email} onChange={this.handleInput} placeholder="username@example.com" required/>
+                </div>
 
-            <div className="mb-3 p-0  ml-5 col">
-              <label for="exampleInputEmail1" className="form-label">Phone Number</label>
-              <input type="tel"  className="form-control" id="phone" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} placeholder="8438888888" required/>
-              <div id="emailHelp" className="form-text">We'll never share your phone number with anyone else.</div>
-            </div>
-            <div className="mb-3 p-0  mx-5 col">
-            <label for="InputEmail1" className="mr-4 form-label">Best Time to Call:</label>
-              <select className="col-4 custom-select custom-select-sm"  id="call_time" name="call_time" value={this.state.call_time} onChange={this.handleInput} required>
-                 <option value="Moring">Moring</option>
-                 <option value="MidDay">Mid-Day</option>
-                 <option value="Evening">Evening</option>
-               </select>
-             </div>
-
-            <div className="mb-3 p-0  mx-5 col">
-            <label for="InputEmail1" className="mr-4 form-label">Location</label>
-              <select className="col-6 custom-select custom-select-sm"  id="location" name="location" value={this.state.location} onChange={this.handleshow} required>
-                 <option value="IOP">IOP</option>
-                 <option value="Sullivan">Sullivan's</option>
-                 <option value="Kiawah">Kiawah</option>
-                 <option value="Seabrook">Seabrook</option>
-                 <option value="MtPleasant">Mt. Pleasant</option>
-                 <option value="NorthCharleston">North Charleston</option>
-                 <option value="WestAshely">West Ashely</option>
-                 <option value="JamesIsland">James Island</option>
-                 <option value="GooseCreek">Goose Creek</option>
-                 <option value="Summerville">Summerville</option>
-                 <option value="Charleston">Charleston</option>
-                 <option value="Remote">Remote</option>
-                 <option value="Vacationer">I'm vacation here.</option>
-               </select>
-               <div className={this.state.show}>
-                 <div className="mb-3 p-0 col" >
-                   <label for="Street" className="form-label">Street address</label>
-                   <input type="tel"  className="form-control" id="address_street" name="address_street" value={this.state.address_street} onChange={this.handleInput} placeholder="123 Island Drive" />
-                   <div id="street" className="form-text">We'll never share your address with anyone else.</div>
+                <div className="mb-3 p-0  col">
+                  <label for="exampleInputEmail1" className="form-label">Phone Number</label>
+                  <input type="tel"  className="form-control" id="phone" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} placeholder="8438888888" required/>
+                  <div id="emailHelp" className="form-text">We'll never share your phone number with anyone else.</div>
+                </div>
+                <div className="mb-3 p-0   col">
+                <label for="InputEmail1" className="mr-4 form-label">Best Time to Call:</label>
+                  <select className="col-4 custom-select custom-select-sm"  id="call_time" name="call_time" value={this.state.call_time} onChange={this.handleInput} required>
+                     <option value="Moring">Moring</option>
+                     <option value="MidDay">Mid-Day</option>
+                     <option value="Evening">Evening</option>
+                   </select>
                  </div>
-               </div>
 
-                 <button className="mr-5 col-4 btn  btn-orange" type="submit">Submit</button>
-            </div>
+                <div className="mb-3 p-0   col">
+                <label for="InputEmail1" className="mr-4 form-label">Location</label>
+                  <select className="col-6 custom-select custom-select-sm"  id="location" name="location" value={this.state.location} onChange={this.handleshow} required>
+                     <option value="IOP">IOP</option>
+                     <option value="Sullivan">Sullivan's</option>
+                     <option value="Kiawah">Kiawah</option>
+                     <option value="Seabrook">Seabrook</option>
+                     <option value="MtPleasant">Mt. Pleasant</option>
+                     <option value="NorthCharleston">North Charleston</option>
+                     <option value="WestAshely">West Ashely</option>
+                     <option value="JamesIsland">James Island</option>
+                     <option value="GooseCreek">Goose Creek</option>
+                     <option value="Summerville">Summerville</option>
+                     <option value="Charleston">Charleston</option>
+                     <option value="Remote">Remote</option>
+                     <option value="Vacationer">I'm vacation here.</option>
+                   </select>
+                   <div className={this.state.show}>
+                     <div className="mb-3 p-0 col" >
+                       <label for="Street" className="form-label">Street address</label>
+                       <input type="tel"  className="form-control" id="address_street" name="address_street" value={this.state.address_street} onChange={this.handleInput} placeholder="123 Island Drive" />
+                       <div id="street" className="form-text">We'll never share your address with anyone else.</div>
+                     </div>
+                   </div>
+
+                     <button className=" col-4 btn  btn-orange" type="submit">Submit</button>
+                </div>
 
             </div>
         </div>

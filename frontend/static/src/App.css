@@ -14,7 +14,7 @@
   text-align: center;
 }
 body {
- padding-bottom: 50px;
+ /* padding-bottom: 50px; */
  /* padding-top: 50px; */
 }
 
@@ -32,13 +32,21 @@ body {
 .btn-add {
   font-size: 2rem;
 }
+
+.login-btn{
+  text-decoration: none;
+  float: right;
+}
+.login-btn a{
+  color: white;
+}
 /* //////////// Homepage */
 .homepage-nav{
   background-color: #5694FF;
 }
 
 .backend-nav{
-  padding: 10px;
+  /* padding: 10px; */
   text-align: right;
   font-size: 1.5rem;
   font-weight: 500;
@@ -197,7 +205,14 @@ float: left;
   background-color: #5694FF;
   padding: 0px;
 }
-
+.contact-title{
+  font-size: 3em;
+  font-weight: bolder;
+  text-align: center;
+  padding: 0px;
+  color: white;
+  background-color:  #5694FF;
+}
 .about-title{
   font-size: 3em;
   font-weight: bolder;
@@ -259,6 +274,21 @@ float: left;
 .btn-orange:hover{
   background-color: #5694FF;
   color: white;
+}
+/* ///////////////////////CONTACT US/ */
+#contact{
+  background-color: #5694FF;
+  padding: 10px;
+
+}
+.contact-title{
+  font-size: 1em;
+  font-weight: bolder;
+  text-align: center;
+  padding: 0px;
+  color: white;
+  margin: 0px;
+  background-color:  #5694FF;
 }
 /* ////////////////////FILE UPLOADS */
 input[type="file"] {
@@ -386,10 +416,33 @@ input[type="file"] {
   }
 } */
 /* //hide the other products when on moblie */
+
+
+@media (max-width: 750px) {
+  .review-title{
+    font-size: 2rem;
+  }
+  .review-text, .review-author, .review-stars{
+    font-size: 1.5rem;
+  }
+
+  .about-text{
+    padding: 25px;
+  }
+
+}
 @media (max-width: 650px) {
   .card:not(:first-child){
     display: none;
   }
+  .review-title{
+    font-size: 1.5rem;
+  }
+  .review-text, .review-author, .review-stars{
+    font-size: 1rem;
+    text-align: center;
+  }
+
 
   .btn-add {
     font-size: 1rem;
