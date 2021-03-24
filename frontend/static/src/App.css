@@ -46,9 +46,7 @@ body {
 }
 
 .backend-nav{
-  /* padding: 10px; */
   text-align: right;
-  font-size: 1.5rem;
   font-weight: 500;
 }
 .navbar-2{
@@ -442,9 +440,10 @@ input[type="file"] {
     font-size: 1rem;
     text-align: center;
   }
-
-
   .btn-add {
+    font-size: 1rem;
+  }
+  .navbar-brand{
     font-size: 1rem;
   }
 

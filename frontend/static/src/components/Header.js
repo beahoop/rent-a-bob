@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom';
 function Header(props) {
+
+
   const isAuth = props.isLoggedIn;
   const isAdmin = (JSON.parse(localStorage.getItem('user'))?.username === "bob");
 //only render if on backend
@@ -18,14 +20,14 @@ return (
            <span className="navbar-1 navbar-brand ">< NavLink to="/clients/">Clients</NavLink></span>
 
            <span className="navbar-1 navbar-brand">< NavLink to="/createjob/">+</NavLink></span>
-           <span  className="navbar-1 navbar-brand" onClick={(e) => props.handleLogOut(e)} type="submit">LogOut</span>
+           <span className="navbar-1 navbar-brand">< NavLink to="/logout/">Logout</NavLink></span>
 
          </span>
 
          :
          null
        }
-       {isAdmin
+       {isAdmin && isAuth
          ?
          <span className="navbar-1 navbar-brand"><NavLink to="/register/">Register</NavLink> </span>
          :

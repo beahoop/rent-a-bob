@@ -11,6 +11,7 @@ import Header from "./components/Header";
 import Register from './components/Register';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/Login';
+import Logout from './components/Logout';
 import './App.css';
 
 class App extends Component {
@@ -72,7 +73,6 @@ async handleLogin(e, obj){
 }
 
 async handleLogOut(e){
-  console.log(this.state.isLoggedIn);
   e.preventDefault();
 
   alert('logging out');
@@ -134,6 +134,12 @@ async handleRegistration(e, obj) {
                     handleLogin={this.handleLogin}
                   />
                 }></Route>
+              <Route path="/logout" children={
+                    <Logout
+                      isLoggedIn={this.state.isLoggedIn}
+                      handleLogOut={this.handleLogOut}
+                    />
+                  }></Route>
 
                 <Route path="/dashboard" children={
                         <Dashboard
