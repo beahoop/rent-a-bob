@@ -29,9 +29,9 @@ componentDidMount() {
       )
   }
 
-  handleInput(event){
-    this.setState({ [event.target.name]: event.target.value });
-  }
+handleInput(event){
+  this.setState({ [event.target.name]: event.target.value });
+}
 
 
 render(){

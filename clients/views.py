@@ -39,8 +39,8 @@ class ClientsListView(generics.ListCreateAPIView):
 class ClientsDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Client.objects.all()
     serializer_class = ClientSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly,
-                      IsClientOrReadOnly]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly,
+    #                   IsClientOrReadOnly]
 
 
 

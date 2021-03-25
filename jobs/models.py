@@ -25,11 +25,54 @@ class Job(models.Model):
         (Other, 'Other'),
     ]
     #issues
-    Not = 'Not Turning on'
+
+    NoOn = "NoOn"
+    NoScreen = "NoScreen"
+    BlurryScreen = "BlurryScreen"
+    NotNormalStartup = "NotNormalStartup"
+    NoInternet = "NoInternet"
+    SlowComputer = "SlowComputer"
+    NotmyHomepage = "NotMyHomePage"
+    Virus = "Virus"
+    NoEmail = "NoEmail"
+    HackedEmail = "HackedEmail"
+    HelpBuy = "HelpBuy"
+    SetUpComputer = "SetUpComputer"
+    Transfer = "Transfer"
+    Wipe = "Wipe"
+    Not = 'Not turning on'
     Unknown = "Unknown"
+    # "NoOn"Doesn’t turn on at all
+    # "NoScreen"Turns on but nothing on the screen
+    # "BlurryScreen"Screen on but faint/blurry/lines/etc
+    # "NotNormalStartup" Screen on but not the normal startup screen
+    # "NoInternet" Computer on but won’t connect to the internet/browser won’t go anywhere
+    # "SlowComputer" Very slow during startup or once up
+    # "NotMyHomePage" Goes to strange websites/home page is different
+    # "Virus"Virus (malware) is causing problems
+    # "NoEmail" No email or passwords are wrong
+    # "HackedEmail" Email has been hacked
+    # "HelpBuy" Buy new computer and setup
+    # "SetUpComputer" Setup new computer already purchased
+    # "Transfer"Transfer data from old computer to new or setup new backup plan
+    # "Wipe" Wipe old computer/remove hard drive
     ISSUE = [
         (Not, 'Not Turning on'),
-        (Unknown, "Unknown"),
+        (Unknown, "I dont know"),
+        (NoOn, "Doesn’t turn on at all"),
+        (NoScreen, "Turns on but nothing on the screen"),
+        (BlurryScreen, "Screen on but faint/blurry/lines/etc"),
+        (NotNormalStartup, "Screen on but not normal startup"),
+        (NoInternet, "Computer on but won’t connect to the internet"),
+        (SlowComputer, "Slow Computer"),
+        (NotmyHomepage, "Goes to strange websites"),
+        (Virus, "Virus (malware) is causing problems"),
+        (NoEmail, "No email or passwords are wrong"),
+        (HackedEmail, "Email has been hacked"),
+        (HelpBuy, " Buy new computer and setup"),
+        (SetUpComputer, "Setup new computer already purchased"),
+        (Transfer, "Transfer data or setup new w/ backup plan"),
+        (Wipe, "Wipe old computer/remove hard drive"),
     ]
 
     #os
@@ -59,14 +102,14 @@ class Job(models.Model):
         choices= ISSUE,
         default= Unknown,
     )
-    issue_speical =  models.CharField(max_length=255, null=True)
-    
+    issue_speical =  models.CharField(max_length=255, null=True, blank=True)
+
     os =  models.CharField(
         max_length=50,
         choices=OS,
         default= Unknown
     )
-    model_number = models.CharField(max_length=255, null=True)
+    model_number = models.CharField(max_length=255, null=True, blank=True)
     def __str__(self):
         return f"{self.client}, {self.hardware}: {self.issue[:50]}"
 

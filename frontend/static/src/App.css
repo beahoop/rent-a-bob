@@ -33,13 +33,6 @@ body {
   font-size: 2rem;
 }
 
-.login-btn{
-  text-decoration: none;
-  float: right;
-}
-.login-btn a{
-  color: white;
-}
 /* //////////// Homepage */
 .homepage-nav{
   background-color: #5694FF;
@@ -380,9 +373,30 @@ input[type="file"] {
 }
 
 /* /////////////////////////////////LOGINFORM/ */
+.login-title{
+  background-color: #54B6C8;
+  color: white;
+  padding: 10px 30px;
+  font-size: 2em;
+  font-weight: bold;
+}
+.login-btn{
+  text-decoration: none;
+  float: right;
+}
+.login-btn a{
+  color: white;
+}
+.login-text {
+  color:#5694FF;
+  font-weight: bold;
+}
+.login-text span{
+  color: #ED6242;
+}
 
 .loginform, .regform{
-  margin: 100px;
+  margin: 10px;
 }
 /* ///ADD JOB/CLIENT */
 
@@ -445,6 +459,16 @@ input[type="file"] {
   }
   .navbar-brand{
     font-size: 1rem;
+    font-weight: 600;
   }
 
+}
+
+@media (max-width: 500px) {
+  .navbar-1{
+    margin: 3px;
+  }
+  .navbar-2{
+    margin: 3px;
+  }
 }

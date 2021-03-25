@@ -2,14 +2,13 @@ import { NavLink } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 
 function Header(props) {
-
-
   const isAuth = props.isLoggedIn;
   const isAdmin = (JSON.parse(localStorage.getItem('user'))?.username === "bob");
 
    function handleLogOUT(e) {
+     console.log("Hey there");
      props.handleLogOut(e);
-     // props.history.push("/")
+     props.history.push("/")
  }
 
 //only render if on backend
@@ -19,7 +18,7 @@ return (
 
 
      <div className="row px-0">
-       <div className="navbar-light backend-nav bg-light ">
+       <div className="navbar-light flex-nowrap backend-nav bg-light ">
        {isAuth
        ?
          <span>
