@@ -1,7 +1,7 @@
 import pickle
 import datetime
 import os
-from oauth2client import client
+from oauth2client import client, tools
 from google_auth_oauthlib.flow import Flow, InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
@@ -31,7 +31,7 @@ def Create_Service(api_name, api_version, *scopes):
             flow = client.OAuth2WebServerFlow(client_id=os.environ.get('GOOGLE_CLIENT_ID'),
             client_secret=os.environ.get('GOOGLE_CLIENT_SECRET'), scope='https://www.googleapis.com/auth/calendar',)
             # flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRET_FILE, SCOPES)
-            # cred = flow.run_local_server()
+            cred = tools.run_flow(flow, storage, flags)
 
         with open(pickle_file, 'wb') as token:
             pickle.dump(cred, token)
