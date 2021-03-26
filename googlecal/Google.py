@@ -31,7 +31,7 @@ def Create_Service(api_name, api_version, *scopes):
             flow = client.OAuth2WebServerFlow(client_id=os.environ.get('GOOGLE_CLIENT_ID'),
             client_secret=os.environ.get('GOOGLE_CLIENT_SECRET'), scope='https://www.googleapis.com/auth/calendar',)
             # flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRET_FILE, SCOPES)
-            cred = tools.run_flow(flow, storage, flags)
+            cred = tools.run_flow(flow)
 
         with open(pickle_file, 'wb') as token:
             pickle.dump(cred, token)
