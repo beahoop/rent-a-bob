@@ -180,6 +180,8 @@ SITE_ID = 1
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+TIME_ZONE = 'America/New_York'
+USE_TZ = True 
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 

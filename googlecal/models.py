@@ -10,15 +10,15 @@ class Event(models.Model):
     location = models.CharField(max_length=300)
     description = models.CharField(max_length=300, blank=True, null=True)
     # start = models.JSONField(encoder=None, decoder=None, null=True)
-    # dateTime_start =
-    # dateTime_end =
+    dateTime_start = models.DateTimeField(null=True)
+    dateTime_end = models.DateTimeField(null=True)
     # timeZone =
     #   #
       # 'start': {
         # 'dateTime': '2021-04-05T07:00:00',
       #   'timeZone': 'America/Los_Angeles',
       # },
-    end = models.JSONField(encoder=None, decoder=None, null=True)
+    # end = models.JSONField(encoder=None, decoder=None, null=True)
       # 'end': {
       #   'dateTime': '2021-04-05T09:00:00',
       #   'timeZone': 'America/Los_Angeles',

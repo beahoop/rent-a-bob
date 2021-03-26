@@ -9,9 +9,9 @@ API_NAME = 'calendar'
 API_VERISON = 'v3'
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
-service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERISON, SCOPES)
+service = Create_Service(API_NAME, API_VERISON, SCOPES)
 
-calendar_id_rentabob = os.environ.get('CALENDAR_ID')
+calendar_id_rentabob = os.environ.get('GOOGLE_CALENDAR_ID')
 
 # # request_body = {
 # #     'summary': 'Rent A Bob Appointments'
