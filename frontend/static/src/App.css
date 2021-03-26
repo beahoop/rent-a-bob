@@ -312,6 +312,10 @@ input[type="file"] {
 .pre-fluid-img{
   max-width: 100%;
 }
+
+.file-form{
+  margin-top: 25px;
+}
 /* ////////////////////////CLIENT LIST */
 .letter{
   background-color: #DFEBFF;
@@ -354,6 +358,7 @@ input[type="file"] {
 
 .client-info{
   margin: 30px;
+  margin-bottom: 0px;
 }
 
 .client-jobs-header{

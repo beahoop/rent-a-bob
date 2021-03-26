@@ -146,8 +146,8 @@ const client = this.state;
           <p className="client-address"> Address: <input type="address_street" name="address_street"
             value={this.state.address_street} onChange={(event) => this.handleInputEdit(event)}
             onKeyUp={(event) => this.handleEdit(event)}/></p>
-          <p className="client-phone"> Phone: <input type="phone" name="phone"
-            value={this.state.phone} onChange={(event) => this.handleInputEdit(event)}
+          <p className="client-phone"> Phone: <input type="phone" name="phone_number"
+            value={this.state.phone_number} onChange={(event) => this.handleInputEdit(event)}
             onKeyUp={(event) => this.handleEdit(event)}/></p>
           <p className="client-phone"> Email: <input type="email" name="email"
               value={this.state.email} onChange={(event) => this.handleInputEdit(event)}
@@ -160,8 +160,8 @@ const client = this.state;
         <p className="client-name">{client.last_name}, {client.first_name}</p>
         <div className="client-info">
           <p className="client-location"> Location: {client.location}</p>
-          <p className="client-location"> Address: {client.address_street} </p>
-          <p className="client-location"> Phone: {client.phone}</p>
+          <p className="client-location"> Address: {this.state.address_street} </p>
+          <p className="client-location"> Phone: {this.state.phone_number}</p>
           <p className="client-location"> Email: {client.email}</p>
         </div>
       </div>

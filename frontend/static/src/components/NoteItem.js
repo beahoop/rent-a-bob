@@ -36,7 +36,7 @@ handleSubmit(event){
       return response.json()
     })
     .then(data => {//here is where I got back my DJANGO object and
-      this.props.addArticle(data);//here is where I added it to state for react
+      // this.props.addArticle(data);//here is where I added it to state for react
       //because django gave me the ID and the username to show it on react
       console.log('Success. Message created!', data)})
       .catch(error => console.log('Error:', error))

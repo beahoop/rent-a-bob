@@ -124,7 +124,6 @@ handleSubmit(event){
       console.log('Success. Message created!', data)})
       .catch(error => console.log('Error:', error))
       .finally('I am always going to fire!');
-
 };
 
 handleEdit(event){
@@ -166,11 +165,19 @@ addNote(note){
 
 handleCreatingNote(event){
     event.preventDefault();
-      let formData = new FormData();//this is an objects
+      let formData = new FormData();
+      // const obj = {...this.state}//this is an objects
       // https://developer.mozilla.org/en-US/docs/Web/API/FormData
-      formData.append('text', this.state.text);
-      formData.append('job', this.state.job.id);
-      formData.append('image', this.state.image);
+      if (this.state.image === null ){
+        formData.append('text', this.state.text)
+        formData.append('job', this.state.job.id)}
+      else if(this.state.image !==  null){
+        formData.append('text', this.state.text)
+        formData.append('job', this.state.job.id)
+        formData.append('image', this.state.image)
+      }
+      // delete obj.image
+      // formData.append('image', this.state.image);
       fetch('/api/v1/note/', {
             method: 'POST',
             headers: {
@@ -190,7 +197,7 @@ handleCreatingNote(event){
             console.log('Success. Message created!', data)})
           .catch(error => console.log('Error:', error))
           .finally('I am always going to fire!');
-          this.setState({text: ""})
+          this.setState({text: "", isAdding: false, image: null,})
   };
 
 
@@ -205,17 +212,15 @@ handleCreatingNote(event){
  const client = this.state.client
   return(
           <>
-
-
             <div className="row client-container">
               <p className="client-name">{client.last_name}, {client.first_name}</p>
               <div className="client-info">
-                <p className="client-location"> Location: {client.location}</p>
-                <p className="client-location"> Address: {client.address_street} </p>
-                <p className="client-location"> Phone: {client.phone}</p>
-                <p className="client-location"> Email: {client.email}</p>
+                <p className="client-location"> <span className="bold">Location:</span> {client.location}</p>
+                <p className="client-location"> <span className="bold">Address:</span>  {client.address_street} </p>
+                <p className="client-location"> <span className="bold">Phone:</span>  {client.phone_number}</p>
+                <p className="client-location"> <span className="bold">Email:</span>  {client.email}</p>
                 <a href={`/client/${job.client}`}>
-                  <p>{`See ${client.first_name} ${client.last_name}'s profile`}</p>
+                  <p>{`See or Edit ${client.first_name} ${client.last_name}'s profile`}</p>
                 </a>
               </div>
             </div>
@@ -224,38 +229,63 @@ handleCreatingNote(event){
               <div className="row client-container">
                 <div className="client-jobs-header">Jobs</div>
                   <div className="client-info">
-                    <p className="jobs-last_name">Job Status:<input type="last_name" name="last_name"
-                      value={this.state.last_name} onChange={(event) => this.handleInputEdit(event)}
-                      onKeyUp={(event) => this.handleEdit(event)}/> </p>
-                    <p className="jobs-hardware">Hardware: <input type="hardware" name="hardware"
-                      value={this.state.hardware} onChange={(event) => this.handleInputEdit(event)}
-                      onKeyUp={(event) => this.handleEdit(event)}/> </p>
-                    <p className="jobs-os">OS: <input type="os" name="os"
-                      value={this.state.os} onChange={(event) => this.handleInputEdit(event)}
-                      onKeyUp={(event) => this.handleEdit(event)}/> </p>
-                    <p className="jobs-issue"> Issue:  <input type="issue" name="issue"
-                      value={this.state.issue} onChange={(event) => this.handleInputEdit(event)}
-                      onKeyUp={(event) => this.handleEdit(event)}/></p>
-                    <p className="jobs-issueNote"> Issue Notes: <input type="issue_speical" name="issue_speical"
-                      value={this.state.issue_speical} onChange={(event) => this.handleInputEdit(event)}
-                      onKeyUp={(event) => this.handleEdit(event)}/></p>
-                  </div>
+
+
+                      <div className="mb-3">
+                        <label className="mr-3 form-label bold">Job Status:</label>
+                          <select className="col-3 custom-select custom-select-sm"  id="job_status" name="job_status" value={this.state.job_status} onChange={this.handleInput} onKeyUp={(event) => this.handleEdit(event)} required>
+                             <option value="New">New</option>
+                             <option value="Open">Open</option>
+                             <option value="Closed">Closed</option>
+                           </select>
+                      </div>
+
+                    <div className="mb-3">
+                      <label htmlFor="InputEmail1" className="mr-3 form-label bold">Hardware: </label>
+                        <select className="col-3 custom-select custom-select-sm"  id="hardware" name="hardware" value={this.state.hardware} onChange={this.handleInput} onKeyUp={(event) => this.handleEdit(event)} required>
+                           <option value="Computer">Computer</option>
+                           <option value="Printer">Printer</option>
+                           <option value="Other">Other</option>
+                         </select>
+                    </div>
+
+                    <div className="mb-3">
+                      <label htmlFor="InputEmail1" className="mr-3 form-label bold">OS: </label>
+                        <select className=" col-3 custom-select custom-select-sm"  id="os" name="os" value={this.state.os} onChange={this.handleInput} onKeyUp={(event) => this.handleEdit(event)} required>
+                           <option value="Mac">Mac</option>
+                           <option value="PC">PC</option>
+                           <option value="Unknown">I don't know</option>
+                         </select>
+                    </div>
+
+
+                    <label htmlFor="Issue" className="mr-3 form-label bold">Issue</label>
+                      <select className=" col-3 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleInput} onKeyUp={(event) => this.handleEdit(event)} required>
+                         <option value="Not">Not Turning on</option>
+                         <option value="Unknown">I don't know</option>
+                          <option value="Other">Other</option>
+                       </select>
+                       <div>
+                       <label htmlFor="Number" className="form-label">Issue Description </label>
+                           <input type="text" className="form-control" id="issue_speical" name="issue_speical" value={this.state.issue_speical} onChange={this.handleInput} onKeyUp={(event) => this.handleEdit(event)} />
+                        </div>
+                </div>
               </div>
               :
               <div className="row client-container">
                 <div className="client-jobs-header">Jobs</div>
                   <div className="client-info">
-                    <p className="jobs-status">Job Status: {job.job_status} </p>
-                    <p className="jobs-hardware">Hardware: {job.hardware} </p>
-                    <p className="jobs-os">OS: {job.os} </p>
-                    <p className="jobs-issue"> Issue: {job.issue}</p>
-                    <p className="jobs-issueNote"> Issue Notes: {job.issue_speical}</p>
+                    <p className="jobs-status"> <span className="bold">Job Status: </span> {job.job_status} </p>
+                    <p className="jobs-hardware"> <span className="bold"> Hardware:  </span> {job.hardware} </p>
+                    <p className="jobs-os"> <span className="bold"> OS:  </span>{job.os} </p>
+                    <p className="jobs-issue"> <span className="bold"> Issue:  </span>{job.issue}</p>
+                    <p className="jobs-issueNote"> <span className="bold"> Issue Details:  </span>{job.issue_speical}</p>
                   </div>
               </div>
             }
             {!this.state.isEditing
               ?
-            <button className="col-12 col-md-6 btn btn-orange" type="button" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>
+            <button className="col-12 col-md-4 m-3 btn btn-orange" type="button" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>
             Edit</button>
             :
             null
@@ -276,11 +306,11 @@ handleCreatingNote(event){
                   }
                 </div>
                 </div>
-                <form className="form"onSubmit={this.handleCreatingNote}>
+                <form className="file-form row" onSubmit={this.handleCreatingNote}>
                   {!this.state.image && this.state.isAdding
                     ?
                   <span>
-                    <label for="file-upload" className="custom-file-upload">
+                    <label htmlFor="file-upload" className="col-4 custom-file-upload">
                       <p className="imagePlus"> + </p>
                       <p className="imageText"> Add photo</p>
                     </label>
@@ -294,12 +324,12 @@ handleCreatingNote(event){
                   ?
                   null
                   :
-                  <div className="note-addNote">
+                  <div className="col-6 note-addNote">
                     <input type="text" id="note-text" name="text"
                       value={this.state.text} onChange={this.handleInput}
                       placeholder="Note" required/>
                     <label htmlFor="note-text"></label><br/>
-                    <button className="btn btn-info" type="submit">Add Note</button>
+                    <button className="btn btn-info" type="submit">Submit Note</button>
                   </div>
                 }
             </form>

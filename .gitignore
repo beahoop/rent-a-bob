@@ -1,4 +1,7 @@
 .env
 db.sqlite3
-/googlecal
+googlecal/
+client_secret.json
 credentials.json
+token_calendar_v3.pickle
+token.json
