@@ -9,6 +9,7 @@ class NoteSerializer(serializers.ModelSerializer):
 
 class JobSerializer(serializers.ModelSerializer):
     clientname = serializers.ReadOnlyField(source='client.last_name')
+    clientemail= serializers.ReadOnlyField(source='client.email')
     notes = NoteSerializer(many=True, read_only=True)
 
     class Meta:

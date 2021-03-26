@@ -1,7 +1,8 @@
 .env
 db.sqlite3
-googlecal/
+.DS_Store
 client_secret.json
 credentials.json
 token_calendar_v3.pickle
 token.json
+google-credentails.json

@@ -21,6 +21,11 @@ handleSubmit(event){
     text: this.state.text,
     job: this.state.note.job
   }
+  event = {
+    start : {
+      dateTime: this.state.dateTime
+    }
+  }
     fetch(`/api/v1/note/edit/${id}`, {
       method: 'PUT',
       headers: {
