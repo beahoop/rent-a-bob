@@ -26,6 +26,7 @@ class Form extends Component{
       location: 'Remote',
       client_id: '',
       show: 'hide',
+      showIssue: 'hide',
     }
     this.goBack = this.goBack.bind(this);
     this.filterHardware = this.filterHardware.bind(this);
@@ -57,6 +58,7 @@ goBack(){
     location: 'Remote',
     client_id: '',
     show: 'hide',
+    showIssue: 'hide',
   })
 }
 filterHardware(event){
@@ -186,10 +188,10 @@ handleShowIssue(event){
   console.log("HI");
   this.setState({ [event.target.name]: event.target.value });
   if(this.state.issue === "Other"){
-    this.setState({show: "show"})
+    this.setState({showIssue: "show"})
   }
   else if(this.state.issue !== "Other")
-  this.setState({show:"hide"})
+  this.setState({showIssue:"hide"})
 }
 
 render(){
@@ -319,7 +321,7 @@ render(){
                 <option value="Other">Other</option>
                </select>
 
-              <div className={this.state.show}>
+              <div className={this.state.showIssue}>
               <label for="Number" className="form-label">Issue Description </label>
                   <input type="text" className="form-control" id="issue_speical" name="issue_speical" value={this.state.issue_speical} onChange={this.handleInput}/>
             </div>

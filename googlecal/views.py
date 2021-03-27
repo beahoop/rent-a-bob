@@ -14,12 +14,12 @@ from .serializers import EventsSerializer
 from . import models
 
 
-CLIENT_SECRET_FILE = 'google-credentials.json'
+GOOGLE_APPLICATION_CREDENTIALS = 'google-credentials.json'
 API_NAME = 'calendar'
 API_VERISON = 'v3'
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
-service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERISON, SCOPES)
+service = Create_Service(GOOGLE_APPLICATION_CREDENTIALS, API_NAME, API_VERISON, SCOPES)
 
 calendar_id_rentabob = os.environ.get('GOOGLE_CALENDAR_ID')
 
