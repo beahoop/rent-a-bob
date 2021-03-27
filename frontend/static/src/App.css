@@ -47,9 +47,6 @@ float: left;
 }
 
 
-
-
-
 .header-nav{
   margin-bottom: 50px;
 }
@@ -74,9 +71,20 @@ float: left;
 /* //////////////////////HOME divider */
 
 .divider-container {
+  position: relative;
   height: 500px;
   padding-top: -75px;
   padding: 0px;
+}
+.divider-words{
+  padding: 10px;
+  height: 80%;
+  /* top: 100px;
+  position: absolute; */
+}
+
+.divider-words img{
+  height: 100%;
 }
 
 .divider-top {
@@ -91,7 +99,7 @@ float: left;
 }
 
 .divider-button{
-  margin-top: 375px;
+
   margin-left: 70%;
   margin-right: 10px;
 }

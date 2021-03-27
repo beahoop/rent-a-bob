@@ -185,10 +185,10 @@ handleshow(event){
 handleShowIssue(event){
   console.log("HI");
   this.setState({ [event.target.name]: event.target.value });
-  if(this.state.issue !== "Other"){
+  if(this.state.issue === "Other"){
     this.setState({show: "show"})
   }
-  else if(this.state.issue === "Other")
+  else if(this.state.issue !== "Other")
   this.setState({show:"hide"})
 }
 
@@ -290,8 +290,7 @@ render(){
         :
         null
       }
-      {this.state.clientAdded && !this.state.jobAdded
-        ?
+
         <form onSubmit={this.handleJobSubmit}>
         <div className="col col-md-10 mx-auto">
           <p id="form" className="form-title">Let us know more about the issue.
@@ -300,10 +299,24 @@ render(){
           <div className="row">
             <div className="mb-3 col col-md-8">
             <label for="Issue" className="form-label">Issue</label>
-              <select className=" col col-md-3 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleShowIssue} required>
-                 <option value="Not turning on">Not Turning on</option>
-                 <option value="Unknown">I don't know</option>
-                  <option value="Other">Other</option>
+              <select className=" col col-md-12 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleShowIssue} required>
+                <option value="NoOn">Doesn’t turn on at all</option>
+                <option value="NoScreen">Turns on but nothing on the screen</option>
+                <option value="BlurryScreen">Screen on but faint/blurry/lines/etc</option>
+                <option value="NotNormalStartup"> Screen on but not the normal startup screen</option>
+                <option value="NoInternet"> Computer on but won’t connect to the internet/browser won’t go anywhere</option>
+                <option value="SlowComputer"> Very slow during startup or once up</option>
+                <option value="NotMyHomePage"> Goes to strange websites/home page is different</option>
+                <option value="Virus">Virus (malware) is causing problems</option>
+                <option value="NoEmail"> No email or passwords are wrong</option>
+                <option value="HackedEmail"> Email has been hacked</option>
+                <option value="HelpBuy"> Buy new computer and setup</option>
+                <option value="SetUpComputer"> Setup new computer already purchased</option>
+                <option value="Transfer">Transfer data from old computer to new or setup new backup plan</option>
+                <option value="Wipe"> Wipe old computer/remove hard drive</option>
+                <option value="Not turning on">Not Turning on</option>
+                <option value="Unknown">I don't know</option>
+                <option value="Other">Other</option>
                </select>
 
               <div className={this.state.show}>
@@ -329,9 +342,7 @@ render(){
             <button className="btn btn-orange" type="submit">Submit</button>
         </div>
         </form>
-        :
-        null
-      }
+
       {this.state.spinner ?
         <div className="row">
           <div className="col-2 mx-auto">

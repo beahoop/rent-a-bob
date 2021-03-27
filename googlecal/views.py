@@ -14,7 +14,7 @@ from .serializers import EventsSerializer
 from . import models
 
 
-CLIENT_SECRET_FILE = 'google-credentails.json'
+CLIENT_SECRET_FILE = 'google-credentials.json'
 API_NAME = 'calendar'
 API_VERISON = 'v3'
 SCOPES = ['https://www.googleapis.com/auth/calendar']

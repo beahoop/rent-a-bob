@@ -33,7 +33,8 @@ render(){
     <div className="row">
       <div id="top" className="divider-container col-12">
         <div className="divider-top">
-          <div className="divider-words">Rent-A-Bob
+          <div className="divider-words">
+          <img src="https://i.imgur.com/N3xq7E3.png" alt="logo" />
           </div>
           <div className="divider-button px-4">
             <a href="#form">

@@ -25,7 +25,7 @@ class Job(models.Model):
         (Other, 'Other'),
     ]
     #issues
-
+    Other = "Other"
     NoOn = "NoOn"
     NoScreen = "NoScreen"
     BlurryScreen = "BlurryScreen"
@@ -57,6 +57,7 @@ class Job(models.Model):
     # "Transfer"Transfer data from old computer to new or setup new backup plan
     # "Wipe" Wipe old computer/remove hard drive
     ISSUE = [
+        (Other,'Other'),
         (Not, 'Not Turning on'),
         (Unknown, "I dont know"),
         (NoOn, "Doesn’t turn on at all"),
