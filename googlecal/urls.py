@@ -6,5 +6,5 @@ urlpatterns = [
     # path('cal/', views.build_service),
     # path('cal/', quickstart.main),
     path('create/',  views.create_event),
-    path('', views.ListClients.as_view())
+    path('', views.ListEvents.as_view())
 ]
