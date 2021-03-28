@@ -17,7 +17,7 @@ return (
    <>
 
 
-     <div className="row px-0">
+     <div className="row px-0 ">
        <div className="navbar-light flex-nowrap backend-nav bg-light ">
        {isAuth
        ?

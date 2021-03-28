@@ -57,6 +57,7 @@ body {
 .backend-nav{
   text-align: right;
   font-weight: 500;
+  flex-direction: column;
 }
 .navbar-2{
 float: left;
