@@ -500,19 +500,19 @@ return console.log('nope');
 //filter is just looking for a true
 
 const search = this.state.clients.filter(client => {
-if(this.state.search === client.last_name){
+if(this.state.search === null){
   return client
 }
-else if(this.state.search === client.first_name){
+else if(client.last_name.toLowerCase().includes(this.state.search.toLowerCase())){
+  return client
+}else if(client.first_name.toLowerCase().includes(this.state.search.toLowerCase())){
+  return client
+}else if(client.phone_number?.includes(this.state.search)){
+  return client
+}else if(client.email.toLowerCase().includes(this.state.search.toLowerCase())){
   return client
 }
-else if(this.state.search === client.phone_number){
-  return client
-}
-else if(this.state.search === client.email){
-  return client
-}
-return console.log('nope');
+return console.log();
 }).map((client) => (
   <tr  key={client.id} className="listImg">
     <td onClick={()=>this.chooseClient(client.id)}>

@@ -16,7 +16,7 @@ componentDidMount() {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log('response', result)
+          // console.log('response', result)
           this.setState({
             jobs: result
           });
@@ -39,7 +39,7 @@ render(){
     if(job.job_status === "New"){
       return job
     }
-    return console.log('nope');
+    return console.log();
   }).map((job) => (
     <tr  key={job.id} className="listImg">
       <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
@@ -53,7 +53,7 @@ const openjobs = this.state.jobs.filter(job => {
   if(job.job_status === "Open"){
     return job
   }
-  return console.log('nope');
+  return console.log();
 }).map((job) => (
   <tr  key={job.id} className="listImg">
     <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
@@ -83,7 +83,7 @@ if(this.state.search === job.clientname){
 }else if(job.issue.toLowerCase().includes(this.state.search.toLowerCase())){
   return job
 }
-return console.log('nope');
+return console.log();
 }).map((job) => (
   <tr  key={job.id} className="listImg">
     <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
