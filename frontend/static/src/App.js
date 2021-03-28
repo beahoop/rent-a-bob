@@ -8,6 +8,7 @@ import ClientDetail from './components/ClientDetail';
 import Home from './components/clientside/Home';
 import Dashboard from './components/Dashboard';
 import Header from "./components/Header";
+import Appointments from "./components/Appointments";
 import Register from './components/Register';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/Login';
@@ -162,6 +163,10 @@ async handleRegistration(e, obj) {
                   <Clients
                   />
                 }></Route>
+              <Route exact path="/appointments" children={
+                    <Appointments
+                    />
+                  }></Route>
               <Route exact path="/client/:id" children={
                 <ClientDetail/>}/>
 

@@ -11,6 +11,7 @@ class NoteSerializer(serializers.ModelSerializer):
 class JobSerializer(serializers.ModelSerializer):
     clientname = serializers.ReadOnlyField(source='client.last_name')
     clientemail= serializers.ReadOnlyField(source='client.email')
+    clientaddress_street = serializers.ReadOnlyField(source='client.address_street')
     notes = NoteSerializer(many=True, read_only=True)
     event = EventsSerializer(many=True, read_only=True)
 

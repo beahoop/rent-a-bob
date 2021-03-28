@@ -13,6 +13,13 @@ class JobForm extends Component{
       job_id: '',
       job_name: '',
       job_email: '',
+      Appointment_title: 'Rent-A-Bob Appointment',
+      Appointment_location: '',
+      Appointment_Decomment: '',
+      Appointment_comment: '',
+      date:'',
+      dateTime_start: '',
+      dateTime_end: '',
       hardwareSelection: "None",
       clientAdded: false,
       job_status: 'New',
@@ -36,6 +43,7 @@ class JobForm extends Component{
     this.handleClientSubmit = this.handleClientSubmit.bind(this);
     this.handleJobSubmit = this.handleJobSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.handleDate = this.handleDate.bind(this);
     this.handleshow = this.handleshow.bind(this);
     this.handleShowIssue = this.handleShowIssue.bind(this);
     this.chooseClient = this.chooseClient.bind(this);
@@ -72,6 +80,12 @@ componentDidMount() {
           }
         )
   }
+
+handleDate(date){
+   this.setState({date: date._d});
+   // 2021-04-05T07:00:00
+   // Wed Mar 24 2021 12:00:00 GMT-0400 (Eastern Daylight Time)
+};
 filterHardware(event){
   console.log("I'm firing");
   const hardwareType = event.target.dataset.type;
@@ -178,6 +192,44 @@ handleJobSubmit(event){
         .finally('I am always going to fire!');
         this.setState({text: ""})
   };
+handleAppointmentSubmit(event){
+    event.preventDefault();
+    const appointment = {
+      job: this.state.job_id,
+      summary: this.state.Appointment_title,
+      location: this.state.Appointment_location,
+      description: this.state.Appointment_Decomment,
+      dateTime_start: this.state.date,
+      dateTime_end: this.state.date,
+      timeZone: 'American/New_York',
+      attendee_name: this.state.job_name,
+      attendee_comment: this.state.Appointment_comment,
+      attendee_email: this.state.job_email,
+       }
+      fetch("/google/list/", {
+        // no begining slash mean from where I'm at add this to interval
+        // with a slash mean this excatly
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken' : Cookies.get('csrftoken'),
+            },
+            body: JSON.stringify(appointment),
+          })
+            .then(response => {
+            if(!response.ok){
+              throw new Error ('Bad Post request');
+            }
+            return response.json()
+            })
+          .then(data => {
+            this.setState({client_id : data.id})
+            console.log('Success. Message created!', data)
+          } )
+          .catch(error => console.log('Error:', error))
+          .finally('I am always going to fire!');
+          this.setState({text: ""})
+    };
 chooseClient(id){
   fetch(`/api/v1/clients/${id}/`)
       .then(res => res.json())
@@ -215,6 +267,7 @@ chooseJob(id){
             job_id: result.id,
             job_name: result.clientname,
             job_email: result.clientemail,
+            location: result.clientaddress_street,
             search: "",
             showSearch: "hide",
           });
@@ -436,7 +489,7 @@ render(){
 
       {this.state.section === "Appointment"
       ?
-          <form onSubmit={this.handleJobSubmit}>
+          <form onSubmit={this.handleAppointmentSubmit}>
             <div className="row">
               <div className="col-10 mx-auto">
                 <div className="row" >
@@ -467,9 +520,9 @@ render(){
                 </div>
 
 
-                <label htmlFor="exampleInputEmail1" className="form-label">Client Last Name</label>
+                <label htmlFor="exampleInputEmail1" className="form-label">Client's Last Name</label>
                 <input type="text" className="form-control" id="first_name" name="first_name" value={this.state.job_name} onChange={this.handleInput} required/>
-                <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
+                <label htmlFor="exampleInputEmail1" className="form-label">Client's Email</label>
                 <input type="text" className="mb-3 form-control" id="last_name" name="last_name" value={this.state.job_email} onChange={this.handleInput} required/>
                   <label htmlFor="exampleInputEmail1" className="form-label">Title of Appointment</label>
                   <input type="text" className="mb-3 form-control" id="Appointment_title" name="Appointment_title" value={this.state.Appointment_title} onChange={this.handleInput} placeholder="Deafult is Rent-A-Bob Appointment"/>
@@ -481,14 +534,15 @@ render(){
                   <input type="text" className="mb-3 form-control" id="Appointment_Description" name="Appointment_Description" value={this.state.Appointment_Description} onChange={this.handleInput} placeholder="Deafult is Rent-A-Bob Appointment"/>
 
                     <label htmlFor="exampleInputEmail1" className="form-label">Comment for Client</label>
-                    <input type="text" className="mb-3 form-control" id="Appointment_Description" name="Appointment_Description" value={this.state.Appointment_Description} onChange={this.handleInput} placeholder="Deafult is none"/>
+                    <input type="text" className="mb-3 form-control" id="Appointment_comment" name="Appointment_comment" value={this.state.Appointment_comment} onChange={this.handleInput} placeholder="Deafult is none"/>
 
                 <label className="form-label">Start Date and Time</label>
-                      <Datetime className=""/>
+
+                      <p name="dateTime_start" value={this.state.dateTime_start} onChange={this.handleDate}><Datetime/> </p>
                 <label className="form-label">End  Date and Time</label>
-                      <Datetime className=""/>
-                    
-                <button className="col-4 btn btn-orange" type="submit">Submit</button>
+                        <Datetime   dateFormat="DD-MM-YY" name="dateTime_end" value={this.state.dateTime_end} onChange={this.handleDate}/>
+
+                <button className="col-4 btn btn-orange" type="submit" >Submit</button>
 
                 </div>
               </div>
