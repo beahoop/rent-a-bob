@@ -59,6 +59,7 @@ class Client(models.Model):
     )
     address_street = models.CharField(max_length=255, null=True)
     zipcode = models.FloatField(null=True)
+    created_date = models.DateField(auto_now=False, auto_now_add=True, null=True)
 
     def __str__(self):
         return self.last_name[:30]

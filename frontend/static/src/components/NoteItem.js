@@ -86,20 +86,20 @@ handleInputEdit(event) {
         onKeyUp={(event) => this.handleEdit(event)}/>
         :
         <div>
-        <p className="row jobs-owner header">{note.owner} said:</p>
-        <p className="row jobs-note" name="text" value={this.state.text}>Note: {this.state.text}</p>
+        <p className="row jobs-owner header">On  {note.created_date}, {note.owner} said:</p>
+        <p className="row jobs-note" name="text" value={this.state.text}>{this.state.text}</p>
         </div>
       }
-      <span className="row jobs-createdDate"> {note.created_date}</span>
+
 
       {!this.state.isEditing
         ?
-      <button className="col-12 col-md-6 btn btn-info" type="button" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>
+      <button className="col-6 col-md-6 btn btn-info" type="button" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>
       Edit</button>
       :
       null
       }
-    <button className="col-12 col-md-6 btn btn-danger" type="btn" onClick={()=> this.props.removeNote(note)}>Remove</button>
+    <button className="col-6 col-md-6 btn btn-danger" type="btn" onClick={()=> this.props.removeNote(note)}>Remove</button>
       </div>
     </div>
 

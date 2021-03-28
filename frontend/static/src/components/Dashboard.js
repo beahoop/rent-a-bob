@@ -45,6 +45,7 @@ render(){
       <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
       <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
       <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
+        <td><a href={`/job/${job.id}`}>{job.created_date}  </a></td>
         <td><a href={`/job/${job.id}`}><button className="btn  btn-orange">View Job</button> </a></td>
     </tr>
 ));
@@ -58,6 +59,7 @@ const openjobs = this.state.jobs.filter(job => {
     <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
     <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
     <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
+      <td><a href={`/job/${job.id}`}>{job.created_date}  </a></td>
       <td><a href={`/job/${job.id}`}><button className="btn  btn-orange">View Job</button> </a></td>
   </tr>
 ));
@@ -66,6 +68,7 @@ const alljobs = this.state.jobs.map((job) => (
     <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
     <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
     <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
+      <td><a href={`/job/${job.id}`}>{job.created_date}  </a></td>
       <td><a href={`/job/${job.id}`}><button className="btn  btn-orange">View Job</button> </a></td>
   </tr>
 ));
@@ -79,6 +82,7 @@ return console.log('nope');
     <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
     <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
     <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
+    <td><a href={`/job/${job.id}`}>{job.created_date}  </a></td>
     <td><a href={`/job/${job.id}`}><button className="btn  btn-orange">View Job</button> </a></td>
   </tr>
 
@@ -112,6 +116,7 @@ return console.log('nope');
           <th scope="col">Client Name</th>
           <th scope="col">Hardware</th>
           <th scope="col">Issue</th>
+          <th scope="col">Date Reported</th>
           <th scope="col">View Job</th>
         </tr>
       </thead>
@@ -144,6 +149,7 @@ return console.log('nope');
             <th scope="col">Client Name</th>
             <th scope="col">Hardware</th>
             <th scope="col">Issue</th>
+            <th scope="col">Date Reported</th>
             <th scope="col">View Job</th>
           </tr>
         </thead>
@@ -162,6 +168,7 @@ return console.log('nope');
             <th scope="col">Client Name</th>
             <th scope="col">Hardware</th>
             <th scope="col">Issue</th>
+            <th scope="col">Date Reported</th>
             <th scope="col">View Job</th>
           </tr>
         </thead>
@@ -179,6 +186,7 @@ return console.log('nope');
           <th scope="col">Client Name</th>
           <th scope="col">Hardware</th>
           <th scope="col">Issue</th>
+          <th scope="col">Date Reported</th>
           <th scope="col">View Job</th>
         </tr>
       </thead>

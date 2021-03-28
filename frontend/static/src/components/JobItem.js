@@ -18,6 +18,7 @@ class JobItem extends Component{
       os: '',
       issue: '',
       issue_speical: '',
+      created_date: '',
       clientId: 0,
       client: [],
       preview: '',
@@ -49,6 +50,7 @@ componentDidMount() {
           notes: result.notes,
           image: result.image,
           clientId: result.client,
+          created_date: result.created_date,
         });
         fetch(`/api/v1/clients/${result.client}`)
           .then(res => res.json())
@@ -203,7 +205,7 @@ handleCreatingNote(event){
 
   render(){
 
-    const job = this.state.job
+    const job = this.state
     const notes = this.state.notes.map((note, index) => (
 
         <NoteItem key={note.id} removeNote={this.removeNote} notes={note} image={note.image} />
@@ -280,6 +282,7 @@ handleCreatingNote(event){
                     <p className="jobs-os"> <span className="bold"> OS:  </span>{job.os} </p>
                     <p className="jobs-issue"> <span className="bold"> Issue:  </span>{job.issue}</p>
                     <p className="jobs-issueNote"> <span className="bold"> Issue Details:  </span>{job.issue_speical}</p>
+                    <p className="jobs-issueNote"> <span className="bold"> Reported date:  </span>{job.created_date}</p>
                   </div>
               </div>
             }

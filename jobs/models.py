@@ -111,6 +111,7 @@ class Job(models.Model):
         default= Unknown
     )
     model_number = models.CharField(max_length=255, null=True, blank=True)
+    created_date = models.DateField(auto_now=False, auto_now_add=True, null=True)
     def __str__(self):
         return f"{self.client}, {self.hardware}: {self.issue[:50]}"
 

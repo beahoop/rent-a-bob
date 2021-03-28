@@ -6,12 +6,12 @@ from . import models
 
 
 class JobsListView(generics.ListCreateAPIView):
-    queryset = models.Job.objects.all()
+    queryset = models.Job.objects.all().order_by('created_date')
     serializer_class = JobSerializer
     permission_classes = [IsClientOrReadOnly]
 
 class JobsDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = models.Job.objects.all()
+    queryset = models.Job.objects.all().order_by('created_date')
     serializer_class = JobSerializer
 
 
