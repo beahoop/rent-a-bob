@@ -17,6 +17,16 @@ body {
  /* padding-bottom: 50px; */
  /* padding-top: 50px; */
 }
+.submited{
+  font-weight: bolder;
+  font-size: 4rem;
+  /* margin-left: 10%;
+  margin-top: 10%; */
+  height: 200px;
+  width: 200px;
+  color: #ED6242;
+  text-align: center;
+}
 
 .hide {
   display: none;

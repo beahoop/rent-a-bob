@@ -18,7 +18,7 @@ componentDidMount() {
           console.log('response', result)
 
           this.setState({
-            appointments: result
+            appointments: result,
           });
         },
         (error) => {
@@ -49,42 +49,38 @@ render(){
       </a>
     </div>
 ));
-
-
-// const search = this.state.clients.filter(client => {
-// if(this.state.search === null){
-//   return client
+//
+// const search = this.state.appointments.filter(appointment => {
+//  if(appointment.attendee_name.toLowerCase().includes(this.state.search.toLowerCase())){
+//   return appointment
 // }
-// else if(client.last_name.toLowerCase().includes(this.state.search.toLowerCase())){
-//   return client
-// }else if(client.first_name.toLowerCase().includes(this.state.search.toLowerCase())){
-//   return client
-// }else if(client.phone_number?.includes(this.state.search)){
-//   return client
-// }else if(client.email.toLowerCase().includes(this.state.search.toLowerCase())){
-//   return client
+// else if(appointment.attendee_email.toLowerCase().includes(this.state.search.toLowerCase())){
+//   return appointment
 // }
 // return console.log();
-// }).map((client) => (
-//   <tr  key={client.id} className="listImg">
-//     <td onClick={()=>this.chooseClient(client.id)}>
-//       <a href={`/client/${client.id}`}>
-//         {client.first_name}
-//       </a>
-//     </td>
-//     <td onClick={()=>this.chooseClient(client.id)}>
-//       <a href={`/client/${client.id}`}>
-//         {client.last_name}
-//       </a>
-//     </td>
-//     <td onClick={()=>this.chooseClient(client.id)}>
-//       <a href={`/client/${client.id}`}>
-//         {client.location}
-//       </a>
-//     </td>
-//   </tr>
+// }).map((appointment) => (
+//   <a href={`/job/${appointment.job}`}>
+//     <p>
+//       <span className="col-6 col-md-8 names">{appointment.dateTime_start}, {appointment.dateTime_end} </span>
+//       <span className="col-6 col-md-4 location"> {appointment.location} </span>
+//     </p>
+//   </a>
 //
 // ));
+// {this.state.search.length === 0
+//   ?
+//   null
+//   :
+//       {search}
+// }
+// 
+// <div class="my-3 input-group">
+//     <input id="search-focus" name="search" type="search" className="form-control"
+//       value={this.state.search}  onChange={this.handleInput} placeholder="Search for Client"/>
+//     <button type="button" className="form-control btn btn-primary" onClick={()=> this.setState({search: this.state.search})}>
+//     <i class="fas fa-search"></i>
+//   </button>
+// </div>
 
 
   return(
@@ -93,22 +89,17 @@ render(){
     <div class="row">
       <div className="client-name">
         <div className="row m-0">
-        <p className="col-6 col-lg-8">Clients</p>
+        <p className="col-6 col-lg-8">Appointments</p>
           <div className="col-6 col-lg-4" >
-            <div class="my-3 input-group">
-                <input id="search-focus" name="search" type="search" className="form-control"
-                  value={this.state.search}  onChange={this.handleInput} placeholder="Search for Client"/>
-                <button type="button" className="form-control btn btn-primary" onClick={()=> this.setState({search: this.state.search})}>
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
+
           </div>
         </div>
       </div>
     </div>
 
+
     <div className="A">
-      <div className="header sticky-top"> A </div>
+      <div className="header sticky-top"> Upcoming appointments </div>
       <div className="client-by-letter">{ clientA }</div>
     </div>
 

@@ -46,6 +46,7 @@ class JobForm extends Component{
     this.handleDate = this.handleDate.bind(this);
     this.handleshow = this.handleshow.bind(this);
     this.handleShowIssue = this.handleShowIssue.bind(this);
+    this.handleAppointmentSubmit = this.handleAppointmentSubmit.bind(this);
     this.chooseClient = this.chooseClient.bind(this);
     this.chooseJob = this.chooseJob.bind(this);
   }
@@ -154,8 +155,8 @@ fetch("/api/v1/clients/match/", {
     last_name: "",
     email: "",
     phone_number: "",
-    location: "", })
-    alert("Successful")
+    location: "", section: "Submit"})
+
     };
 
 
@@ -190,7 +191,7 @@ handleJobSubmit(event){
         } )
         .catch(error => console.log('Error:', error))
         .finally('I am always going to fire!');
-        this.setState({text: ""})
+        this.setState({text: "", section: "Submit"})
   };
 handleAppointmentSubmit(event){
     event.preventDefault();
@@ -223,12 +224,11 @@ handleAppointmentSubmit(event){
             return response.json()
             })
           .then(data => {
-            this.setState({client_id : data.id})
             console.log('Success. Message created!', data)
           } )
           .catch(error => console.log('Error:', error))
           .finally('I am always going to fire!');
-          this.setState({text: ""})
+          this.setState({text: "", section: "Submit"})
     };
 chooseClient(id){
   fetch(`/api/v1/clients/${id}/`)
@@ -340,9 +340,9 @@ render(){
     <>
     <div className="row">
       <div className="header-backend">
-        <button onClick={()=> this.setState({section:"Client"})} className="col-4 btn-add">+ Client </button>
-        <button onClick={()=> this.setState({section:"Job"})} className="col-4 btn-add">+ Job</button>
-        <button onClick={()=> this.setState({section:"Appointment"})} className="col-4 btn-add">+ Appointment</button>
+        <button onClick={()=> this.setState({section:"Client"})} className="col-3 btn-add">Client </button>
+        <button onClick={()=> this.setState({section:"Job"})} className="col-3 btn-add">Job</button>
+        <button onClick={()=> this.setState({section:"Appointment"})} className="col-6 btn-add">Appointment</button>
         </div>
     </div>
     {this.state.section === "Client"
@@ -549,6 +549,13 @@ render(){
             </form>
             :
             null }
+
+
+          {this.state.section === "Submit"
+          ?
+          <div className="submited mt-4 mx-auto"> Submited!</div>
+                :
+                null }
 
 
 
