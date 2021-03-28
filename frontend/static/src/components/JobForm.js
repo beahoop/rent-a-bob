@@ -401,7 +401,7 @@ render(){
 
         <div className="mb-3">
         <label htmlFor="Issue" className="mr-3 form-label">Issue</label>
-          <select className=" col-3 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleShowIssue} required>
+          <select className=" col-8 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleShowIssue} required>
              <option value="Not">Not Turning on</option>
              <option value="Unknown">I don't know</option>
               <option value="Other">Other</option>
@@ -471,10 +471,25 @@ render(){
                 <input type="text" className="form-control" id="first_name" name="first_name" value={this.state.job_name} onChange={this.handleInput} required/>
                 <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
                 <input type="text" className="mb-3 form-control" id="last_name" name="last_name" value={this.state.job_email} onChange={this.handleInput} required/>
-                <Datetime/>
+                  <label htmlFor="exampleInputEmail1" className="form-label">Title of Appointment</label>
+                  <input type="text" className="mb-3 form-control" id="Appointment_title" name="Appointment_title" value={this.state.Appointment_title} onChange={this.handleInput} placeholder="Deafult is Rent-A-Bob Appointment"/>
 
+                  <label htmlFor="exampleInputEmail1" className="form-label">Location</label>
+                  <input type="text" className="mb-3 form-control" id="Appointment_location" name="Appointment_location" value={this.state.Appointment_location} onChange={this.handleInput} placeholder="Deafult is Client's Address"/>
 
+                  <label htmlFor="exampleInputEmail1" className="form-label">Description</label>
+                  <input type="text" className="mb-3 form-control" id="Appointment_Description" name="Appointment_Description" value={this.state.Appointment_Description} onChange={this.handleInput} placeholder="Deafult is Rent-A-Bob Appointment"/>
+
+                    <label htmlFor="exampleInputEmail1" className="form-label">Comment for Client</label>
+                    <input type="text" className="mb-3 form-control" id="Appointment_Description" name="Appointment_Description" value={this.state.Appointment_Description} onChange={this.handleInput} placeholder="Deafult is none"/>
+
+                <label className="form-label">Start Date and Time</label>
+                      <Datetime className=""/>
+                <label className="form-label">End  Date and Time</label>
+                      <Datetime className=""/>
+                    
                 <button className="col-4 btn btn-orange" type="submit">Submit</button>
+
                 </div>
               </div>
             </form>
