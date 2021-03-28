@@ -36,6 +36,9 @@ handleInput(event){
 
 render(){
   //look up sort
+
+
+
   const clientA = this.state.clients.filter(client => {
     if(client.last_name[0] === "A" || client.last_name[0] ===  "a"){
       console.log(client.last_name[0]);
@@ -47,7 +50,7 @@ render(){
       <a href={`/client/${client.id}`}>
         <p>
           <span className="col-6 col-md-8 names">{client.last_name}, {client.first_name} </span>
-          <span className="col-6 col-md-4 location"> Location: {client.location} </span>
+          <span className="col-6 col-md-4 location"> {client.location} </span>
         </p>
       </a>
     </div>

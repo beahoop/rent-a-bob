@@ -6,7 +6,7 @@
 .flex{
   display: flex;
 }
-.spinner-border{
+.spinner-homepage{
   font-size: 6rem;
   height: 200px;
   width: 200px;
@@ -32,6 +32,12 @@ body {
 .btn-add {
   font-size: 2rem;
 }
+
+.dashboard{
+  font-size: 1rem;
+}
+
+
 
 /* //////////// Homepage */
 .homepage-nav{
@@ -268,10 +274,19 @@ float: left;
 .btn-orange{
   background-color: #ED6242;
   color: white;
-
 }
+
 .btn-orange:hover{
   background-color: #5694FF;
+  color: white;
+}
+.btn-job{
+  background-color:#5694FF;
+  color: white;
+}
+
+.btn-job:hover{
+  background-color: #ED6242;
   color: white;
 }
 /* ///////////////////////CONTACT US/ */
@@ -297,7 +312,7 @@ input[type="file"] {
     border: 1px solid #ccc;
     border-radius: 3px;
     display: inline-block;
-    padding: 35px 48px;
+    padding: 29% 75%;
     cursor: pointer;
     text-align: center;
     line-height: 30px;
@@ -474,6 +489,22 @@ input[type="file"] {
     font-size: 1rem;
     font-weight: 600;
   }
+  .dashboard{
+    font-size: .75rem;
+    font-weight: bolder;
+  }
+  .btn-job{
+    background-color:#5694FF;
+    color: white;
+    font-size: .75rem;
+  }
+
+  .btn-job:hover{
+    background-color: #ED6242;
+    color: white;
+    font-size: .75rem;
+  }
+
 
 }
 

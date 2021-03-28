@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
+import "react-datetime/css/react-datetime.css";
+import Datetime from "react-datetime";
 
 class JobForm extends Component{
   constructor(props){
     super(props);
     this.state = {
-      section: 'Job',
+      section: 'Appointment',
       clients: [],
+      jobs: [],
+      job_id: '',
+      job_name: '',
+      job_email: '',
       hardwareSelection: "None",
       clientAdded: false,
       job_status: 'New',
@@ -33,6 +39,7 @@ class JobForm extends Component{
     this.handleshow = this.handleshow.bind(this);
     this.handleShowIssue = this.handleShowIssue.bind(this);
     this.chooseClient = this.chooseClient.bind(this);
+    this.chooseJob = this.chooseJob.bind(this);
   }
 
 componentDidMount() {
@@ -50,8 +57,21 @@ componentDidMount() {
           });
         }
       )
+      fetch("/api/v1")
+        .then(res => res.json())
+        .then(
+          (result) => {
+            this.setState({
+              jobs: result
+            });
+          },
+          (error) => {
+            this.setState({
+              error
+            });
+          }
+        )
   }
-
 filterHardware(event){
   console.log("I'm firing");
   const hardwareType = event.target.dataset.type;
@@ -158,31 +178,54 @@ handleJobSubmit(event){
         .finally('I am always going to fire!');
         this.setState({text: ""})
   };
-  chooseClient(id){
-    fetch(`/api/v1/clients/${id}/`)
-        .then(res => res.json())
-        .then(
-          (result) => {
-            console.log('response', result)
-            this.setState({
-              client: result,
-              jobs: result.jobs,
-              first_name: result.first_name,
-              last_name: result.last_name,
-              email: result.email,
-              phone_number:result.phone_number,
-              location: result.location,
-              client_id: result.id,
-              search: "",
-            });
-          },
-          (error) => {
-            this.setState({
-              error
-            });
-          }
-        )
-    }
+chooseClient(id){
+  fetch(`/api/v1/clients/${id}/`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log('response', result)
+          this.setState({
+            client: result,
+            first_name: result.first_name,
+            last_name: result.last_name,
+            email: result.email,
+            phone_number:result.phone_number,
+            location: result.location,
+            client_id: result.id,
+            search: "",
+            showSearch: "hide",
+          });
+        },
+        (error) => {
+          this.setState({
+            error
+          });
+        }
+      )
+  }
+chooseJob(id){
+  console.log("hitting me");
+  fetch(`/api/v1/edit/${id}`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log('response', result)
+          this.setState({
+            client: result,
+            job_id: result.id,
+            job_name: result.clientname,
+            job_email: result.clientemail,
+            search: "",
+            showSearch: "hide",
+          });
+        },
+        (error) => {
+          this.setState({
+            error
+          });
+        }
+      )
+  }
 
 search(){
   this.setState({search: this.state.search})
@@ -200,10 +243,7 @@ search(){
 render(){
 
   const search = this.state.clients.filter(client => {
-  if(this.state.search === null){
-    return client
-  }
-  else if(client.last_name.toLowerCase().includes(this.state.search.toLowerCase())){
+  if(client.last_name.toLowerCase().includes(this.state.search.toLowerCase())){
     return client
   }else if(client.first_name.toLowerCase().includes(this.state.search.toLowerCase())){
     return client
@@ -222,18 +262,35 @@ render(){
     </tr>
 
   ));
-//   Buttons for
-//     add new client
-//     add new job ->
-//       search for existing client to add job too.
-//       the add the new job.
+  const searchJobs = this.state.jobs.filter(job => {
+  if(this.state.search === job.clientname){
+    return job
+  }else if(job.clientname.toLowerCase().includes(this.state.search.toLowerCase())){
+    return job
+  }else if(job.hardware.toLowerCase().includes(this.state.search.toLowerCase())){
+    return job
+  }else if(job.issue.toLowerCase().includes(this.state.search.toLowerCase())){
+    return job
+  }
+  return console.log();
+  }).map((job) => (
+    <tr  key={job.id} className="listImg">
+        <td onClick={()=>this.chooseJob(job.id)}>{job.clientname}  </td>
+        <td onClick={()=>this.chooseJob(job.id)}> {job.hardware} </td>
+        <td onClick={()=>this.chooseJob(job.id)}>{job.issue} </td>
+        <td onClick={()=>this.chooseJob(job.id)}>{job.created_date} </td>
+        <td onClick={()=>this.chooseJob(job.id)}><button className="btn  btn-orange">Add Job</button></td>
+    </tr>
+  ));
 
   return(
     <>
     <div className="row">
       <div className="header-backend">
-        <button onClick={()=> this.setState({section:"Client"})} className="col-6 btn-add">Add New Client </button>
-        <button onClick={()=> this.setState({section:"Job"})} className="col-6 btn-add">Add New Job</button></div>
+        <button onClick={()=> this.setState({section:"Client"})} className="col-4 btn-add">+ Client </button>
+        <button onClick={()=> this.setState({section:"Job"})} className="col-4 btn-add">+ Job</button>
+        <button onClick={()=> this.setState({section:"Appointment"})} className="col-4 btn-add">+ Appointment</button>
+        </div>
     </div>
     {this.state.section === "Client"
       ?
@@ -294,82 +351,141 @@ render(){
       </div>
     </form>
       :
-        <form onSubmit={this.handleJobSubmit}>
-          <div className="row">
-            <div className="col-10 mx-auto">
-              <div className="row" >
-                <div className="my-3 input-group">
-                    <input id="search-focus" name="search" type="search" className="form-control"
-                      value={this.state.search}  onChange={this.handleInput} placeholder="Search for Client"/>
-                    <button type="button" className="btn btn-primary" onClick={this.search}>
-                    <i className="fas fa-search"></i>
-                  </button>
-                </div>
-                <div className={this.state.showSearch}>
-                <table className="table search-results">
-                <thead>
-                  <tr>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Add Client</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    {search}
-                </tbody>
-                </table>
-              </div>
-              </div>
-
-              <label htmlFor="exampleInputEmail1" className="form-label">First Name</label>
-              <input type="text" className="form-control" id="first_name" name="first_name" value={this.state.first_name} onChange={this.handleInput} required/>
-              <label htmlFor="exampleInputEmail1" className="form-label">Last Name</label>
-              <input type="text" className="mb-3 form-control" id="last_name" name="last_name" value={this.state.last_name} onChange={this.handleInput} required/>
-
-
-            <div className="mb-3">
-              <label htmlFor="InputEmail1" className="mr-3 form-label">Hardware</label>
-                <select className="col-3 custom-select custom-select-sm"  id="hardware" name="hardware" value={this.state.hardware} onChange={this.handleInput} required>
-                   <option value="Computer">Computer</option>
-                   <option value="Printer">Printer</option>
-                   <option value="Other">Other</option>
-                 </select>
-            </div>
-
-            <div className="mb-3">
-            <label htmlFor="Issue" className="mr-3 form-label">Issue</label>
-              <select className=" col-3 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleShowIssue} required>
-                 <option value="Not">Not Turning on</option>
-                 <option value="Unknown">I don't know</option>
-                  <option value="Other">Other</option>
-               </select>
-
-              <div className={this.state.show}>
-              <label htmlFor="Number" className="form-label">Issue Description </label>
-                  <input type="text" className="form-control" id="issue_speical" name="issue_speical" value={this.state.issue_speical} onChange={this.handleInput} />
-            </div>
-            </div>
-
-              <div className="mb-3">
-                <label htmlFor="InputEmail1" className="mr-3 form-label">OS</label>
-                  <select className=" col-3 custom-select custom-select-sm"  id="os" name="os" value={this.state.os} onChange={this.handleInput} required>
-                     <option value="Mac">Mac</option>
-                     <option value="PC">PC</option>
-                     <option value="Unknown">I don't know</option>
-                   </select>
-              </div>
-
-              <div className="mb-3">
-                <label htmlFor="InputEmail1" className="form-label">Model Number</label>
-                  <input type="text" className="form-control" id="model_number" name="model_number" value={this.state.model_number} onChange={this.handleInput} required/>
-              </div>
-              <button className="col-4 btn btn-orange" type="submit">Submit</button>
-              </div>
-            </div>
-          </form>
-
+      null
     }
+
+    {this.state.section === "Job"
+    ?
+    <form onSubmit={this.handleJobSubmit}>
+      <div className="row">
+        <div className="col-10 mx-auto">
+          <div className="row" >
+            <div className="my-3 input-group">
+                <input id="search-focus" name="search" type="search" className="form-control"
+                  value={this.state.search}  onChange={this.handleInput} placeholder="Search for Client"/>
+                <button type="button" className="btn btn-primary" onClick={this.search}>
+                <i className="fas fa-search"></i>
+              </button>
+            </div>
+            <div className={this.state.showSearch}>
+            <table className="table search-results">
+            <thead>
+              <tr>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Location</th>
+                <th scope="col">Add Client</th>
+              </tr>
+            </thead>
+            <tbody>
+                {search}
+            </tbody>
+            </table>
+          </div>
+          </div>
+
+          <label htmlFor="exampleInputEmail1" className="form-label">First Name</label>
+          <input type="text" className="form-control" id="first_name" name="first_name" value={this.state.first_name} onChange={this.handleInput} required/>
+          <label htmlFor="exampleInputEmail1" className="form-label">Last Name</label>
+          <input type="text" className="mb-3 form-control" id="last_name" name="last_name" value={this.state.last_name} onChange={this.handleInput} required/>
+
+
+        <div className="mb-3">
+          <label htmlFor="InputEmail1" className="mr-3 form-label">Hardware</label>
+            <select className="col-3 custom-select custom-select-sm"  id="hardware" name="hardware" value={this.state.hardware} onChange={this.handleInput} required>
+               <option value="Computer">Computer</option>
+               <option value="Printer">Printer</option>
+               <option value="Other">Other</option>
+             </select>
+        </div>
+
+        <div className="mb-3">
+        <label htmlFor="Issue" className="mr-3 form-label">Issue</label>
+          <select className=" col-3 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleShowIssue} required>
+             <option value="Not">Not Turning on</option>
+             <option value="Unknown">I don't know</option>
+              <option value="Other">Other</option>
+           </select>
+
+          <div className={this.state.show}>
+          <label htmlFor="Number" className="form-label">Issue Description </label>
+              <input type="text" className="form-control" id="issue_speical" name="issue_speical" value={this.state.issue_speical} onChange={this.handleInput} />
+        </div>
+        </div>
+
+          <div className="mb-3">
+            <label htmlFor="InputEmail1" className="mr-3 form-label">OS</label>
+              <select className=" col-3 custom-select custom-select-sm"  id="os" name="os" value={this.state.os} onChange={this.handleInput} required>
+                 <option value="Mac">Mac</option>
+                 <option value="PC">PC</option>
+                 <option value="Unknown">I don't know</option>
+               </select>
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="InputEmail1" className="form-label">Model Number</label>
+              <input type="text" className="form-control" id="model_number" name="model_number" value={this.state.model_number} onChange={this.handleInput} required/>
+          </div>
+          <button className="col-4 btn btn-orange" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+      :
+      null }
+
+
+      {this.state.section === "Appointment"
+      ?
+          <form onSubmit={this.handleJobSubmit}>
+            <div className="row">
+              <div className="col-10 mx-auto">
+                <div className="row" >
+                  <div className="my-3 input-group">
+                      <input id="search-focus" name="search" type="search" className="form-control"
+                        value={this.state.search}  onChange={this.handleInput} placeholder="Search for Job"/>
+                      <button type="button" className="btn btn-primary" onClick={this.search}>
+                      <i className="fas fa-search"></i>
+                    </button>
+                  </div>
+                  <div className={this.state.showSearch}>
+                      <table className="table search-results">
+                      <thead>
+                        <tr>
+                          <th scope="col">Client Name</th>
+                          <th scope="col">Hardware</th>
+                          <th scope="col">Issue</th>
+                          <th scope="col">Date Reported</th>
+                          <th scope="col">Add Job</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          { searchJobs }
+                      </tbody>
+                      </table>
+
+                </div>
+                </div>
+
+
+                <label htmlFor="exampleInputEmail1" className="form-label">Client Last Name</label>
+                <input type="text" className="form-control" id="first_name" name="first_name" value={this.state.job_name} onChange={this.handleInput} required/>
+                <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
+                <input type="text" className="mb-3 form-control" id="last_name" name="last_name" value={this.state.job_email} onChange={this.handleInput} required/>
+                <Datetime/>
+
+
+                <button className="col-4 btn btn-orange" type="submit">Submit</button>
+                </div>
+              </div>
+            </form>
+            :
+            null }
+
+
+
+
+
+
     </>
   )
 }

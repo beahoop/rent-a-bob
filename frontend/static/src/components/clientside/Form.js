@@ -348,7 +348,7 @@ render(){
       {this.state.spinner ?
         <div className="row">
           <div className="col-2 mx-auto">
-        <div className="spinner-border"  role="status">
+        <div className="spinner-homepage"  role="status">
           <span class="sr-only">Loading...</span>
             </div>
           </div>

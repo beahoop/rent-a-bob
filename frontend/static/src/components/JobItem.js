@@ -221,7 +221,7 @@ handleCreatingNote(event){
                 <p className="client-location"> <span className="bold">Address:</span>  {client.address_street} </p>
                 <p className="client-location"> <span className="bold">Phone:</span>  {client.phone_number}</p>
                 <p className="client-location"> <span className="bold">Email:</span>  {client.email}</p>
-                <a href={`/client/${job.client}`}>
+                <a href={`/client/${client.id}`}>
                   <p>{`See or Edit ${client.first_name} ${client.last_name}'s profile`}</p>
                 </a>
               </div>
@@ -231,8 +231,6 @@ handleCreatingNote(event){
               <div className="row client-container">
                 <div className="client-jobs-header">Jobs</div>
                   <div className="client-info">
-
-
                       <div className="mb-3">
                         <label className="mr-3 form-label bold">Job Status:</label>
                           <select className="col-3 custom-select custom-select-sm"  id="job_status" name="job_status" value={this.state.job_status} onChange={this.handleInput} onKeyUp={(event) => this.handleEdit(event)} required>
@@ -262,15 +260,30 @@ handleCreatingNote(event){
 
 
                     <label htmlFor="Issue" className="mr-3 form-label bold">Issue</label>
-                      <select className=" col-3 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleInput} onKeyUp={(event) => this.handleEdit(event)} required>
-                         <option value="Not">Not Turning on</option>
-                         <option value="Unknown">I don't know</option>
-                          <option value="Other">Other</option>
+                      <select className=" col-7 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleInput} onKeyUp={(event) => this.handleEdit(event)} required>
+                        <option value="NoOn">Doesn’t turn on at all</option>
+                        <option value="NoScreen">Turns on but nothing on the screen</option>
+                        <option value="BlurryScreen">Screen on but faint/blurry/lines/etc</option>
+                        <option value="NotNormalStartup"> Screen on but not the normal startup screen</option>
+                        <option value="NoInternet"> Computer on but won’t connect to the internet/browser won’t go anywhere</option>
+                        <option value="SlowComputer"> Very slow during startup or once up</option>
+                        <option value="NotMyHomePage"> Goes to strange websites/home page is different</option>
+                        <option value="Virus">Virus (malware) is causing problems</option>
+                        <option value="NoEmail"> No email or passwords are wrong</option>
+                        <option value="HackedEmail"> Email has been hacked</option>
+                        <option value="HelpBuy"> Buy new computer and setup</option>
+                        <option value="SetUpComputer"> Setup new computer already purchased</option>
+                        <option value="Transfer">Transfer data from old computer to new or setup new backup plan</option>
+                        <option value="Wipe"> Wipe old computer/remove hard drive</option>
+                        <option value="Not turning on">Not Turning on</option>
+                        <option value="Unknown">I don't know</option>
+                        <option value="Other">Other</option>
                        </select>
                        <div>
-                       <label htmlFor="Number" className="form-label">Issue Description </label>
-                           <input type="text" className="form-control" id="issue_speical" name="issue_speical" value={this.state.issue_speical} onChange={this.handleInput} onKeyUp={(event) => this.handleEdit(event)} />
+                       <label htmlFor="Number" className="form-label bold">Issue Description </label>
+                           <input type="text" className="col-8 form-control" id="issue_speical" name="issue_speical" value={this.state.issue_speical} onChange={this.handleInput} onKeyUp={(event) => this.handleEdit(event)} />
                         </div>
+                      <p className="jobs-issueNote"> <span className="bold"> Reported date:  </span>{job.created_date}</p>
                 </div>
               </div>
               :
@@ -309,32 +322,35 @@ handleCreatingNote(event){
                   }
                 </div>
                 </div>
-                <form className="file-form row" onSubmit={this.handleCreatingNote}>
+
+                <form className="file-form" onSubmit={this.handleCreatingNote}>
+                  <div className="row">
                   {!this.state.image && this.state.isAdding
                     ?
-                  <span>
-                    <label htmlFor="file-upload" className="col-4 custom-file-upload">
+                  <span className="col-4  ml-4">
+                    <label htmlFor="file-upload" className="custom-file-upload">
                       <p className="imagePlus"> + </p>
-                      <p className="imageText"> Add photo</p>
+                      <p className="imageText"> Add Photo</p>
                     </label>
                     <input id="file-upload" type="file" name='image'  onChange={this.handleImage}/>
                   </span>
                   :
                   null
                 }
-                {this.state.image && <img className="pre-img" src={this.state.preview} alt="preview"/>}
+                {this.state.image && <img className="col-12 col-md-4 pre-img" src={this.state.preview} alt="preview"/>}
                 {!this.state.isAdding
                   ?
                   null
                   :
-                  <div className="col-6 note-addNote">
-                    <input type="text" id="note-text" name="text"
+                  <div className="col-10 ml-4 col-md-6 note-addNote">
+                    <textarea type="text" className="form-control rounded-0" rows="3" id="note-text" name="text"
                       value={this.state.text} onChange={this.handleInput}
                       placeholder="Note" required/>
                     <label htmlFor="note-text"></label><br/>
                     <button className="btn btn-info" type="submit">Submit Note</button>
                   </div>
                 }
+                </div>
             </form>
               {!this.state.showNotes
                 ?

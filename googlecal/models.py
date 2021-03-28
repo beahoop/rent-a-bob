@@ -1,10 +1,12 @@
 from django.db import models
 from django.db import models
+from jobs.models import Job
 
 # Create your models here.
 
 class Event(models.Model):
     #locations
+    job =  models.ForeignKey(Job, related_name="event", on_delete=models.CASCADE, null=True)
     summary = models.CharField(max_length=100, blank=True, null=True)
     location = models.CharField(max_length=300, blank=True, null=True)
     description = models.CharField(max_length=300, blank=True, null=True)

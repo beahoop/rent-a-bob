@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Job, Note
+from googlecal.serializers import EventsSerializer
 
 class NoteSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -11,6 +12,7 @@ class JobSerializer(serializers.ModelSerializer):
     clientname = serializers.ReadOnlyField(source='client.last_name')
     clientemail= serializers.ReadOnlyField(source='client.email')
     notes = NoteSerializer(many=True, read_only=True)
+    event = EventsSerializer(many=True, read_only=True)
 
     class Meta:
         model = Job

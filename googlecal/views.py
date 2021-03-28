@@ -25,7 +25,11 @@ calendar_id_rentabob = os.environ.get('GOOGLE_CALENDAR_ID')
 
 
 class EventsListView(generics.ListCreateAPIView):
-    queryset = models.Event.objects.all() #.order_by('last_name')
+    queryset = models.Event.objects.all().order_by('dateTime_start')
+    serializer_class = EventsSerializer
+
+class EventsDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Event.objects.all().order_by('dateTime_start')
     serializer_class = EventsSerializer
 
 

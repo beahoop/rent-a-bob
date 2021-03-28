@@ -46,7 +46,7 @@ render(){
       <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
       <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
         <td><a href={`/job/${job.id}`}>{job.created_date}  </a></td>
-        <td><a href={`/job/${job.id}`}><button className="btn  btn-orange">View Job</button> </a></td>
+        <td><a href={`/job/${job.id}`}><button className="btn  btn-job">View Job</button> </a></td>
     </tr>
 ));
 const openjobs = this.state.jobs.filter(job => {
@@ -60,7 +60,7 @@ const openjobs = this.state.jobs.filter(job => {
     <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
     <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
       <td><a href={`/job/${job.id}`}>{job.created_date}  </a></td>
-      <td><a href={`/job/${job.id}`}><button className="btn  btn-orange">View Job</button> </a></td>
+      <td><a href={`/job/${job.id}`}><button className="btn  btn-job">View Job</button> </a></td>
   </tr>
 ));
 const alljobs = this.state.jobs.map((job) => (
@@ -69,7 +69,7 @@ const alljobs = this.state.jobs.map((job) => (
     <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
     <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
       <td><a href={`/job/${job.id}`}>{job.created_date}  </a></td>
-      <td><a href={`/job/${job.id}`}><button className="btn  btn-orange">View Job</button> </a></td>
+      <td><a href={`/job/${job.id}`}><button className="btn  btn-job">View Job</button> </a></td>
   </tr>
 ));
 
@@ -77,6 +77,8 @@ const search = this.state.jobs.filter(job => {
 if(this.state.search === job.clientname){
   return job
 }else if(job.clientname.toLowerCase().includes(this.state.search.toLowerCase())){
+  return job
+}else if(job.clientemail.toLowerCase().includes(this.state.search.toLowerCase())){
   return job
 }else if(job.hardware.toLowerCase().includes(this.state.search.toLowerCase())){
   return job
@@ -90,10 +92,8 @@ return console.log();
     <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
     <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
     <td><a href={`/job/${job.id}`}>{job.created_date}  </a></td>
-    <td><a href={`/job/${job.id}`}><button className="btn  btn-orange">View Job</button> </a></td>
+    <td><a href={`/job/${job.id}`}><button className="btn  btn-job">View Job</button> </a></td>
   </tr>
-
-
 ));
 
   return(
@@ -116,7 +116,7 @@ return console.log();
     </div>
     {this.state.section === "New"
       ?
-    <div class="row">
+    <div class="row dashboard">
       <table className="table search-results">
       <thead>
         <tr>
@@ -148,7 +148,7 @@ return console.log();
 
     {this.state.section === "Open"
       ?
-    <div class="row">
+    <div class="row dashboard">
 
         <table className="table search-results">
         <thead>
@@ -168,7 +168,7 @@ return console.log();
     : null }
     {this.state.section === "All"
       ?
-    <div class="row">
+    <div class="row dashboard">
         <table className="table search-results">
         <thead>
           <tr>
