@@ -72,8 +72,15 @@ const alljobs = this.state.jobs.map((job) => (
       <td><a href={`/job/${job.id}`}><button className="btn  btn-orange">View Job</button> </a></td>
   </tr>
 ));
+
 const search = this.state.jobs.filter(job => {
 if(this.state.search === job.clientname){
+  return job
+}else if(job.clientname.toLowerCase().includes(this.state.search.toLowerCase())){
+  return job
+}else if(job.hardware.toLowerCase().includes(this.state.search.toLowerCase())){
+  return job
+}else if(job.issue.toLowerCase().includes(this.state.search.toLowerCase())){
   return job
 }
 return console.log('nope');
