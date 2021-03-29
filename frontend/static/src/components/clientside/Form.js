@@ -292,7 +292,8 @@ render(){
         :
         null
       }
-
+      {this.state.hardwareSelection !== "None" && this.state.clientAdded && !this.state.jobAdded
+        ?
         <form onSubmit={this.handleJobSubmit}>
         <div className="col col-md-10 mx-auto">
           <p id="form" className="form-title">Let us know more about the issue.
@@ -327,7 +328,7 @@ render(){
             </div>
             </div>
             <div className="mb-3">
-            <label for="InputEmail1" className="form-label">OS</label>
+            <label for="InputEmail1" className="form-label">Operating System</label><br/>
               <select className=" col col-md-3 custom-select custom-select-sm"  id="os" name="os" value={this.state.os} onChange={this.handleInput} required>
                  <option value="Mac">Mac</option>
                  <option value="PC">PC</option>
@@ -344,11 +345,14 @@ render(){
             <button className="btn btn-orange" type="submit">Submit</button>
         </div>
         </form>
+        :
+        null
+      }
 
       {this.state.spinner ?
         <div className="row">
           <div className="col-2 mx-auto">
-        <div className="spinner-homepage"  role="status">
+        <div className="spinner-border spinner-homepage"  role="status">
           <span class="sr-only">Loading...</span>
             </div>
           </div>
