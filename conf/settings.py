@@ -148,12 +148,16 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/New_York'
+# Hooper,2021-03-06T00:00:00
+# Hooper,2021-03-06T00:00:00-05:00
+# DATETIME_FORMAT="%Y-%m-%d%H:%M:%S"
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+#I changed this to False
+USE_TZ = False
 
 
 REST_FRAMEWORK = {

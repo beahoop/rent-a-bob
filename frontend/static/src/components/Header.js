@@ -23,7 +23,7 @@ return (
        ?
          <span>
            <span className="navbar-2 navbar-brand">< NavLink to="/">Rent-a-Bob</NavLink></span>
-           <span className="navbar-1 navbar-brand ">< NavLink to="/dashboard/">Dashboard</NavLink></span>
+           <span className="navbar-1 navbar-brand ">< NavLink to="/dashboard/">Jobs</NavLink></span>
            <span className="navbar-1 navbar-brand ">< NavLink to="/clients/">Clients</NavLink></span>
           <span className="navbar-1 navbar-brand ">< NavLink to="/appointments/">Appointments</NavLink></span>
            <span className="navbar-1 navbar-brand">< NavLink to="/createjob/">+</NavLink></span>

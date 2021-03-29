@@ -376,6 +376,10 @@ input[type="file"] {
 .location{
   float: right;
 }
+
+.location-2{
+  float: right;
+}
 /* //////////////////////////////CLIENT DETAIL/ */
 
 /* .client-container{
@@ -467,7 +471,13 @@ input[type="file"] {
   }
 } */
 /* //hide the other products when on moblie */
+@media (max-width: 980px) {
+  .location-2{
+    float:none;
+    /* float: right; */
+  }
 
+}
 
 @media (max-width: 750px) {
   .review-title{
@@ -482,6 +492,7 @@ input[type="file"] {
   }
 
 }
+
 @media (max-width: 650px) {
   .card:not(:first-child){
     display: none;
@@ -517,7 +528,10 @@ input[type="file"] {
   }
 
 
+
 }
+
+
 
 @media (max-width: 500px) {
   .navbar-1{

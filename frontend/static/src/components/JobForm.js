@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 import "react-datetime/css/react-datetime.css";
 import Datetime from "react-datetime";
+import moment from 'moment';
 
 class JobForm extends Component{
   constructor(props){
@@ -43,7 +44,8 @@ class JobForm extends Component{
     this.handleClientSubmit = this.handleClientSubmit.bind(this);
     this.handleJobSubmit = this.handleJobSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    this.handleDate = this.handleDate.bind(this);
+    this.handleStartDate = this.handleStartDate.bind(this);
+    this.handleEndDate = this.handleEndDate.bind(this);
     this.handleshow = this.handleshow.bind(this);
     this.handleShowIssue = this.handleShowIssue.bind(this);
     this.handleAppointmentSubmit = this.handleAppointmentSubmit.bind(this);
@@ -82,8 +84,13 @@ componentDidMount() {
         )
   }
 
-handleDate(date){
-   this.setState({date: date._d});
+handleStartDate(date){
+  this.setState({dateTime_start: date._d});
+   // 2021-04-05T07:00:00
+   // Wed Mar 24 2021 12:00:00 GMT-0400 (Eastern Daylight Time)
+};
+handleEndDate(date){
+   this.setState({dateTime_end: date._d});
    // 2021-04-05T07:00:00
    // Wed Mar 24 2021 12:00:00 GMT-0400 (Eastern Daylight Time)
 };
@@ -195,13 +202,15 @@ handleJobSubmit(event){
   };
 handleAppointmentSubmit(event){
     event.preventDefault();
+    const start_date = moment(this.state.dateTime_start).format('YYYY-MM-DDThh:mm:ss');
+    const end_date = moment(this.state.dateTime_end).format('YYYY-MM-DDThh:mm:ss');
     const appointment = {
       job: this.state.job_id,
       summary: this.state.Appointment_title,
       location: this.state.Appointment_location,
       description: this.state.Appointment_Decomment,
-      dateTime_start: this.state.date,
-      dateTime_end: this.state.date,
+      dateTime_start: start_date,
+      dateTime_end: end_date,
       timeZone: 'American/New_York',
       attendee_name: this.state.job_name,
       attendee_comment: this.state.Appointment_comment,
@@ -538,9 +547,9 @@ render(){
 
                 <label className="form-label">Start Date and Time</label>
 
-                      <p name="dateTime_start" value={this.state.dateTime_start} onChange={this.handleDate}><Datetime/> </p>
+                <Datetime name="dateTime_start" value={this.state.dateTime_start} onChange={this.handleStartDate}/>
                 <label className="form-label">End  Date and Time</label>
-                        <Datetime   dateFormat="DD-MM-YY" name="dateTime_end" value={this.state.dateTime_end} onChange={this.handleDate}/>
+                <Datetime   dateFormat="DD-MM-YY" name="dateTime_end" value={this.state.dateTime_end} onChange={this.handleEndDate}/>
 
                 <button className="col-4 btn btn-orange" type="submit" >Submit</button>
 

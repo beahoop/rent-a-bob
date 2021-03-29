@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 class Appointments extends Component{
   constructor(props){
@@ -34,17 +35,20 @@ handleInput(event){
 }
 
 
+
+
 render(){
   //look up sort
 
 
 
   const clientA = this.state.appointments.map((appointment) => (
-    <div key={appointment.id}>
+    <div className="" key={appointment.id}>
       <a href={`/job/${appointment.job}`}>
         <p>
-          <span className="col-6 col-md-8 names">{appointment.dateTime_start}, {appointment.dateTime_end} </span>
-          <span className="col-6 col-md-4 location"> {appointment.location} </span>
+          <span className="col-2 col-md-4 location-2"> { moment(appointment.dateTime_start).format('ddd, MMMM Do @ h:mm a')} </span>
+            <span className="col-2 col-md-4 names">{appointment.attendee_name} </span>
+
         </p>
       </a>
     </div>
@@ -73,7 +77,7 @@ render(){
 //   :
 //       {search}
 // }
-// 
+//
 // <div class="my-3 input-group">
 //     <input id="search-focus" name="search" type="search" className="form-control"
 //       value={this.state.search}  onChange={this.handleInput} placeholder="Search for Client"/>
