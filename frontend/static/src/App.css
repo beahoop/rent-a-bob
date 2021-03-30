@@ -103,8 +103,9 @@ float: left;
 
 .divider-words img{
   height: 100%;
+  margin-top: 5%;
+  margin-left: 10%;
 }
-
 .divider-top {
   height: 100%;
   width: 100%;
@@ -480,6 +481,20 @@ input[type="file"] {
 }
 
 @media (max-width: 750px) {
+  .divider-words{
+    padding: -10px;
+    height: 70%;
+  }
+  .divider-words img{
+    margin-top: 10%;
+    margin-left: -5%;
+  }
+  .divider-button{
+    margin-top: 100px;
+    margin-left: 50%;
+    margin-right: 10px;
+  }
+
   .review-title{
     font-size: 2rem;
   }
@@ -494,6 +509,13 @@ input[type="file"] {
 }
 
 @media (max-width: 650px) {
+  .divider-words{
+    /* padding-top: 100px; */
+    height: 55%;
+    /* top: 100px;
+    position: absolute; */
+  }
+
   .card:not(:first-child){
     display: none;
   }
