@@ -44,11 +44,11 @@ class ListEvents(APIView):
               'description': request.data["description"],
               'start': {
 
-                'dateTime': (request.data["dateTime_start"]+("Z")),
+                'dateTime': request.data["dateTime_start"],
                 'timeZone': "America/New_York",
               },
               'end': {
-                'dateTime': (request.data["dateTime_end"]+("Z")),
+                'dateTime': request.data["dateTime_end"],
                 'timeZone': "America/New_York",
               },
               'attendees': [
@@ -59,6 +59,7 @@ class ListEvents(APIView):
                 },
               ],
             }
+            # import pdb; pdb.set_trace()
              # generate a google calendar event
             maxAttendees = 5
             sendNotification = True

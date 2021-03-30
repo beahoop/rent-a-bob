@@ -202,8 +202,8 @@ handleJobSubmit(event){
   };
 handleAppointmentSubmit(event){
     event.preventDefault();
-    const start_date = moment(this.state.dateTime_start).format('YYYY-MM-DDThh:mm:ss');
-    const end_date = moment(this.state.dateTime_end).format('YYYY-MM-DDThh:mm:ss');
+    const start_date = moment(this.state.dateTime_start).format('YYYY-MM-DDTHH:mm:ss');
+    const end_date = moment(this.state.dateTime_end).format('YYYY-MM-DDTHH:mm:ss');
     const appointment = {
       job: this.state.job_id,
       summary: this.state.Appointment_title,
