@@ -13,7 +13,7 @@ from django.http import Http404
 from .serializers import EventsSerializer
 from . import models
 
-# 
+#
 # GOOGLE_APPLICATION_CREDENTIALS = 'google-credentials.json'
 # API_NAME = 'calendar'
 # API_VERISON = 'v3'
@@ -33,9 +33,9 @@ class EventsDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = EventsSerializer
 
 
-# class ListEvents(APIView):
-#     queryset = models.Event.objects.all() #.order_by('last_name')
-#     serializer_class = EventsSerializer
+class ListEvents(APIView):
+    queryset = models.Event.objects.all() #.order_by('last_name')
+    serializer_class = EventsSerializer
 #
 #     GOOGLE_APPLICATION_CREDENTIALS = 'google-credentials.json'
 #     API_NAME = 'calendar'
