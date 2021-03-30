@@ -3,6 +3,9 @@
 *{
   font-family: 'Roboto', cursive;
 }
+.table-2{
+  border: none;
+}
 .flex{
   display: flex;
 }
@@ -39,9 +42,7 @@ body {
   font-weight: bolder;
 }
 
-.btn-add {
-  font-size: 2rem;
-}
+
 
 .dashboard{
   font-size: 1rem;
@@ -446,14 +447,13 @@ input[type="file"] {
 .header-backend{
   background-color: #54B6C8;
   color: white;
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 .btn-add {
   color: white;
   font-size: 1em;
-  padding: 10px 30px;
   font-weight: bold;
   border: none;
   background-color: inherit;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 class Dashboard extends Component{
   constructor(props){
@@ -45,8 +46,8 @@ render(){
       <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
       <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
       <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
-        <td><a href={`/job/${job.id}`}>{job.created_date}  </a></td>
-        <td><a href={`/job/${job.id}`}><button className="btn  btn-job">View Job</button> </a></td>
+      <td><a href={`/job/${job.id}`}>{ moment(job.created_date).format('ddd, MMMM Do')}  </a></td>
+      <td><a href={`/job/${job.id}`}><button className="btn  btn-job">View Job</button> </a></td>
     </tr>
 ));
 const openjobs = this.state.jobs.filter(job => {
@@ -59,8 +60,8 @@ const openjobs = this.state.jobs.filter(job => {
     <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
     <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
     <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
-      <td><a href={`/job/${job.id}`}>{job.created_date}  </a></td>
-      <td><a href={`/job/${job.id}`}><button className="btn  btn-job">View Job</button> </a></td>
+    <td><a href={`/job/${job.id}`}>{ moment(job.created_date).format('ddd, MMMM Do')}  </a></td>
+    <td><a href={`/job/${job.id}`}><button className="btn  btn-job">View Job</button> </a></td>
   </tr>
 ));
 const alljobs = this.state.jobs.map((job) => (
@@ -68,7 +69,7 @@ const alljobs = this.state.jobs.map((job) => (
     <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
     <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
     <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
-      <td><a href={`/job/${job.id}`}>{job.created_date}  </a></td>
+      <td><a href={`/job/${job.id}`}>{ moment(job.created_date).format('ddd, MMMM Do')}  </a></td>
       <td><a href={`/job/${job.id}`}><button className="btn  btn-job">View Job</button> </a></td>
   </tr>
 ));
@@ -91,7 +92,7 @@ return console.log();
     <td><a href={`/job/${job.id}`}>{job.clientname}   </a></td>
     <td><a href={`/job/${job.id}`}> {job.hardware}  </a></td>
     <td><a href={`/job/${job.id}`}>{job.issue}  </a></td>
-    <td><a href={`/job/${job.id}`}>{job.created_date}  </a></td>
+    <td><a href={`/job/${job.id}`}>{ moment(job.created_date).format('ddd, MMMM Do')}  </a></td>
     <td><a href={`/job/${job.id}`}><button className="btn  btn-job">View Job</button> </a></td>
   </tr>
 ));
@@ -101,9 +102,9 @@ return console.log();
     <div className="row">
       <div className="col-12 header-backend">
         <div className="row">
-          <button onClick={()=> this.setState({section:"New"})} className="col-2 col-md-3 btn-add">New Jobs</button>
-          <button onClick={()=> this.setState({section:"Open"})} className="col-2 col-md-3  btn-add">Open Jobs</button>
-          <button onClick={()=> this.setState({section:"All"})} className="col-2 col-md-3  btn-add">All Jobs</button>
+          <button onClick={()=> this.setState({section:"New"})} className="col-2 col-md-3 mx-auto btn-add">New Jobs</button>
+          <button onClick={()=> this.setState({section:"Open"})} className="col-2 col-md-3 mx-auto btn-add">Open Jobs</button>
+          <button onClick={()=> this.setState({section:"All"})} className="col-2 col-md-3 mx-auto btn-add">All Jobs</button>
             <div className="col-5 col-md-3  my-3 input-group">
                 <input id="search-focus" name="search" type="search" class="form-control"
                   value={this.state.search}  onChange={this.handleInput} placeholder="Search"/>

@@ -261,18 +261,18 @@ handleCreatingNote(event){
 
                     <label htmlFor="Issue" className="mr-3 form-label bold">Issue</label>
                       <select className=" col-7 custom-select custom-select-sm"  id="issue" name="issue" value={this.state.issue} onChange={this.handleInput} onKeyUp={(event) => this.handleEdit(event)} required>
-                        <option value="NoOn">Doesn’t turn on at all</option>
-                        <option value="NoScreen">Turns on but nothing on the screen</option>
-                        <option value="BlurryScreen">Screen on but faint/blurry/lines/etc</option>
-                        <option value="NotNormalStartup"> Screen on but not the normal startup screen</option>
-                        <option value="NoInternet"> Computer on but won’t connect to the internet/browser won’t go anywhere</option>
-                        <option value="SlowComputer"> Very slow during startup or once up</option>
-                        <option value="NotMyHomePage"> Goes to strange websites/home page is different</option>
+                        <option value="No On">Doesn’t turn on at all</option>
+                        <option value="No Screen">Turns on but nothing on the screen</option>
+                        <option value="Blurry Screen">Screen on but faint/blurry/lines/etc</option>
+                        <option value="Not Normal Startup"> Screen on but not the normal startup screen</option>
+                        <option value="No Internet"> Computer on but won’t connect to the internet/browser won’t go anywhere</option>
+                        <option value="Slow Computer"> Very slow during startup or once up</option>
+                        <option value="Not My HomePage"> Goes to strange websites/home page is different</option>
                         <option value="Virus">Virus (malware) is causing problems</option>
-                        <option value="NoEmail"> No email or passwords are wrong</option>
-                        <option value="HackedEmail"> Email has been hacked</option>
-                        <option value="HelpBuy"> Buy new computer and setup</option>
-                        <option value="SetUpComputer"> Setup new computer already purchased</option>
+                        <option value="No Email"> No email or passwords are wrong</option>
+                        <option value="Hacked Email"> Email has been hacked</option>
+                        <option value="Help Buy"> Buy new computer and setup</option>
+                        <option value="SetUp Computer"> Setup new computer already purchased</option>
                         <option value="Transfer">Transfer data from old computer to new or setup new backup plan</option>
                         <option value="Wipe"> Wipe old computer/remove hard drive</option>
                         <option value="Not turning on">Not Turning on</option>
