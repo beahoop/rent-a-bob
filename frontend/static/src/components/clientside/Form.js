@@ -211,7 +211,7 @@ render(){
                 PRINTER </button>
               </div>
                 <div className="row">
-              <button data-type="Other" onClick={this.filterHardware}className="my-5 col-12 col-md-8 mx-auto btn btn-orange hardware-btn">
+              <button data-type="Newtork or other" onClick={this.filterHardware}className="my-5 col-12 col-md-8 mx-auto btn btn-orange hardware-btn">
                 NETWORK/OTHER </button>
             </div>
         </div>
@@ -223,8 +223,7 @@ render(){
         ?
         <form onSubmit={this.handleClientSubmit}>
             <div className="row">
-            <p id="form" className="col-8  mx-auto form-title">We’re sorry you are experiencing {this.state.hardware.toLowerCase()}
-              issues. Please, fill out the form below and
+            <p id="form" className="col-8  mx-auto form-title">We’re sorry you are experiencing {this.state.hardware.toLowerCase()} issues. Please, fill out the form below and
               we will respind as soon as possible. </p>
             <div className="col-10 mx-auto">
                 <div className="row">
