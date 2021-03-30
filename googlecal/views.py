@@ -37,6 +37,15 @@ class ListEvents(APIView):
     # queryset = models.Event.objects.all() #.order_by('last_name')
     serializer_class = EventsSerializer
 
+    GOOGLE_APPLICATION_CREDENTIALS = 'google-credentials.json'
+    API_NAME = 'calendar'
+    API_VERISON = 'v3'
+    SCOPES = ['https://www.googleapis.com/auth/calendar']
+
+    service = Create_Service(GOOGLE_APPLICATION_CREDENTIALS, API_NAME, API_VERISON, SCOPES)
+
+    calendar_id_rentabob = os.environ.get('GOOGLE_CALENDAR_ID')
+
     def post(self, request, format=None):
             event_request_body ={
              'summary': request.data["summary"],
