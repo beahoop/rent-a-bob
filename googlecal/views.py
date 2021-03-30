@@ -36,59 +36,59 @@ class EventsDetailView(generics.RetrieveUpdateDestroyAPIView):
 class ListEvents(APIView):
     queryset = models.Event.objects.all() #.order_by('last_name')
     serializer_class = EventsSerializer
-#
-#     GOOGLE_APPLICATION_CREDENTIALS = 'google-credentials.json'
-#     API_NAME = 'calendar'
-#     API_VERISON = 'v3'
-#     SCOPES = ['https://www.googleapis.com/auth/calendar']
-#
-#     service = Create_Service(GOOGLE_APPLICATION_CREDENTIALS, API_NAME, API_VERISON, SCOPES)
-#
-#     calendar_id_rentabob = os.environ.get('GOOGLE_CALENDAR_ID')
-#
-#     def post(self, request, format=None):
-#             event_request_body ={
-#              'summary': request.data["summary"],
-#               'location': request.data["location"],
-#               'description': request.data["description"],
-#               'start': {
-#
-#                 'dateTime': request.data["dateTime_start"],
-#                 'timeZone': "America/New_York",
-#               },
-#               'end': {
-#                 'dateTime': request.data["dateTime_end"],
-#                 'timeZone': "America/New_York",
-#               },
-#               'attendees': [
-#                 {
-#                     'displayName' : request.data["attendee_name"],
-#                     'comment': request.data["attendee_comment"],
-#                     'email': request.data["attendee_email"],
-#                 },
-#               ],
-#             }
-#             # import pdb; pdb.set_trace()
-#              # generate a google calendar event
-#             maxAttendees = 5
-#             sendNotification = True
-#             sendUpdate = 'all'
-#             supportsAttachments= False
-#
-#             response = service.events().insert(
-#                 calendarId=calendar_id_rentabob,
-#                 maxAttendees=maxAttendees,
-#                 sendNotifications=sendNotification,
-#                 sendUpdates=sendUpdate,
-#                 supportsAttachments=supportsAttachments,
-#                 body=event_request_body
-#             ).execute()
-#
-#             print(response)
-#             eventId =(response['id'])
-#
-#
-#             return Response(response)
+
+    GOOGLE_APPLICATION_CREDENTIALS = 'google-credentials.json'
+    API_NAME = 'calendar'
+    API_VERISON = 'v3'
+    SCOPES = ['https://www.googleapis.com/auth/calendar']
+
+    service = Create_Service(GOOGLE_APPLICATION_CREDENTIALS, API_NAME, API_VERISON, SCOPES)
+
+    calendar_id_rentabob = os.environ.get('GOOGLE_CALENDAR_ID')
+
+    def post(self, request, format=None):
+            event_request_body ={
+             'summary': request.data["summary"],
+              'location': request.data["location"],
+              'description': request.data["description"],
+              'start': {
+
+                'dateTime': request.data["dateTime_start"],
+                'timeZone': "America/New_York",
+              },
+              'end': {
+                'dateTime': request.data["dateTime_end"],
+                'timeZone': "America/New_York",
+              },
+              'attendees': [
+                {
+                    'displayName' : request.data["attendee_name"],
+                    'comment': request.data["attendee_comment"],
+                    'email': request.data["attendee_email"],
+                },
+              ],
+            }
+            # import pdb; pdb.set_trace()
+             # generate a google calendar event
+            maxAttendees = 5
+            sendNotification = True
+            sendUpdate = 'all'
+            supportsAttachments= False
+
+            response = service.events().insert(
+                calendarId=calendar_id_rentabob,
+                maxAttendees=maxAttendees,
+                sendNotifications=sendNotification,
+                sendUpdates=sendUpdate,
+                supportsAttachments=supportsAttachments,
+                body=event_request_body
+            ).execute()
+
+            print(response)
+            eventId =(response['id'])
+
+
+            return Response(response)
             # print(event_request_body)
             # serializer = EventsSerializer(data=request.data)
             # serializer.is_valid()
