@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+// import image from "../images/AboutPhoto.jpg"
+//   <img src={image} alt="cat"/>
+
 class Client extends Component{
   constructor(props){
     super(props);
@@ -64,27 +67,6 @@ const abc = ["A", "B", "C", "D", "E", "F", "G", "H", "I"
          </div>
    )
  });
-
- // const alphaHeader = abc.map((letter ) => {
- //   <div className={letter}>
- //     <div className="header sticky-top"> letter </div>
- //     <div className="client-by-letter">
- //       const clientLetter = this.state.clients
- //       .filter(client => client.last_name[0] === letter)
- //       .map(client => (
- //         <div key={client.id}>
- //           <a href={`/client/${client.id}`}>
- //             <p>
- //               <span className="col-6 col-md-8 names">{client.last_name}, {client.first_name} </span>
- //               <span className="col-6 col-md-4 location"> {client.location} </span>
- //             </p>
- //           </a>
- //         </div>
- //     ))
- //
- //     </div>
- //   </div>
- // })
 
 
 const search = this.state.clients.filter(client => {
@@ -173,6 +155,8 @@ return console.log();
       </table>
 
     }
+
+
     {sections}
 
 

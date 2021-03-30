@@ -7,6 +7,6 @@ urlpatterns = [
     # path('cal/', views.build_service),
     path('list/', views.EventsListView.as_view()),
     path('edit/<int:pk>/', views.EventsDetailView.as_view()),
-    path('create/',  views.create_event),
-    path('', views.ListEvents.as_view())
+    path('',  views.create_event),
+    path('create/', views.ListEvents.as_view())
 ]

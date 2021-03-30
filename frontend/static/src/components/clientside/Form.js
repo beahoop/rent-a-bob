@@ -223,9 +223,9 @@ render(){
         ?
         <form onSubmit={this.handleClientSubmit}>
             <div className="row">
-            <p id="form" className="col-8  mx-auto form-title">We’re sorry you are experincing computer
+            <p id="form" className="col-8  mx-auto form-title">We’re sorry you are experiencing {this.state.hardware.toLowerCase()}
               issues. Please, fill out the form below and
-              we will be in contact with you shortly. </p>
+              we will respind as soon as possible. </p>
             <div className="col-10 mx-auto">
                 <div className="row">
                   <div className="mb-3  col-12 ">
@@ -273,7 +273,7 @@ render(){
                      <option value="Summerville">Summerville</option>
                      <option value="Charleston">Charleston</option>
                      <option value="Remote">Remote</option>
-                     <option value="Vacationer">I'm vacation here.</option>
+                     <option value="OnVacationhere">I'm vacation here.</option>
                    </select>
                    <div className={this.state.show}>
                      <div className="mb-3 p-0 col" >

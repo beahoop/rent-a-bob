@@ -16,7 +16,7 @@ class JobForm extends Component{
       job_email: '',
       Appointment_title: 'Rent-A-Bob Appointment',
       Appointment_location: '',
-      Appointment_Decomment: '',
+      Appointment_Description: 'Rent-A-Bob Appointment',
       Appointment_comment: '',
       date:'',
       dateTime_start: '',
@@ -208,7 +208,7 @@ handleAppointmentSubmit(event){
       job: this.state.job_id,
       summary: this.state.Appointment_title,
       location: this.state.Appointment_location,
-      description: this.state.Appointment_Decomment,
+      description: this.state.Appointment_Description,
       dateTime_start: start_date,
       dateTime_end: end_date,
       timeZone: 'American/New_York',
@@ -238,6 +238,29 @@ handleAppointmentSubmit(event){
           .catch(error => console.log('Error:', error))
           .finally('I am always going to fire!');
           this.setState({text: "", section: "Submit"})
+
+
+          fetch("/google/create/", {
+            // no begining slash mean from where I'm at add this to interval
+            // with a slash mean this excatly
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRFToken' : Cookies.get('csrftoken'),
+                },
+                body: JSON.stringify(appointment),
+              })
+                .then(response => {
+                if(!response.ok){
+                  throw new Error ('Bad Post request');
+                }
+                return response.json()
+                })
+              .then(data => {
+                console.log('Success. Calendar event created!', data)
+              } )
+              .catch(error => console.log('Error:', error))
+              .finally('I am always going to fire!');
     };
 chooseClient(id){
   fetch(`/api/v1/clients/${id}/`)
@@ -276,7 +299,7 @@ chooseJob(id){
             job_id: result.id,
             job_name: result.clientname,
             job_email: result.clientemail,
-            location: result.clientaddress_street,
+            Appointment_location: result.clientaddress_street,
             search: "",
             showSearch: "hide",
           });
@@ -400,7 +423,7 @@ render(){
                <option value="Summerville">Summerville</option>
                <option value="Charleston">Charleston</option>
                <option value="Remote">Remote</option>
-               <option value="Vacationer">I'm vacation here.</option>
+               <option value="OnVacationhere">I'm vacation here.</option>
              </select>
          <div className={this.state.show}>
            <div className="mb-3 col-10" >

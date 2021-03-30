@@ -11,13 +11,13 @@ class Client(models.Model):
     Seabrook = 'Seabrook'
     MtPleasant = 'MtPleasant'
     NorthCharleston = 'NorthCharleston'
-    WestAshely = 'WestAshely'
+    WestAshley = 'WestAshley'
     JamesIsland = 'JamesIsland'
     GooseCreek = 'GooseCreek'
     Summerville = 'Summerville'
     Charleston = 'Charleston'
     Remote = 'Remote'
-    Vacationer = 'Vacationer'
+    OnVacationhere = 'On Vacation here'
     LOCATION = [
         (IOP, 'IOP'),
         (Sullivan, 'Sullivan'),
@@ -25,13 +25,13 @@ class Client(models.Model):
         (Seabrook, 'Seabrook'),
         (MtPleasant, 'MtPleasant'),
         (NorthCharleston, 'NorthCharleston'),
-        (WestAshely, 'WestAshely'),
+        (WestAshley, 'WestAshley'),
         (JamesIsland, 'JamesIsland'),
         (GooseCreek, 'GooseCreek'),
         (Summerville, 'Summerville'),
         (Charleston, 'Charleston'),
         (Remote, 'Remote'),
-        (Vacationer, 'Vacationer'),
+        (OnVacationhere, 'On Vacation here'),
     ]
     #Call times
     Morning = 'Morning'

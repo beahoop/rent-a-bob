@@ -16,7 +16,7 @@ class Products extends Component{
     const products = [{
     id: 1,
     title: "Computers",
-    body: "From buying, setting up and bugging we'll be by your side.",
+    body: "From buying, setting up and bugging, we'll be by your side.",
     starRating: 4,
   },{
   id: 2,
@@ -43,7 +43,7 @@ render(){
       <div className="card-body">
         <h5 className="card-title ">{product.title}</h5>
         <p className="card-text">{product.body}</p>
-        <p className="btn product-btn">$95</p>
+        <p className="btn product-btn">Starting at $95/hr</p>
       </div>
     </div>
 
