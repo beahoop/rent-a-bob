@@ -17,7 +17,7 @@ render(){
     <div className="sticky-top homepage-nav navbar-dark row px-0">
     <div className="navbar ">
       <a href="#top">
-        <span className="navbar-1 navbar-brand" >Rent-a-bob</span>
+        <span className="navbar-1 navbar-brand" >Rent-A-Bob</span>
       </a>
       <a href="#reviews">
         <span className="navbar-1 navbar-brand">Reviews</span>

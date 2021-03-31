@@ -10,7 +10,7 @@ function Header2(props) {
         {isAuth
         ?
           <span>
-            <span className="navbar-2 navbar-brand">< NavLink to="/">Rent-a-Bob</NavLink></span>
+            <span className="navbar-2 navbar-brand">< NavLink to="/">Rent-A-Bob</NavLink></span>
             <span className="navbar-1 navbar-brand ">< NavLink to="/dashboard/">Dashboard</NavLink></span>
             <span className="navbar-1 navbar-brand ">< NavLink to="/clients/">Appointments</NavLink></span>
             <span className="navbar-1 navbar-brand ">< NavLink to="/clients/">Clients</NavLink></span>

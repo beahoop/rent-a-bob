@@ -16,20 +16,20 @@ class Products extends Component{
     const products = [{
     id: 1,
     title: "Computers",
-    body: "From buying, setting up and bugging, we'll be by your side.",
-    starRating: 4,
+    body: "From buying, setting up and repairs, we'll be by your side.",
+
   },{
   id: 2,
   image: './designDocs/images/brokencomputer.png',
   title: "Printers",
-  body: "From buying, setting up and bugging we'll be by your side.",
-  starRating: 5,
+  body: "From buying, setting up and repairs, we'll be by your side.",
+
   },{
   id: 2,
   image: './designDocs/images/brokencomputer.png',
   title: "and More",
-  body: "From buying, setting up and bugging we'll be by your side.",
-  starRating: 5,
+  body: "From buying, setting up and repairs, we'll be by your side.",
+
   }];
     this.setState({products});
   }
