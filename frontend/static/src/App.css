@@ -43,12 +43,9 @@ body {
 }
 
 
-
 .dashboard{
   font-size: 1rem;
 }
-
-
 
 /* //////////// Homepage */
 .homepage-nav{
@@ -473,15 +470,13 @@ input[type="file"] {
     margin-top: -40px;
   }
 
-  /* .divider-button{
-    margin-top: -150px;
-    margin-left: 80%;
+  .divider-button{
+    margin-top: -75px;
     margin-right: 10px;
-  } */
+  }
 
   .location-2{
     float:none;
-    /* float: right; */
   }
 
 }

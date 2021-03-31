@@ -34,7 +34,6 @@ render(){
       <div id="top" className="divider-container col-12">
         <div className="divider-top">
           <div className="divider-words row">
-
           <img className="img-fluid col-12 col-md-10 mx-auto" src="https://i.imgur.com/whThYhP.png" alt="logo" />
           </div>
           <div className="divider-button  px-4">
