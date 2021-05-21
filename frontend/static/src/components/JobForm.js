@@ -240,27 +240,27 @@ handleAppointmentSubmit(event){
           this.setState({text: "", section: "Submit"})
 
 
-          // fetch("/google/create/", {
-          //   // no begining slash mean from where I'm at add this to interval
-          //   // with a slash mean this excatly
-          //       method: 'POST',
-          //       headers: {
-          //         'Content-Type': 'application/json',
-          //         'X-CSRFToken' : Cookies.get('csrftoken'),
-          //       },
-          //       body: JSON.stringify(appointment),
-          //     })
-          //       .then(response => {
-          //       if(!response.ok){
-          //         throw new Error ('Bad Post request');
-          //       }
-          //       return response.json()
-          //       })
-          //     .then(data => {
-          //       console.log('Success. Calendar event created!', data)
-          //     } )
-          //     .catch(error => console.log('Error:', error))
-          //     .finally('I am always going to fire!');
+          fetch("/google/create/", {
+            // no begining slash mean from where I'm at add this to interval
+            // with a slash mean this excatly
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRFToken' : Cookies.get('csrftoken'),
+                },
+                body: JSON.stringify(appointment),
+              })
+                .then(response => {
+                if(!response.ok){
+                  throw new Error ('Bad Post request');
+                }
+                return response.json()
+                })
+              .then(data => {
+                console.log('Success. Calendar event created!', data)
+              } )
+              .catch(error => console.log('Error:', error))
+              .finally('I am always going to fire!');
     };
 chooseClient(id){
   fetch(`/api/v1/clients/${id}/`)
@@ -585,9 +585,10 @@ render(){
 
           {this.state.section === "Submit"
           ?
-          <div className="submited mt-4 mx-auto"> Submited!</div>
-                :
-                null }
+          <div className="submited mt-4 mx-auto"> Submitted!</div>
+          :
+          null
+          }
 
 
 

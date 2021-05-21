@@ -61,7 +61,7 @@ INSTALLED_APPS = [
 
     # local
     'broadcast.apps.BroadcastConfig',
-    # 'googlecal.apps.GooglecalConfig',
+    'googlecal.apps.GooglecalConfig',
     'accounts.apps.AccountsConfig',
     'jobs.apps.JobsConfig',
     'frontend.apps.FrontendConfig',

@@ -121,8 +121,9 @@ async handleRegistration(e, obj) {
 
   render(){
     return (
-      <div className="container-fluid no-padding">
 
+      <div className="container-fluid no-padding">
+<div className="above">Above the navbar</div>
         <BrowserRouter>
 
           <Header   handleLogOut={this.handleLogOut}

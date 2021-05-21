@@ -112,7 +112,7 @@ handleClientSubmit(event){
         email: "",
         phone_number: "",
         location: "", })
-        alert("Successful")
+        // alert("Successful")
         };
 
 handleJobSubmit(event){
@@ -175,7 +175,6 @@ handleJobSubmit(event){
 };
 
 handleshow(event){
-  console.log("HI");
   this.setState({ [event.target.name]: event.target.value });
   if(this.state.location !== "Remote"){
     this.setState({show: "hide"})
@@ -185,13 +184,12 @@ handleshow(event){
 }
 
 handleShowIssue(event){
-  console.log("HI");
   this.setState({ [event.target.name]: event.target.value });
-  if(this.state.issue === "Other"){
-    this.setState({showIssue: "show"})
+  if(this.state.issue !== "Other"){
+    this.setState({showIssue:"hide"})
   }
-  else if(this.state.issue !== "Other")
-  this.setState({showIssue:"hide"})
+  else if(this.state.issue === "Other")
+  this.setState({showIssue:"show"})
 }
 
 render(){
@@ -211,7 +209,7 @@ render(){
                 PRINTER </button>
               </div>
                 <div className="row">
-              <button data-type="Newtork or other" onClick={this.filterHardware}className="my-5 col-12 col-md-8 mx-auto btn btn-orange hardware-btn">
+              <button data-type="Network or other" onClick={this.filterHardware}className="my-5 col-12 col-md-8 mx-auto btn btn-orange hardware-btn">
                 NETWORK/OTHER </button>
             </div>
         </div>
@@ -224,7 +222,7 @@ render(){
         <form onSubmit={this.handleClientSubmit}>
             <div className="row">
             <p id="form" className="col-8  mx-auto form-title">We’re sorry you are experiencing {this.state.hardware.toLowerCase()} issues. Please, fill out the form below and
-              we will respind as soon as possible. </p>
+              we will respond as soon as possible. </p>
             <div className="col-10 mx-auto">
                 <div className="row">
                   <div className="mb-3  col-12 ">
@@ -296,7 +294,7 @@ render(){
         <form onSubmit={this.handleJobSubmit}>
         <div className="col col-md-10 mx-auto">
           <p id="form" className="form-title">Let us know more about the issue.
-            If you don’t know the anwser,
+            If you don’t know the answer,
             choose or write I don’t know. </p>
           <div className="row">
             <div className="mb-3 col col-md-8">
@@ -363,7 +361,7 @@ render(){
         <div className="row">
           <div className="col-10 mx-auto">
             <p id="form" className="form-title">
-              Thank you for time! We have received your request and
+              Thank you for your time! We have received your request and
               will be in touch soon. </p>
           </div>
         </div>

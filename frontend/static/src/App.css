@@ -34,9 +34,6 @@ body {
 .hide {
   display: none;
 }
-.show {
-
-}
 
 .bold{
   font-weight: bolder;
@@ -50,6 +47,7 @@ body {
 /* //////////// Homepage */
 .homepage-nav{
   background-color: #5694FF;
+  font-weight: bolder;
 }
 
 .backend-nav{
@@ -228,7 +226,7 @@ float: left;
   font-size: 3em;
   font-weight: bolder;
   text-align: center;
-  padding: 0px;
+  padding: 10px 0px;
   color: white;
   background-color:  #ED6242;
 }
@@ -495,6 +493,9 @@ input[type="file"] {
     margin-left: 65%;
     margin-right: 10px;
   }
+  .form-title{
+    font-size: 1.5rem;
+  }
 
   .review-title{
     font-size: 2rem;
@@ -545,6 +546,9 @@ input[type="file"] {
     background-color: #ED6242;
     color: white;
     font-size: .75rem;
+  }
+  .about-title{
+    font-size: 2.5em;
   }
 
 }
